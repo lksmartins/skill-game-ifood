@@ -1,0 +1,198 @@
+.navbar {
+  background: #292929;
+  height: 80px;
+  width: 100%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  -webkit-box-shadow: 0px 6px 32px -5px rgba(0, 0, 0, 0.37);
+          box-shadow: 0px 6px 32px -5px rgba(0, 0, 0, 0.37);
+}
+
+.navbar .navItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.2rem;
+  height: 100%;
+  width: 100%;
+  max-width: 1320px;
+  padding: 0 60px;
+  margin: 0 auto;
+}
+
+.navbar .navItems .logoWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-self: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.navbar .navItems .logoWrapper img {
+  max-height: 80px;
+}
+
+.navbar .navItems .logoWrapper a img {
+  height: 68px;
+}
+
+.navbar .navItems .navMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  gap: 1rem;
+}
+
+.navbar .navItems .navMenu li {
+  margin-right: 10px;
+}
+
+.navbar .navItems .navMenu li i {
+  color: #4CC0FB;
+  margin-right: 0.25rem;
+}
+
+.navbar .navItems .navMenu li button {
+  background-color: #F37021;
+  border-color: rgba(0, 0, 0, 0.5);
+  color: #141414;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar .navItems .navMenu li button i {
+  color: #141414;
+}
+
+.navbar .navItems .navMenu li a {
+  color: #f8f8f8;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.navbar .navItems .navMenu li a:hover {
+  color: #F37021;
+}
+
+.navbar .navItems .navMenu li:last-of-type {
+  margin-right: 0;
+}
+
+.navbar .navItems .navMenu .login {
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navbar .navItems .navMenu .navLinks {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar .navItems .navMenu .navLinks:hover {
+  background: blue;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  color: white;
+}
+
+.navbar .navItems .menuIcon {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar .navItems {
+    position: relative;
+  }
+  .navbar .navItems .logoWrapper {
+    margin-left: 0;
+  }
+  .navbar .navItems .navMenu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+    position: absolute;
+    top: 80px;
+    left: -150%;
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 1;
+    border-radius: 0 0 20px 20px;
+    -webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+  }
+  .navbar .navItems .navMenu li {
+    display: table;
+    text-align: center;
+  }
+  .navbar .navItems .navMenuActive {
+    background: #F37021;
+    left: 0;
+    opacity: 1;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .navbar .navItems .navLinks {
+    padding: 5px;
+    display: inline-block;
+    border-radius: 20px;
+  }
+  .navbar .navItems .navLinks:hover {
+    background: rgba(0, 0, 0, 0.5) !important;
+  }
+  .navbar .navItems .menuIcon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-self: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  .navbar .navItems .menuIcon i {
+    color: #F37021;
+  }
+}
+/*# sourceMappingURL=Navbar.module.css.map */

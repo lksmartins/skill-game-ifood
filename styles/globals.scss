@@ -1,0 +1,529 @@
+@import './_variables.scss';
+@import './_Carousel.scss';
+
+body{
+    font-family: 'Roboto' !important;
+    font-weight: 400;
+    background: $background;
+    color: #E8EAED;
+}
+  
+.main{
+padding-top: 100px;
+}
+  
+.store .modal-dialog{
+min-width: 70vw !important;
+}
+
+.btn{
+    border-radius: 0;
+    color: $background;
+    // has to be a default
+    background: $teamOne;
+    border-color: $teamOne;
+    &.btn-primary{
+        &.active{
+            box-shadow: none;
+            background: white;
+            color: $background;
+        }
+        &:disabled{
+            color: $background;
+        }
+    }
+    &:hover{
+        background: white !important;
+        border-color: white !important;
+        color: $background !important;
+    }
+    &.btn-success{
+        text-transform: uppercase;
+        color: $background;
+        font-family: 'Orbitron';
+        font-weight: 900;
+        font-size: 1.5rem;
+        position: relative;
+
+        &::before{
+            transition: all 0.3s ease;
+            content: ' ';
+            background: $teamOne;
+            width: 0; height: 5px;
+            position: absolute;
+            left: -1px;
+            bottom: -10px;
+        }
+
+        &:hover::before{
+            width: calc(100% + 2px);
+        }
+
+        &:disabled{
+            &::after{
+                display: none;
+            }
+        }
+        
+    }
+}
+
+.teamOne{
+    .btn{
+        background: $teamOne;
+        border-color: $teamOne;
+        &.btn-success{
+            &::before{
+                background: $teamOne;
+            }
+        }
+    }
+    .sidebar > div{
+        border-color: $teamOne !important;
+        .title{
+            background: $teamOne;
+            color: $background;
+        }
+    }
+    
+}
+
+.teamTwo{
+    .btn{
+        background: $teamTwo;
+        border-color: $teamTwo;
+        &.btn-success{
+            &::before{
+                background: $teamTwo;
+            }
+        }
+    }
+    .sidebar{
+        border-color: $teamTwo !important;
+        .title{
+            background: $teamTwo;
+            color: $background;
+        }
+    }
+}
+
+.teamThree{
+    .btn{
+        background: $teamThree;
+        border-color: $teamThree;
+        &.btn-success{
+            &::before{
+                background: $teamThree;
+            }
+        }
+    }
+    .sidebar{
+        border-color: $teamThree !important;
+        .title{
+            background: $teamThree;
+            color: $background;
+        }
+    }
+}
+
+.teamFour{
+    .btn{
+        background: $teamFour;
+        border-color: $teamFour;
+        &.btn-success{
+            &::before{
+                background: $teamFour;
+            }
+        }
+    }
+    .sidebar{
+        border-color: $teamFour !important;
+        .title{
+            background: $teamFour;
+            color: $background;
+        }
+    }
+}
+
+.modal-content{
+    background: $background;
+}
+.modal-header, .modal-footer{
+    border-color:rgba(255,255,255,0.2);
+}
+
+.btn-default{
+    background: #c0c0c0;
+    border-color: #c0c0c0;
+}
+
+// inventory
+.noGrid{
+    padding: 30px 10px;
+    display: flex !important;
+}
+
+// store
+.modal-xl{ 
+    width: 100% !important;
+    max-width: unset !important;
+
+    .modal-dialog{
+        width: 96%;
+        max-width: unset !important;
+    }
+    .modal-body{
+        margin-top: -10px;
+        border-radius: 6px;
+        background: url('https://branching-stories.s3.amazonaws.com/loja-bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 95vh;
+        overflow: hidden;
+    }
+    .modal-footer{
+        display: none;
+    }
+
+    .btn-fechar{
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        width: 250px;
+        img{
+            width: 100%;
+        }
+    }
+
+    &.smaller{
+        .modal-body{
+            padding: 30px;
+        }
+        .modal-dialog{
+            width: 50%;
+            max-width: unset !important;
+        }
+    }
+    &.inventory{
+        .modal-body{
+            background: url('https://branching-stories.s3.amazonaws.com/modal-inventory-bg.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+    &.blank{
+        .modal-body{
+            background: transparent !important;
+        }
+    }
+}
+
+.containerProfile{
+
+    margin-top: 120px;
+
+    .mainProfile{
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .profileAvatar{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            .title{
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            .buttons{
+                display: flex;
+                gap: 30px;
+
+                button{
+                    img{
+                        max-height: 60vh;
+                    }
+                }
+            }
+
+            .confirm{
+                margin-top: 30px;
+            }
+        }
+
+        .questions{
+
+            width: 80%;
+
+            .alternatives{
+                button{
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .confirm{
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.section-modal-btn{
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+
+    &:hover{
+        background: none !important;
+        transform: scale(1.1);
+    }
+}
+
+.form{
+    p{
+        margin: 0;
+    }
+    input{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+}
+
+$btnWidth: 30px;
+$lineHeight: $btnWidth - 4px;
+$left: $btnWidth/2.66;
+$bottom: $left - 22px;
+
+.answered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    &::before{
+        content: "\f058";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 1.5rem;
+        position: absolute;
+        color: #4caf50;
+        background-color: white;
+        padding: 2px;
+        line-height: $lineHeight;
+        height: $btnWidth;
+        width: $btnWidth;
+        border-radius: 50%;
+        left: -$left;
+        //bottom: -$bottom;
+        filter: brightness(1) !important;
+    }
+    &.wrong::before{
+        content: "\f057";
+        color: #dc3545;
+    }
+    
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.04);
+    }
+}
+
+.alternative-btn{
+
+    &.active{
+        transition: all 0.3s ease;
+        background: #0dcaf0 !important;
+        border: 3px solid rgba(0,0,0,0.3) !important;
+        animation: scale 1s ease-in-out infinite alternate;
+    }
+
+    img{
+        max-width: 400px;
+    }
+}
+
+.popup{
+
+    .modal-dialog{
+        max-width: 70vw;
+        height: 70vh;
+    }
+
+    .modal-content{
+        background: transparent !important;
+        //border: none !important;
+        height: 100%;
+        border: 3px solid $teamOne;
+
+        .modal-body{
+            background-color: $background;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .content{
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .img{
+                    width: 30%;
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                p{
+                    width: 70%;
+                    padding: 50px;
+                    overflow-y: auto; // auto, scroll for tests
+                    color: white;
+                    font-size: 1.2rem;
+                    line-height: 2rem;
+                    letter-spacing: 0.05rem;
+                }
+
+            }
+        }
+
+        .modal-footer, .modal-header{
+            background-color: $background;
+
+            .h4{
+                color: $teamOne !important;
+            }
+
+            button{
+                font-size: 1.4rem;
+                padding: 6px 30px;
+            }
+        }
+        .modal-header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.spanLoja{
+    background: #00FEFE;
+    color: $background;
+    display: inline;
+    padding: 0 5px;
+    font-weight: bold;
+    font-family: "Orbitron";
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.btnLoja{
+    background: #00FEFE !important;
+    border-color: #00FEFE !important;
+}
+
+.btnInventario{
+    background: #ff9500 !important;
+    border-color: #ff9500 !important;
+}
+
+.contentSlider{
+    .slick-arrow{
+        
+        &::before{
+            font-size: 2rem;
+            width: unset !important;
+            height: unset !important;
+        }
+
+        &.slick-prev{
+            left: -30px;
+        }
+        &.slick-next{
+            right: -20px;
+        }
+    }
+
+    .slick-dots li button{
+        width: 100%;
+        height: 100%;
+    }
+
+    .slick-dots li button:before{
+        content: unset !important;
+    }
+
+    .slick-dots li{
+        width: 30%;
+        height: 14px;
+        background: rgba(255,255,255, 0.2);
+        transition: all 0.3s ease;
+
+        &.slick-active{
+            background: $teamOne;
+        }
+    }
+}
+
+em{
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+}
+
+.Floatconfirm{
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%;
+    margin: 0 auto;
+    height: 80px;
+    //margin-bottom: -160px;
+    //border-radius: 50%;
+    z-index: 110;
+    background:rgba(0, 0, 0, 0.65);
+    //background: $teamOne;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //padding-top: 20px;
+
+    .fontSize{
+        position: fixed;
+        left: 30px; bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p{
+            margin: 0;
+        }
+        .buttons{
+            button{
+                padding: 3px 10px;
+                i{
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                }
+            }
+            button:first-of-type{
+                margin-right: 5px;
+            }
+        }
+    }
+}

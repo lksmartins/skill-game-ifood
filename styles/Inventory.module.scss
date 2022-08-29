@@ -1,0 +1,32 @@
+.inventory{
+    margin-top: 50px;
+    padding: 0 30px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    gap: 14px;
+
+    .item{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+        width: 170px;
+        padding: 15px 10px 5px 10px;
+        background: rgba(0,0,0,0.5);
+        border-radius: 10px;
+        border: 2px solid rgba(0,0,0,0.6);
+
+        img{
+            width: 100%;
+            max-width: 120px;
+            margin-bottom: 4px;
+        }
+
+        h3{
+            font-size: 1rem;
+        }
+    }
+}

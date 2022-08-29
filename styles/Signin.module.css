@@ -1,0 +1,14 @@
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 30px 0;
+  margin-top: 80px;
+}
+
+.container .col {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0;
+          flex: 1 0;
+  margin-bottom: 12px;
+}
+/*# sourceMappingURL=Signin.module.css.map */

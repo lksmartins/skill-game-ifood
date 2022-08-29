@@ -1,0 +1,15 @@
+.carousel {
+  width: 102.5%;
+  margin: 0 -1rem 0 -1rem;
+}
+
+.carousel .slide {
+  padding: 0 1rem;
+}
+
+.carousel .slide img {
+  width: 100%;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+/*# sourceMappingURL=carousel.module.css.map */

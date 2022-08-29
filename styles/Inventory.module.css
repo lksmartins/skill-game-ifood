@@ -1,0 +1,44 @@
+.inventory {
+  margin-top: 50px;
+  padding: 0 30px;
+  text-align: center;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 14px;
+}
+
+.inventory .item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  width: 170px;
+  padding: 15px 10px 5px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.inventory .item img {
+  width: 100%;
+  max-width: 120px;
+  margin-bottom: 4px;
+}
+
+.inventory .item h3 {
+  font-size: 1rem;
+}
+/*# sourceMappingURL=Inventory.module.css.map */

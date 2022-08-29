@@ -1,0 +1,64 @@
+@import './_variables.scss';
+
+.bg{
+
+    background: url('https://branching-stories.s3.amazonaws.com/bg-start-v3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container{
+        margin-top: 80px;
+        padding: 50px;
+        width: 100%;
+        height: auto;
+        min-height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .video{
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            margin-top: -20px;
+
+            img{
+                max-width: 22%;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .poster{
+                width: 640px !important;
+                max-width: unset !important;
+            }
+
+            video{
+                width: calc(640px * 0.9);
+                height: calc(360px * 0.9);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+        }
+
+        .main{
+            width: 70%;
+            max-width: 960px;
+            padding: 40px 50px;
+            background: $background;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3rem;
+
+            h2{
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

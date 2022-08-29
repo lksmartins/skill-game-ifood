@@ -1,0 +1,82 @@
+@import './_variables.scss';
+
+.bg{
+
+    background: url('https://branching-stories.s3.amazonaws.com/bg-start-v3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container{
+        margin-top: 80px;
+        padding: 50px;
+        width: 100%;
+        min-height: calc(100vh - 80px);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .main{
+            width: 70%;
+            max-width: 960px;
+            padding: 40px 50px;
+            background: $background;
+            border-radius: 10px;
+
+            &.postProfile{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 50px;
+
+                .image img{
+                    max-height: 80vh;
+                }
+
+                .text span{color: $teamOne}
+            }
+
+            .avatar{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .title{
+                    font-size: 1.5rem;
+                }
+
+                .buttons{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 30px;
+                    margin: 30px 0;
+
+                    div button img{
+                        max-width: 360px !important;
+                    }
+                }
+            }
+
+            .questions{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .title{
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                div div div :global(.alternative-btn){
+                    width: 100%;
+                    margin-bottom: 16px;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,11 @@
+.container{
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 30px 0;
+    margin-top: 80px;
+
+    .col{
+        flex: 1 0;
+        margin-bottom: 12px;
+    }
+}

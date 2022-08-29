@@ -1,0 +1,62 @@
+@import './_variables.scss';
+
+.container{
+    background: #1d1e21;
+    margin-top: 80px;
+    width: 100%;
+    height: auto;
+    min-height: calc(100vh - 80px);
+
+    .innerContainer{
+
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                margin: -40px 0;
+            }
+        }
+
+        .main{
+            padding: 15px 0 50px 0;
+            margin-bottom: 100px;
+            table{
+                width: 100%;
+                min-width: 500px;
+                .header{
+                    background: $teamOne;
+                    color: $background;
+                }
+                td, th{
+                    border-color: $teamOne;
+                }
+            }
+            table td, table th{
+                padding: 5px 10px;
+                border:1px solid black;
+            }
+            table td{
+                width: 33%;
+            }
+        }
+    }
+
+}
+
+.confirm{
+    button{
+        font-size: 1.3rem;
+        padding: 10px 30px;
+    }
+}

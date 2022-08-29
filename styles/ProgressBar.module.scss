@@ -1,0 +1,48 @@
+.container{
+    width: 30%;
+    min-width: 300px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .progressbar{
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 10px;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 30px;
+
+        .elements{
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(10,1fr);
+            gap: 5px;
+
+            .element{
+                background-color: rgba(255,255,255,0.3);
+                height: 100%;
+                border-radius: 5px;
+            }
+
+        }
+
+    }
+
+    $shadow1: -1.5px;
+    $shadow2: 1.5px;
+
+    .text{
+        font-weight: bold;
+        //font-size: 1.3rem;
+        color: white;
+        //text-shadow: $shadow1 $shadow1 0 #000, $shadow2 $shadow1 0 #000, $shadow1 $shadow2 0 #000, $shadow2 $shadow2 0 #000;
+    }
+
+}

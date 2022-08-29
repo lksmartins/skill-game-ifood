@@ -1,0 +1,109 @@
+@import './_variables.scss';
+
+.bg{
+
+    background: url('https://branching-stories.s3.amazonaws.com/bg-start-v3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container{
+        margin: 0 auto;
+        margin-top: 80px;
+        padding: 60px 0;
+        width: 100%;
+        max-width: 960px;
+        font-size: 1.2rem;
+        
+        .main{
+            padding: 50px;
+            background: $background;
+            border-radius: 10px;
+
+            .center{
+                font-size: 1.3rem;
+                text-align: center;
+                padding: 0 30px;
+            }
+
+            .satisfaction{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                margin-bottom: 50px;
+
+                .btn{
+                    font-size: 1.2rem;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    transition: all 0.3s ease;
+
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+
+                    &.active{
+                        background: white !important;
+                        transform: scale(1.25);
+                    }
+                }
+                .btn:nth-of-type(1){
+                    background: rgb(220, 53, 69);
+                    border-color: rgb(220, 53, 69);
+                }
+                .btn:nth-of-type(2){
+                    background: #fd7e14;
+                    border-color: #fd7e14;
+                }
+                .btn:nth-of-type(3){
+                    background: #0dcaf0;
+                    border-color: #0dcaf0;
+                }
+                .btn:nth-of-type(4){
+                    background: #009688;
+                    border-color: #009688;
+                }
+            }
+
+            h3{
+                margin-top: 40px;
+                font-family: "Orbitron";
+                font-size: 1.7rem;
+                color: $teamOne;
+            }
+            h3:first-of-type{
+                margin-top: 0;
+            }
+            h5{
+                font-size: 1.3rem;
+            }
+            .italic{
+                font-style: italic;
+                margin-bottom: 30px;
+            }
+
+            textarea{
+                margin-bottom: 30px;
+            }
+
+            .fieldError{
+                background: #ffa9b1;
+            }
+            .error{
+                color:rgb(220, 53, 69);
+                margin-top: -25px;
+                margin-bottom: 30px;
+            }
+            .hidden{
+                display: none;
+            }
+
+            button{
+                font-size: 1.5rem;
+                margin-top: 20px;
+                padding: 10px 30px;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,39 @@
+@import './_variables.scss';
+
+.bg{
+    background: url('https://branching-stories.s3.amazonaws.com/bg-start-v3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    .container{
+        margin: 0 auto;
+        margin-top: $navHeight;
+        padding: 30px 0;
+        width: 100%;
+        max-width: 1200px;
+        min-height: calc(100vh - #{$navHeight} - 60px);
+        height: 100%;
+        
+        .main{
+            padding: 20px 60px;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: $background;
+            border-radius: 30px;
+            min-height: calc(100vh - #{$navHeight} - 60px);
+
+            font-size: 1.2rem;
+            i{
+                font-size: 2rem;
+                color: $teamOne;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

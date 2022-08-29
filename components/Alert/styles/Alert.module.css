@@ -1,0 +1,65 @@
+.alert {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #F05D5E;
+  color: black;
+  padding: 1rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 6px 12px 0px #00000021;
+          box-shadow: 0px 6px 12px 0px #00000021;
+}
+
+.alert.hidden {
+  right: -100vw;
+}
+
+.alert.show {
+  right: 1rem;
+}
+
+.alert.success {
+  background-color: #A2FAA3 !important;
+}
+
+.alert.success .icon {
+  border-color: #067408 !important;
+}
+
+.alert.success .icon i {
+  color: #067408 !important;
+}
+
+.alert .icon {
+  border: 2px solid #950E0E;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.alert .icon i {
+  font-size: 1.5rem;
+  color: #950E0E;
+}
+/*# sourceMappingURL=Alert.module.css.map */

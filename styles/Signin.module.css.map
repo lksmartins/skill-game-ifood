@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,MAAM;EACd,OAAO,EAAE,MAAM;EACf,UAAU,EAAE,IAAI;CAMnB;;AAVD,AAMI,UANM,CAMN,IAAI,CAAA;EACA,IAAI,EAAE,GAAG;EACT,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "Signin.module.scss"
+    ],
+    "names": [],
+    "file": "Signin.module.css"
+}

@@ -1,0 +1,52 @@
+@import '../../../styles/variables';
+
+.footer{
+    left: 0; bottom: 0; right: 0;
+    //background: transparentize($teamOne, .75);
+    background: $navbarBg;
+    //background: $teamOne;
+    //border-top: 2px solid $teamOne;
+    padding: 2rem;
+    text-align: center;
+    color: $secondary;
+    box-shadow: 0px -6px 32px -5px rgba(0,0,0,0.37);
+
+    .container{
+        width: 70%;
+        max-width: 640px;
+        margin: 0 auto;
+        display: flex;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+
+        a{
+            color: inherit;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .col:first-of-type{
+            img{width: 100%;}
+            .social{
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 1rem;
+                i{
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .col:last-of-type{
+            p{
+                a{
+                    color: $secondary;
+                }
+            }
+        }
+
+        
+    }
+}

@@ -1,0 +1,233 @@
+@-webkit-keyframes text-glow {
+  from {
+    text-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+  }
+  to {
+    text-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+  }
+}
+
+@keyframes text-glow {
+  from {
+    text-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+  }
+  to {
+    text-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+  }
+}
+
+@-webkit-keyframes box-glow {
+  from {
+    -webkit-box-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+            box-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+  }
+  to {
+    -webkit-box-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+            box-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+  }
+}
+
+@keyframes box-glow {
+  from {
+    -webkit-box-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+            box-shadow: 0 0 8px #fff, 0 0 12px #fff, 0 0 16px #00FFFF, 0 0 20px #00FFFF, 0 0 24px #00FFFF, 0 0 28px #00FFFF, 0 0 32px #00FFFF;
+  }
+  to {
+    -webkit-box-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+            box-shadow: 0 0 4px #fff, 0 0 8px #C8FAF9, 0 0 12px #C8FAF9, 0 0 16px #C8FAF9, 0 0 20px #C8FAF9, 0 0 24px #C8FAF9, 0 0 28px #C8FAF9;
+  }
+}
+
+@-webkit-keyframes move-panel {
+  from {
+    margin-top: -200px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes move-panel {
+  from {
+    margin-top: -200px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@-webkit-keyframes move-panel-s {
+  from {
+    margin-right: -700px;
+  }
+  to {
+    margin-right: 0;
+  }
+}
+
+@keyframes move-panel-s {
+  from {
+    margin-right: -700px;
+  }
+  to {
+    margin-right: 0;
+  }
+}
+
+.store {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 55% 45%;
+      grid-template-columns: 55% 45%;
+}
+
+.store .items {
+  display: -ms-grid;
+  display: grid;
+  gap: 12px;
+  padding: 10px 0 0 10px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+.store .items .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 10px 5px 10px;
+  cursor: pointer;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+.store .items .item img {
+  width: 90%;
+  max-width: 100px;
+  max-height: 100px;
+  margin-bottom: 10px;
+}
+
+.store .items .item h3 {
+  font-size: 1.2rem;
+}
+
+.store .items .item.selected {
+  -webkit-animation: box-glow 1s ease-in-out infinite alternate;
+          animation: box-glow 1s ease-in-out infinite alternate;
+}
+
+.store .items .item.selected h3 {
+  color: #00FFFF;
+}
+
+.store .button {
+  width: calc(282px * 1);
+  height: calc(111px * 1);
+  background: url("https://branching-stories.s3.amazonaws.com/loja/loja-btn-comprar-ativo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.store .button:disabled {
+  background: url("https://branching-stories.s3.amazonaws.com/loja/loja-btn-comprar-disabled.png");
+}
+
+.store .button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.store .sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-right: 50px;
+}
+
+.store .sidebar .frame {
+  padding: clamp(4vh, 36px, 50px) clamp(3.5vw, 58px, 6vw);
+  width: calc(458px * 1.2);
+  height: calc(151px * 1.2);
+  max-width: 100%;
+  background: url("https://branching-stories.s3.amazonaws.com/loja-frame.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #141414;
+  position: relative;
+}
+
+.store .sidebar .frame.disabled {
+  -webkit-filter: grayscale(50);
+          filter: grayscale(50);
+  -webkit-animation: move-panel 0.5s ease-in-out;
+          animation: move-panel 0.5s ease-in-out;
+}
+
+.store .sidebar .frame.animateFrame {
+  -webkit-animation: move-panel-s 0.5s ease-in-out 1 alternate;
+          animation: move-panel-s 0.5s ease-in-out 1 alternate;
+}
+
+.store .sidebar .frame .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.store .sidebar .frame .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: absolute;
+  right: 58px;
+  bottom: 26px;
+}
+
+.store .sidebar .wallet {
+  padding: 10px 22px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 30px;
+}
+
+.itemHighlight {
+  background: blue;
+  color: white;
+  padding: 1px 3px;
+}
+/*# sourceMappingURL=Store.module.css.map */

@@ -1,0 +1,261 @@
+.form {
+  width: 100%;
+  color: inherit;
+}
+
+.form .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form .container .inputGroup {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.form .container .inputGroup label {
+  font-size: 0.75rem;
+  font-weight: 200;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form .container .inputGroup input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  padding-left: 1rem;
+}
+
+.form .container .inputGroup input:disabled {
+  opacity: 0.55 !important;
+}
+
+.form .container .inputGroup span {
+  font-size: 0.75rem;
+  margin: 0.25rem 0 0.25rem 0;
+  padding: 0.25rem 0 0 1rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.form .container .inputGroup span:hover {
+  color: #4CC0FB;
+}
+
+.form .container .inputGroup.inline {
+  margin-top: -0.5rem !important;
+  padding-bottom: 1.5rem;
+  display: unset;
+}
+
+.form .container .inputGroup.inline label, .form .container .inputGroup.inline input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: inline;
+}
+
+.form .container .inputGroup.inline input[type='checkbox'] {
+  margin-left: 0.5rem;
+  -webkit-appearance: none;
+  padding: 0.2rem 0.8rem;
+  background: white;
+  border-radius: 3px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+}
+
+.form .container .inputGroup.inline input[type='checkbox']:hover {
+  background: #4CC0FB;
+}
+
+.form .container .inputGroup.inline input[type='checkbox']:after {
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #141414;
+  font-size: 1.4rem;
+  position: absolute;
+  left: 0.08rem;
+  top: -0.25rem;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.form .container .inputGroup.inline input[type='checkbox']:checked {
+  background: #4CC0FB;
+}
+
+.form .container .inputGroup.inline input[type='checkbox']:checked:after {
+  opacity: 1;
+}
+
+.form .container .recaptcha {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: -1.5rem;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.5rem;
+}
+
+.form .container .recaptcha span {
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.form .container .recaptcha .show {
+  display: unset !important;
+}
+
+.form .container .recaptcha .hidden {
+  display: none !important;
+}
+
+.form .container .messageGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.form .container .messageGroup.hidden {
+  display: none;
+  margin-bottom: none !important;
+}
+
+.form .container .messageGroup.show {
+  display: unset !important;
+  margin-bottom: 1rem !important;
+}
+
+.form .container .messageGroup .success, .form .container .messageGroup .error {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0.3rem 0.66rem 0.5rem 0.66rem;
+  color: #141414;
+  font-family: inherit;
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.form .container .messageGroup .success {
+  background: #50F585;
+}
+
+.form .container .messageGroup .error {
+  background: #F37021;
+}
+
+.form .container .buttonGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.form .container .buttonGroup * {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.form .container .buttonGroup .forHover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.form .container .buttonGroup .forHover:hover button:first-of-type {
+  -webkit-transform: translateX(0.3rem);
+          transform: translateX(0.3rem);
+}
+
+.form .container .buttonGroup .forHover:hover i {
+  color: #F37021;
+}
+
+.form .container .buttonGroup .forHover i {
+  color: #4CC0FB;
+  font-size: 2.65rem;
+}
+
+.form .container .buttonGroup button {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-weight: 800;
+  font-size: 1rem !important;
+}
+
+.form .container .buttonGroup button:first-of-type {
+  padding: 0.5rem 0.8rem;
+}
+
+.form .container .buttonGroup a {
+  color: #4CC0FB;
+  text-decoration: none;
+}
+
+.form .container .buttonGroup a:hover {
+  color: #F37021;
+}
+/*# sourceMappingURL=form.module.css.map */

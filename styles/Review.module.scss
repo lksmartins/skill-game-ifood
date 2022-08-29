@@ -1,0 +1,92 @@
+@import './_variables.scss';
+
+.bg{
+
+    background: url('https://branching-stories.s3.amazonaws.com/bg-start-v3.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .container{
+        margin: 0 auto;
+        margin-top: 80px;
+        padding: 80px;
+        width: 100%;
+        max-width: 1200px;
+        min-height: calc(100vh - 80px);
+        height: 100%;
+        display: grid;
+        grid-template-areas: 'title title' 'main player';
+        grid-template-columns: 2fr 1fr;
+
+        .title{
+            grid-area: title;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .firework1{
+                position: absolute;
+                left: -200px;
+                top: -60px;
+                transform: rotate(-10deg);
+            }
+            .firework2{
+                position: absolute;
+                right: 0;
+                top: -10px;
+                width: 170px;
+                filter: hue-rotate(90deg);
+                transform: rotate(10deg);
+            }
+            .firework3{
+                position: absolute;
+                left: 35%;
+                top: -50px;
+                width: 100px;
+                filter: hue-rotate(180deg);
+                transform: rotate(-10deg);
+            }
+            .firework4{
+                position: absolute;
+                right: 35%;
+                top: -50px;
+                width: 120px;
+                filter: hue-rotate(270deg);
+                transform: rotate(10deg);
+            }
+            .firework5{
+                position: absolute;
+                left: 70px;
+                top: -40px;
+                width: 110px;
+                filter: hue-rotate(220deg);
+                transform: rotate(-10deg);
+            }
+        }
+        .main{
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+
+            h1{margin-bottom: 23px;}
+            h4{margin-bottom: 20px;}
+            button{
+                font-size:1.3rem !important;
+                padding: 10px 30px;
+            }
+        }
+        .playerFrame{
+            grid-area: player;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+}
