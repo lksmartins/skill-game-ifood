@@ -1,0 +1,20 @@
+[
+    {
+        "Fluxo": "F001",
+        "Questão ID": "Q001",
+        "Questão Texto": "Em Preparo",
+        "Alternativa A": "Restaurante solicita o cancelamento",
+        "A Next": "Q002",
+        "Alternativa B": "Driver solicita o cancelamento",
+        "B Next": "Q002",
+        "Alternativa C": "Consumidor solicita o cancelamento de pedido dentro do prazo",
+        "C Next": "Q003",
+        "Alternativa D": "Consumidor solicita cancelamento de pedido atrasado",
+        "D Next": "Q004"
+    },
+    {
+        "Fluxo": "F001",
+        "Questão ID": "Q002",
+        "Questão Texto": "Pedido cancelado"
+    }
+]

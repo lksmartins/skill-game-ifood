@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styles from './style/Navbar.module.css'
-import { signIn, signOut, useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import AudioPlayer from '../AudioPlayer'
-import { useUser } from '../../context/User'
 import menuItems from '../../lib/MenuItems.json'
 
 export function isInGameRoute(){
@@ -27,12 +25,8 @@ export default function Navbar(){
     const isInGame = isInGameRoute()
 
     const { hash } = router.query
-    const { user } = useUser()
-    const [ session ] = useSession()
+    const user = {}
     const [navShow, setNavShow] = useState(false)
-
-    const showUser = user ? true : false
-    const showUserName = session ? session.user.name : user?.name
 
     const [showResetPlayer, setShowResetPlayer] = useState(false)
     const resetBtnDefaultText = 'Reset Player'
@@ -51,13 +45,11 @@ export default function Navbar(){
         }
 
     }, [])
-
-    if( router.isReady ){
-        if( router.asPath == '/ihunter-sobre' ) return null
-    }
     
 
     async function resetPlayer(data){
+
+        return
 
         setResetBtnText(<i className="fas fa-spin fa-spinner"></i>)
 
@@ -81,20 +73,7 @@ export default function Navbar(){
         <button className="btn btn-light" onClick={() => resetPlayer(user?.id)}>{resetBtnText}</button>
     </li> : null
 
-    const userButton = 
-        !showUser ? 
-        <>
-            <li className={styles.login} onClick={() => setNavShow(false)}>
-                <i className="fas fa-user"></i> <button onClick={() => signIn('Credentials',{callbackUrl:process.env.NEXTAUTH_URL}) } className="btn btn-primary">Cadastrar</button>
-            </li>
-        </>
-        :
-        <>
-            {resetPlayerBtn}
-            <li className={styles.login} onClick={() => setNavShow(false)}>
-                <i className="fas fa-user"></i> {showUserName} <button className="btn btn-danger" onClick={() => signOut({callbackUrl:process.env.NEXTAUTH_URL+'/signout'})}>Sair</button>
-            </li>
-        </>
+    const userButton = ''
 
     const inGameMenu = <>
         <li>

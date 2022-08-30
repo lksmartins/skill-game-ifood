@@ -1,5 +1,5 @@
 {
-  "name": "branching-stories-frontend",
+  "name": "skill-game-ifood-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,9 +11,7 @@
     "bootstrap": "^5.0.1",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "next": "10.2.3",
-    "next-auth": "^3.23.3",
-    "next-compose-plugins": "^2.2.1",
+    "next": "12.2.5",
     "next-images": "^1.8.1",
     "react": "17.0.2",
     "react-bootstrap": "^1.6.0",
@@ -23,6 +21,7 @@
     "react-responsive-carousel": "^3.2.21",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
-    "use-sound": "^4.0.0"
+    "use-sound": "^4.0.0",
+    "webpack": "^5.74.0"
   }
 }
