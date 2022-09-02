@@ -8,12 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.27",
     "bootstrap": "^5.0.1",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "next": "12.2.5",
     "next-images": "^1.8.1",
     "react": "17.0.2",
+    "react-awesome-slider": "^4.1.0",
     "react-bootstrap": "^1.6.0",
     "react-dom": "17.0.2",
     "react-google-recaptcha": "^2.1.0",

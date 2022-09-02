@@ -19,9 +19,7 @@ export default function MyApp({ Component, pageProps }) {
         <link href="//vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet" />
         <script src="//vjs.zencdn.net/7.10.2/video.min.js" />
       </Head>
-      <Navbar />
       <Component {...pageProps} />
-      <Footer />
     </>
   )
 

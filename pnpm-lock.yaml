@@ -1,12 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@fullpage/react-fullpage': ^0.1.27
   bootstrap: ^5.0.1
   fs: ^0.0.1-security
   jsonwebtoken: ^8.5.1
   next: 12.2.5
   next-images: ^1.8.1
   react: 17.0.2
+  react-awesome-slider: ^4.1.0
   react-bootstrap: ^1.6.0
   react-dom: 17.0.2
   react-google-recaptcha: ^2.1.0
@@ -18,12 +20,14 @@ specifiers:
   webpack: ^5.74.0
 
 dependencies:
+  '@fullpage/react-fullpage': 0.1.27
   bootstrap: 5.2.0
   fs: 0.0.1-security
   jsonwebtoken: 8.5.1
   next: 12.2.5_sfoxds7t5ydpegc3knd667wn6m
   next-images: 1.8.4_webpack@5.74.0
   react: 17.0.2
+  react-awesome-slider: 4.1.0
   react-bootstrap: 1.6.6_sfoxds7t5ydpegc3knd667wn6m
   react-dom: 17.0.2_react@17.0.2
   react-google-recaptcha: 2.1.0_react@17.0.2
@@ -36,11 +40,26 @@ dependencies:
 
 packages:
 
+  /@babel/polyfill/7.12.1:
+    resolution: {integrity: sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==}
+    deprecated: 🚨 This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.13.9
+    dev: false
+
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.9
+    dev: false
+
+  /@fullpage/react-fullpage/0.1.27:
+    resolution: {integrity: sha512-L9TvNDGwr+YY0sXIqcR0U2wQmC6Y6HXgSVbx+5D9lPZVNJwhzvo5A+uTaCSaSMKastZcFBWyP6zhpsvpCX7InA==}
+    dependencies:
+      '@babel/polyfill': 7.12.1
+      fullpage.js: 4.0.10
     dev: false
 
   /@jridgewell/gen-mapping/0.3.2:
@@ -480,6 +499,12 @@ packages:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: false
 
+  /core-js/2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
+    dev: false
+
   /csstype/3.1.0:
     resolution: {integrity: sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==}
     dev: false
@@ -619,6 +644,10 @@ packages:
 
   /fs/0.0.1-security:
     resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
+    dev: false
+
+  /fullpage.js/4.0.10:
+    resolution: {integrity: sha512-x76Q+lzhghCou9B+cs6UzZkUHQNxmQ/zJFgWYcjBcTAmRgxnMpDyFLgMhLAsO1+6LakkKuDfBVy8H84u299c1Q==}
     dev: false
 
   /glob-to-regexp/0.4.1:
@@ -926,6 +955,12 @@ packages:
       hoist-non-react-statics: 3.3.2
       prop-types: 15.8.1
       react: 17.0.2
+    dev: false
+
+  /react-awesome-slider/4.1.0:
+    resolution: {integrity: sha512-cbPI1MTpVLKbEH6gf9bwtJb8Ja6R/YJonKbUQehfq2B2AAJkgDMeHntaa4SgGCRqWd55xKiT+CkjfKau1QRsKw==}
+    dependencies:
+      web-animation-club: 0.6.0
     dev: false
 
   /react-bootstrap/1.6.6_sfoxds7t5ydpegc3knd667wn6m:
@@ -1279,6 +1314,10 @@ packages:
     dependencies:
       glob-to-regexp: 0.4.1
       graceful-fs: 4.2.10
+    dev: false
+
+  /web-animation-club/0.6.0:
+    resolution: {integrity: sha512-9W+EQu1HiaPLe/7WZlhJ2ULqQ4VL80RPDYW+ZcjfTKp6ayOuT1k3SVO6+tu0VBRmOqueJ/mrG+rjjInIv8Aglg==}
     dev: false
 
   /webpack-sources/3.2.3:
