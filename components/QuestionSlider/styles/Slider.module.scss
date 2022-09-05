@@ -45,6 +45,19 @@
                 color: #FFFFFF;
             }
         }
+
+        &:global(.moveLeft_0vw) {
+            left: 0vw !important;
+        }
+        
+        @for $i from 100 through 10000 {
+            &:global(.moveLeft_#{$i}vw) {
+                left: #{$i}vw !important;
+            }
+            &:global(.moveLeft_-#{$i}vw) {
+                left: -#{$i}vw !important;
+            }
+        } 
     }
 
 }
@@ -55,3 +68,4 @@
     bottom: 1rem;
     z-index: 20;
 }
+

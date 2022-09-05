@@ -527,16 +527,3 @@ em{
         }
     }
 }
-
-.moveLeft_0vw {
-    left: 0vw !important;
-}
-
-@for $i from 100 through 10000 {
-    .moveLeft_#{$i}vw {
-        left: #{$i}vw !important;
-    }
-    .moveLeft_-#{$i}vw {
-        left: -#{$i}vw !important;
-    }
-} 
