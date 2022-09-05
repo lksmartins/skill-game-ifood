@@ -1,4 +1,31 @@
 .map{
     background: green;
-    height: 30vh;
+    height: 35vh;
+    padding: 1rem;
+    padding-bottom: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .grid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+
+        .gridElement{
+            //padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            outline: 1px solid white;
+            color: white;
+        }
+
+        .base{
+            background: black !important;
+        }
+    }
 }

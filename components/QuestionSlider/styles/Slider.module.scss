@@ -1,6 +1,6 @@
 .slider {
     width: 100vw;
-    height: 75vh;
+    height: 70vh;
     margin-top: -5vh;
     position: relative;
     overflow: hidden !important;
@@ -50,7 +50,7 @@
             left: 0vw !important;
         }
         
-        @for $i from 100 through 10000 {
+        @for $i from 100 through 1000 {
             &:global(.moveLeft_#{$i}vw) {
                 left: #{$i}vw !important;
             }
