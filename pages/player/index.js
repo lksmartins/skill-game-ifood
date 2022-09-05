@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { getToken } from '../../lib/helper'
 import styles from './player.module.css'
+import useCallbackState from '../../hooks/useCallbackState'
 
 export async function getServerSideProps() {
 
@@ -28,13 +29,11 @@ export default function Player(props) {
 
     const { questions } = props
     const [currentSlide, setCurrentSlide] = useState(0)
-    const [slides, setSlides] = useState([
-        questions[0]
-    ])
+    const [slides, setSlides] = useCallbackState(questions)
+    
     const [playerJourney, setPlayerJourney] = useState([slides[0]])
-    const sliderClasses = [styles.first, styles.second, styles.third]
 
-    const chooseAlternative = (alternative)=>{
+    const chooseAlternative = (alternative) => {
 
         /*
         -add proxima pergunta ao playerJourney
@@ -45,16 +44,139 @@ export default function Player(props) {
 
         const question = findQuestion(alternative.nextQuestion)
 
-        setPlayerJourney( [...playerJourney, question] )
+        setPlayerJourney([...playerJourney, question])
 
-        setSlides( [...slides, question] )
+        //const newSlides = [...slides, question]
+        const activeSlide = questions.findIndex(q=>q.ref == question.ref)
 
-        setCurrentSlide(currentSlide+1)
+        setCurrentSlide(activeSlide)
+        updateSlidesPositions(moveTo(slides, activeSlide))
+
+        /* setSlides(newSlides, ()=>{
+            setCurrentSlide(activeSlide)
+            setTimeout(() => {
+                updateSlidesPositions(moveTo(newSlides, activeSlide))
+            },1000)
+        }) */
 
     }
 
-    const findQuestion = (questionRef)=>{
-        return questions.find(item=>item.ref==questionRef)
+    useEffect(() => {
+
+        console.log('currentSlide')
+        //setSlidesPosition()
+
+    }, [currentSlide])
+
+    const moveTo = (slides, moveTo) => {
+
+        console.log('moveTo')
+
+        const positions = []
+
+        slides.map((slide, i)=>{
+
+            let position = '0vw'
+            position = `${(i-moveTo) * 100}vw`
+
+            positions.push(position)
+
+        })
+        
+        return positions
+
+    }
+
+    const [slidesPositions, updateSlidesPositions] = useState(moveTo(slides, 0))
+
+    const getSlidesPosition = (slides) => {
+
+        console.log('getSlidesPosition')
+        console.log(slides)
+
+        slides.map((slide, i)=>{
+
+            let style = { left: '0vw' }
+
+            console.log('i',i)
+            console.log('currentSlide',currentSlide)
+
+            /*
+            
+            i: 1, current: 0
+
+            */
+
+            if (i == currentSlide) {
+                style.left = `0vw`
+                console.log('IGUAL', style.left)
+            }
+            if (i > currentSlide) {
+                style.left = `${(i-currentSlide) * 100}vw`
+                console.log('INDEX MAIOR', style.left)
+            }
+            if (i < currentSlide) {
+                style.left = `-${(currentSlide - i) * 100}vw`
+                console.log('INDEX MENOR', style.left)
+            }
+
+            style.left = `${(i-currentSlide) * 100}vw`
+
+            console.log('left',style.left)
+            slide.style = style
+            console.log('=',slide.style.left)
+
+        })
+
+        console.log('newSlides', slides)
+        return slides
+
+    }
+
+    const setSlidesPosition = () => {
+
+        console.log('setSlidesPosition')
+        console.log(slides)
+
+        const style = { left: '0vw' }
+        const newSlides = JSON.parse(JSON.stringify(slides))
+
+        newSlides.map((slide, i)=>{
+
+            console.log('i',i)
+            console.log('currentSlide',currentSlide)
+
+            if (i == currentSlide) {
+                style.left = `0vw !important`
+                //console.log('IGUAL')
+            }
+            if (i > currentSlide) {
+                style.left = `${(currentSlide - i) * 100}vw !important`
+                //console.log('INDEX MAIOR')
+            }
+            if (i < currentSlide) {
+                style.left = `-${(currentSlide - i) * 100}vw !important`
+                //console.log('INDEX MENOR')
+            }
+
+            console.log('left',style.left)
+            slide.style = style
+            console.log('=',slide.style.left)
+
+            /* if( i == newSlides.length-1 ){
+                console.log('newSlides', newSlides)
+                setSlides(newSlides)
+            } */
+
+        })
+
+        console.log('newSlides', newSlides)
+        setSlides(newSlides)
+
+    }
+
+    const findQuestion = (questionRef) => {
+        return questions.find(item => item.ref == questionRef)
     }
 
     const buildAlternatives = (question) => {
@@ -68,10 +190,10 @@ export default function Player(props) {
                 {
                     alternatives.map(alternative => {
                         return <button title={alternative.nextQuestion}
-                                key={alternative.id} 
-                                className={styles.alternative}
-                                onClick={()=>chooseAlternative(alternative)}
-                                >
+                            key={alternative.id}
+                            className={styles.alternative}
+                            onClick={() => chooseAlternative(alternative)}
+                        >
                             {alternative.text}
                         </button>
                     })
@@ -80,17 +202,13 @@ export default function Player(props) {
     }
 
     const prevSlide = () => {
-        setCurrentSlide(prev => {
-            if (prev == 0) return 0
-            return prev - 1
-        })
+        setCurrentSlide(currentSlide-1)
+        updateSlidesPositions(moveTo(slides, currentSlide-1))
     }
 
     const nextSlide = () => {
-        setCurrentSlide(prev => {
-            if (prev == slides.length - 1) return slides.length - 1
-            return prev + 1
-        })
+        setCurrentSlide(currentSlide+1)
+        updateSlidesPositions(moveTo(slides, currentSlide+1))
     }
 
     return (
@@ -98,8 +216,8 @@ export default function Player(props) {
 
             <div className={styles.playerJourney}>
                 {
-                    playerJourney.map(step=>{
-                        return <div className={styles.step}>{step.ref}</div>
+                    playerJourney.map((step, index) => {
+                        return <div key={index} className={styles.step}>{step.ref}</div>
                     })
                 }
             </div>
@@ -107,32 +225,13 @@ export default function Player(props) {
             <div className={`${styles.slider}`}>
                 {
                     slides.map((slide, index) => {
-
-                        let style = {left:'0'}
-                        /*
-                        index: 0, currentSlide: 0
-                        index: 1, currentSlide: 0
-                        index: 2, currentSlide: 0
-                        */
-                        if( currentSlide > index ){
-                            style.left = `-${index*100}vw !important`
-                        }
-                        if( currentSlide < index ){
-                            style.left = `${index*100}vw !important`
-                        }
-                        if( currentSlide == index ){
-                            style.left = `0 !important`
-                        }
-
-                        console.log('index', index)
-                        console.log('style', style)
-
+                        console.log('rendering slides', slidesPositions)
                         return <div
                             key={slide.id}
-                            className={`${styles.slide}`}
-                            style={style}
+                            className={`${styles.slide} ${`moveLeft_${slidesPositions[index]}`}`}
                         >
-                            <h1>{slide.text}</h1>
+                            <h1>{slide.ref}</h1>
+                            <h2>{slide.text}</h2>
                             {buildAlternatives(slide)}
                         </div>
                     })
@@ -141,6 +240,7 @@ export default function Player(props) {
 
             <div className={styles.buttons}>
                 <button onClick={() => prevSlide()}>PREV</button>
+                <button onClick={() => nextSlide()}>NEXT</button>
             </div>
 
         </main>

@@ -48,8 +48,8 @@
   z-index: 11;
   top: 0;
   left: 0;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 1s ease !important;
+  transition: all 1s ease !important;
 }
 
 .slider .slide:nth-of-type(2) {
