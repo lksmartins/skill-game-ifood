@@ -14,9 +14,10 @@
         width: 100vw !important;
         height: 100%;
         padding: 3rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 3fr 5fr;
+        grid-template-areas: "title title title"
+                             "image alternatives alternatives";
         align-items: center;
         position: absolute;
         z-index: 11;
@@ -24,7 +25,21 @@
         left: 0;
         transition: all 1s ease !important;
 
+        .title{
+            grid-area: title;
+            font-size: 2rem;
+        }
+
+        .image{
+            grid-area: image;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
         .alternatives {
+            grid-area: alternatives;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;

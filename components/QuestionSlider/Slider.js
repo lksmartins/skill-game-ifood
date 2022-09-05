@@ -87,9 +87,15 @@ export default function Slider(props) {
                         key={slide.id}
                         className={`${styles.slide} ${`moveLeft_${slidesPositions[index]}`}`}
                     >
-                        <h1>{slide.ref}</h1>
-                        <h2>{slide.text}</h2>
-                        {buildAlternatives(slide)}
+                        <div className={styles.title}>
+                           {slide.ref} - {slide.text}
+                        </div>
+                        <div className={styles.image}>
+                            <img src={'image' in slide && slide.image ? slide.image : '/QuestionSlider/placeholder.png' } />
+                        </div>
+                        <div className={styles.alternatives}>
+                            {buildAlternatives(slide)}
+                        </div>
                     </div>
                 })
             }
