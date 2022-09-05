@@ -1,0 +1,78 @@
+.slider {
+  width: 100vw;
+  height: 75vh;
+  margin-top: -5vh;
+  position: relative;
+  overflow: hidden !important;
+  z-index: 10;
+  -webkit-transition: all 0.3s ease !important;
+  transition: all 0.3s ease !important;
+  background-color: white;
+  color: black;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.slider .slide {
+  width: 100vw !important;
+  height: 100%;
+  padding: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  -webkit-transition: all 1s ease !important;
+  transition: all 1s ease !important;
+}
+
+.slider .slide .alternatives {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+}
+
+.slider .slide .alternatives button {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background: #EA1D2C;
+  -webkit-box-shadow: 4.12722px 4.95266px 3.30178px rgba(0, 0, 0, 0.25);
+          box-shadow: 4.12722px 4.95266px 3.30178px rgba(0, 0, 0, 0.25);
+  border-radius: 16.5089px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26.4142px;
+  line-height: 32px;
+  color: #FFFFFF;
+}
+
+.controls {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+}
+/*# sourceMappingURL=Slider.module.css.map */
