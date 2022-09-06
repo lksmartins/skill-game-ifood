@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { getToken } from '../../lib/helper'
 import styles from './player.module.css'
-import Map from '../../components/Map/Map'
+import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
 
 export async function getServerSideProps() {

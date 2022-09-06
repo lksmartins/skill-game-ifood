@@ -2,9 +2,6 @@ import Head from 'next/head'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
 
-import Navbar from '../components/Navbar/Navbar'
-import Footer from '../components/FooterV2/Footer'
-
 export default function MyApp({ Component, pageProps }) {
 
   return (
