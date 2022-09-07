@@ -42,11 +42,32 @@
   width: 100%;
 }
 
+@font-face {
+  font-family: 'ifood';
+  src: url("../asset/font/TipoiFoodTextos-Medium-web.ttf");
+  src: url("../asset/font/TipoiFoodTextos-Regular-web.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ifood-title';
+  src: url("../asset/font/TipoiFoodTitulos-Medium-web.ttf");
+  src: url("../asset/font/TipoiFoodTitulos-Regular-web.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Roboto' !important;
+  font-family: 'ifood', 'ifood-title', 'sans-serif' !important;
   font-weight: 400;
   background: #141414;
   color: #E8EAED;
+}
+
+* {
+  font-family: 'ifood', 'sans-serif' !important;
+  font-weight: 400;
 }
 
 .main {
@@ -618,5 +639,41 @@ em {
 
 .Floatconfirm .fontSize .buttons button:first-of-type {
   margin-right: 5px;
+}
+
+.cls-1 {
+  fill: #ff2928;
+}
+
+.cls-2 {
+  fill: #fff;
+}
+
+.cls-3 {
+  fill: #95283b;
+}
+
+.cls-4 {
+  fill: #f64136;
+}
+
+.cls-5 {
+  fill: #c8002d;
+}
+
+.cls-6 {
+  fill: #fbb432;
+}
+
+.cls-7 {
+  fill: #d5293f;
+}
+
+.cls-8 {
+  fill: #da932b;
+}
+
+.cls-9 {
+  fill: #661b1c;
 }
 /*# sourceMappingURL=globals.css.map */
