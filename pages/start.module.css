@@ -1,0 +1,107 @@
+.start {
+  width: 100vw;
+  height: 100vh;
+  background-color: #EA1D2C;
+  background-image: url("/start-bg.png");
+}
+
+.start .grid {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 3rem;
+  padding-bottom: 6rem;
+}
+
+.start .grid .logo {
+  position: relative;
+  height: 16vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.start .grid .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5rem;
+  padding: 0 6rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.start .grid .text p {
+  background-color: white;
+  color: #5C5C5C;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+}
+
+.start .grid .text a {
+  background: #EA1D2C;
+  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  padding: .5rem 6rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+}
+
+.start .grid .text a:hover {
+  -webkit-transform: translateY(-1rem);
+          transform: translateY(-1rem);
+  font-weight: bold;
+  -webkit-box-shadow: 5px 16px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 16px 12px rgba(0, 0, 0, 0.25);
+}
+
+.start .grid .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=start.module.css.map */
