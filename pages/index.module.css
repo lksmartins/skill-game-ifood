@@ -1,0 +1,99 @@
+.index {
+  width: 100vw;
+  height: 100vh;
+  background-color: #EA1D2C;
+}
+
+.index .grid {
+  display: -ms-grid;
+  display: grid;
+  height: 100%;
+      grid-template-areas: 'logo logo' 'text image';
+  -ms-grid-rows: 16vh;
+      grid-template-rows: 16vh;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  padding: 0 3rem;
+  padding-bottom: 6rem;
+}
+
+.index .grid .logo {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: logo;
+  position: relative;
+  height: 16vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.index .grid .text {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: text;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+  padding: 0 6rem;
+  color: white;
+}
+
+.index .grid .text a {
+  background: #FFFFFF;
+  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  padding: .5rem 5rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #EA1D2C;
+}
+
+.index .grid .text a:hover {
+  -webkit-transform: translateY(-1rem);
+          transform: translateY(-1rem);
+  font-weight: bold;
+  -webkit-box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
+}
+
+.index .grid .image {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: image;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=index.module.css.map */
