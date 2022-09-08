@@ -1,23 +1,30 @@
 .slider {
     width: 100vw;
-    height: 70vh;
     margin-top: -5vh;
     position: relative;
     overflow: hidden !important;
     z-index: 10;
-    transition: all 0.3s ease !important;
+    transition: all 0.6s ease !important;
     background-color: white;
     color: black;
     border-radius: 1.5rem 1.5rem 0 0;
 
+    &.mapOpen {
+        height: 70vh;
+    }
+
+    &.mapClosed {
+        height: 30vh;
+    }
+
     .slide {
         width: 100vw !important;
         height: 100%;
-        padding: 3rem;
+        padding: 0 3rem;
         display: grid;
         grid-template-columns: 3fr 5fr;
         grid-template-areas: "title title title"
-                             "image alternatives alternatives";
+            "image alternatives alternatives";
         align-items: center;
         position: absolute;
         z-index: 11;
@@ -25,12 +32,31 @@
         left: 0;
         transition: all 1s ease !important;
 
-        .title{
+        .title {
             grid-area: title;
+            position: relative;
             font-size: 2rem;
+            background-color: #F5F0EB;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                top: 100%;
+                left: 4.5em;
+                border: .75rem solid transparent;
+                border-top: none;
+                border-bottom-color: #F5F0EB;
+                filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+                transform: rotate(180deg);
+            }
         }
 
-        .image{
+        .image {
             grid-area: image;
             display: flex;
             justify-content: flex-start;
@@ -58,21 +84,30 @@
                 font-size: 26.4142px;
                 line-height: 32px;
                 color: #FFFFFF;
+
+                &.selected{
+                    background-color: lightcoral !important;
+                }
+            }
+
+            .confirm{
+                background-color: blueviolet;
             }
         }
 
         &:global(.moveLeft_0vw) {
             left: 0vw !important;
         }
-        
+
         @for $i from 100 through 1000 {
             &:global(.moveLeft_#{$i}vw) {
                 left: #{$i}vw !important;
             }
+
             &:global(.moveLeft_-#{$i}vw) {
                 left: -#{$i}vw !important;
             }
-        } 
+        }
     }
 
 }
@@ -83,4 +118,3 @@
     bottom: 1rem;
     z-index: 20;
 }
-
