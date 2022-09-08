@@ -64,16 +64,6 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
         }
     }
 
-    const hasMultipleFroms = (from) => {
-        let found = 0
-        for (const item of data) {
-            for (const fromItem of item.from) {
-                if (fromItem == from) found++
-            }
-        }
-        return found > 1
-    }
-
     return (
         <>
             <svg viewBox={`0 0 ${width} ${height}`}>
@@ -205,7 +195,7 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                             <motion.circle fill="white" key={`next_${nextPosition}`}
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 2 }}
-                                transition={{ duration: .6, delay: 0.1, type: 'tween', repeat: Infinity, repeatType: "mirror" }}
+                                transition={{ duration: .6, delay:.1, type: 'tween', repeat: Infinity, repeatType: "mirror" }}
 
                                 cx={xScale(item.x)}
                                 cy={yScale(item.y)}
@@ -255,7 +245,6 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                         <path d="M49.56,143.41s-9.69-.3-14,5.47c0,0-.45.33.8.61s2.92.61-.35,2.38a9.59,9.59,0,0,0-3.28,2.72,10,10,0,0,1-6.34,3.63c-1.88.37,1.67,2.86,7.71,4.63,0,0,12.56,3.56,18.42.2" fill="#c8002d" />
                     </svg>
                 </motion.g>
-
 
             </svg>
         </>

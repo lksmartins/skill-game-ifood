@@ -14,8 +14,8 @@ export default function entrega() {
                 </div>
                 <div className={styles.text}>
                     <p>Olá, bem-vindo ao guia interativo de política de cancelamento da iFood. Você irá interagir com uma apresentação gamificada, onde você irá escolher sua jornada de acordo com uma situação que ocorre ou que está ocorrendo em seu estabelecimento. Como este guia é interativo, a qualquer momento você poderá voltar e rever quantas situações desejar. Esperamos que este guia lhe ajude no seu processo de tomada de decisão e de melhor instruí-lo sobre o que fazer em situações de cancelamento.</p>
-                    <Link href="/play"><a>Faço minha própria entrega</a></Link>
-                    <Link href="/play"><a>Uso a entrega do ifood</a></Link>
+                    <Link href="/mapa/faco-minhas-entregas"><a>Faço minha própria entrega</a></Link>
+                    <Link href="/mapa/uso-entregas-ifood"><a>Uso a entrega do ifood</a></Link>
                 </div>
 
             </div>
