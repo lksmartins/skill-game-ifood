@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './index.module.css'
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect'
+import { BrowserView, MobileView } from 'react-device-detect'
 
 export default function Index() {
     return (
