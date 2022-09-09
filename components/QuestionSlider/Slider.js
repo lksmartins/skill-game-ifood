@@ -113,6 +113,12 @@ export default function Slider({
         updateSlidesPositions(moveTo(slides, currentSlide + 1))
     }
 
+    const sliderClick = (e)=>{
+        if( mapControls.isOpen ){
+            mapControls.close()
+        }
+    }
+
     const textBubble = useRef('textBubble')
 
     if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
@@ -120,7 +126,7 @@ export default function Slider({
     </div>
 
     return (<>
-        <div className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
+        <div onClick={(e)=>sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
 
             {slides.map((slide, index) => {
                 return <div
