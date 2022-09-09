@@ -3,6 +3,9 @@
   height: 100vh;
   background-color: #EA1D2C;
   background-image: url("/start-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .start .grid {
@@ -103,5 +106,24 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (max-width: 768px) {
+  .start {
+    height: auto;
+    padding-bottom: unset;
+  }
+  .start .grid {
+    height: auto;
+  }
+  .start .grid .logo {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .start .grid .text {
+    height: auto;
+    padding: unset;
+  }
 }
 /*# sourceMappingURL=start.module.css.map */

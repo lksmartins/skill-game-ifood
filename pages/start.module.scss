@@ -6,6 +6,9 @@ $mainRed: #EA1D2C;
     height: 100vh;
     background-color: $mainRed;
     background-image: url('/start-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     .grid {
         height: 100%;
@@ -72,5 +75,23 @@ $mainRed: #EA1D2C;
             align-items: center;
         }
 
+    }
+}
+
+@media (max-width: 768px){
+    .start{
+        height: auto;
+        padding-bottom: unset;
+
+        .grid{
+            height: auto;
+            .logo {
+                justify-content: center;
+            }
+            .text{
+                height: auto;
+                padding: unset;
+            }
+        }
     }
 }
