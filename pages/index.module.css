@@ -96,4 +96,42 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
+@media (max-width: 768px) {
+  .index .grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 3rem;
+    padding-bottom: unset;
+  }
+  .index .grid .image {
+    min-height: 30vh;
+  }
+  .index .grid .text {
+    gap: 1rem;
+    padding: 2rem 0;
+    height: -webkit-fill-available;
+    height: -moz-available;
+    height: fill;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .index .grid .text a {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=index.module.css.map */

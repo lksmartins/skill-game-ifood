@@ -67,3 +67,37 @@ $mainRed: #EA1D2C;
 
     }
 }
+
+@media (max-width: 768px) {
+
+    .index{
+        
+        .grid{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+
+            padding: 0 3rem;
+            padding-bottom: unset;
+
+            .image{
+                min-height: 30vh;
+            }
+
+            .text {
+                gap: 1rem;
+                padding: 2rem 0;
+                height: fill;
+                justify-content: flex-start;
+
+                a{
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+}
