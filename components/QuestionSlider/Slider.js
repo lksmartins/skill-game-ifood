@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import styles from './styles/Slider.module.css'
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect'
+import { isMobile } from 'react-device-detect'
 
 const sliderTesting = false
 
