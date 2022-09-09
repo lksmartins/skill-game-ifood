@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, createContext, useContext } from 'react'
-import { useLocalStorage } from './LocalStorage'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 const UserContext = createContext()
 

@@ -1,10 +1,18 @@
 import { useState, useCallback } from 'react'
 
+const isTesting = false
+
+function localConsole(message){
+    if( isTesting==true ){
+        console.log( message )
+    }
+}
+
 export function useLocalStorage( key, initialValue = '' ){
 
     const [ state, setState ] = useState(()=>{
 
-        console.log('LocalStorage -> useState', key, initialValue)
+        localConsole('LocalStorage -> useState', key, initialValue)
 
         try {
             const storedValue = localStorage.getItem(key)
@@ -24,7 +32,7 @@ export function useLocalStorage( key, initialValue = '' ){
 
     const setValue = useCallback( value => {
 
-        console.log('LocalStorage -> setValue', key, value)
+        localConsole('LocalStorage -> setValue', key, value)
 
         try {
             setState(value)

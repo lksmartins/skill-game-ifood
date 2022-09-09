@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getToken } from '../../lib/helper'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 export async function getServerSideProps(context) {
 
@@ -69,7 +70,11 @@ export default function Play({ questions, map }) {
         { x: 20, y: 20, ref: "Q010", from: ['Q008'], current: false },
     ]
 
-    const [mapData, updateMapData] = useState(map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2)
+    let usedMap = map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2
+    const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
+    const [localJourney, setLocalJourney] = useLocalStorage('journey')
+    const [localMapLoaded, setLocalMapLoaded] = useState(false)
+    const [mapData, updateMapData] = useState(usedMap)
     const [playerJourney, updatePlayerJourney] = useState([])
 
     const mapControlsObj = {
@@ -94,11 +99,51 @@ export default function Play({ questions, map }) {
         updatePlayerJourney([...playerJourney, { from: from, to: ref }])
     }
 
+    const resetLocalInfo = ()=>{
+        resetLocal('map')
+        resetLocal('journey')
+    }
+
+    useEffect(() => {
+
+        if (localMapLoaded == false) {
+
+            //Map
+            if (localMap == '') {
+                setLocalMap(mapData)
+            }
+            else {
+                updateMapData(localMap)
+                localMap.map(item => {
+                    if (item.current == true) updateCurrent(item.ref)
+                })
+                setLocalMapLoaded(true)
+            }
+
+            //Journey
+            if( localJourney != '' ){
+                updatePlayerJourney(localJourney)
+            }
+
+        }
+
+    }, [])
+
+    useEffect(() => {
+        if (localMapLoaded == true) {
+            setLocalMap(mapData)
+        }
+    }, [mapData])
+
     useEffect(() => {
 
         let lastPlayerJourney = playerJourney[playerJourney.length - 1]
         if (lastPlayerJourney != null) {
             updateActiveSlide(lastPlayerJourney.to)
+        }
+
+        if (localMapLoaded == true) {
+            setLocalJourney(playerJourney)
         }
 
     }, [playerJourney])
@@ -110,6 +155,7 @@ export default function Play({ questions, map }) {
         setCurrentSlide(activeSlideIndex)
 
     }
+
     const moveTo = (slides, moveTo) => {
 
         const positions = []
@@ -123,6 +169,7 @@ export default function Play({ questions, map }) {
         return positions
 
     }
+
     const [slidesPositions, updateSlidesPositions] = useState(moveTo(questions, 0))
     const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -137,6 +184,7 @@ export default function Play({ questions, map }) {
                 updatePlayerJourney={updatePlayerJourney}
                 updateCurrent={updateCurrent}
                 nextQuestion={nextQuestion}
+                resetLocalMap={resetLocalInfo}
             />
 
             <Slider

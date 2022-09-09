@@ -5,19 +5,27 @@ import { motion } from "framer-motion"
 import styles from './styles/D3.module.css'
 import { isMobile } from 'react-device-detect'
 
-export default function Chart({ data, controls, playerJourney, updateCurrent, nextQuestion }) {
+export default function Chart({ data, controls, playerJourney, updateCurrent, nextQuestion, resetLocalMap }) {
 
     let [ref, bounds] = useMeasure()
 
     return <>
         <div className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`} id="svg-container" ref={ref}>
 
-            <motion.button
-                onClick={() => controls.isOpen ? controls.close() : controls.open()}
-                className={styles.expand}
-            >
-                <i className="fa-solid fa-expand"></i> {controls.isOpen ? 'Diminuir' : 'Expandir'}
-            </motion.button>
+            <div className={styles.buttonGroup}>
+                <button
+                    onClick={() => controls.isOpen ? controls.close() : controls.open()}
+                    className={styles.expand}
+                >
+                    <i className="fa-solid fa-expand"></i> {controls.isOpen ? 'Diminuir' : 'Expandir'}
+                </button>
+                {process.env.ENV == 'dev' && <button
+                    onClick={() => resetLocalMap('map')}
+                    className={styles.expand}
+                >
+                    <i className="fa-solid fa-trash-can"></i> Reset
+                </button>}
+            </div>
 
             {bounds.width > 0 && (
                 <ChartInner
@@ -94,18 +102,18 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
 
         const newRects = []
 
-        data.map(item=>{
+        data.map(item => {
 
             var text = d3.select(`text#text_${item.ref}`)
             var bbox = text.node().getBBox()
 
-            newRects.push({ref:item.ref, w: bbox.width, h: bbox.height})
+            newRects.push({ ref: item.ref, w: bbox.width, h: bbox.height })
 
         })
 
         setTextRects(newRects)
 
-    },[])
+    }, [])
 
     const fixIconPosition = (position) => {
         return isMobile ? {
@@ -150,7 +158,7 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                             }
 
                             mapConsole(fromRef + ' -> ' + baseItem.ref)
-                            mapConsole(baseItem.current == true, isValidPair())
+                            mapConsole(baseItem.current == true, isValidPair()==true)
 
                             let pathLengthStart = 0
                             let pathLength = 0
@@ -194,16 +202,18 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
 
                             // was path animated
                             if (baseItem.current == true) {
-                                if (wasPathAnimated.find(el => el.to == baseItem.ref && el.from == currentFrom)) {
+                                if (wasPathAnimated.find(el => el.to == baseItem.ref && el.from == fromRef)) {
+                                    mapConsole('🔵')
                                     pathLengthStart = 1
                                     pathLength = 1
                                 }
 
-                                setTimeout(() => {
-                                    if (pathLengthStart == 0 && pathLength == 1) {
+                                if (pathLengthStart == 0 && pathLength == 1) {
+                                    setTimeout(() => {
                                         setWasPathAnimated([...wasPathAnimated, { from: fromRef, to: baseItem.ref }])
-                                    }
-                                }, 1600)
+                                    }, 1600)
+                                }
+                                
                             }
 
                             /* Lines */
@@ -255,10 +265,10 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                                 transition={{ duration: 1, delay: 1 }}
                                 x={xScale(item.x) - 18}
                                 y={yScale(item.y) + 20}
-                                width={textRects.find(el=>el.ref==item.ref).w}
-                                height={textRects.find(el=>el.ref==item.ref).h}
+                                width={textRects.find(el => el.ref == item.ref).w}
+                                height={textRects.find(el => el.ref == item.ref).h}
                                 fill="black"
-                                fill-opacity={.6}
+                                fillOpacity={.6}
                             />
                             <text
                                 id={`text_${item.ref}`}
