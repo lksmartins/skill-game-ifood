@@ -3,6 +3,29 @@
   -webkit-transition: all 0.6s ease;
   transition: all 0.6s ease;
   background: #9FD558;
+  position: relative;
+}
+
+.parent .expand {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 1rem;
+  border-radius: .5rem;
+  padding: .1rem 1rem;
+  border: none;
+  font-size: 0.75rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-box-shadow: 4.12722px 4.95266px 3.30178px rgba(0, 0, 0, 0.25);
+          box-shadow: 4.12722px 4.95266px 3.30178px rgba(0, 0, 0, 0.25);
+}
+
+.parent .expand:hover {
+  -webkit-transform: translateY(-0.2rem);
+          transform: translateY(-0.2rem);
+  background-color: white;
+  -webkit-box-shadow: 1.12722px 7.95266px 3.30178px rgba(0, 0, 0, 0.15);
+          box-shadow: 1.12722px 7.95266px 3.30178px rgba(0, 0, 0, 0.15);
 }
 
 .parent svg {

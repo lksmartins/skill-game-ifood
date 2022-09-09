@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as d3 from "d3"
 import useMeasure from "react-use-measure"
 import { motion } from "framer-motion"
 import styles from './styles/D3.module.css'
+import { isMobile } from 'react-device-detect'
 
 export default function Chart({ data, controls, playerJourney, updateCurrent, nextQuestion }) {
 
@@ -10,6 +11,14 @@ export default function Chart({ data, controls, playerJourney, updateCurrent, ne
 
     return <>
         <div className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`} id="svg-container" ref={ref}>
+
+            <motion.button
+                onClick={() => controls.isOpen ? controls.close() : controls.open()}
+                className={styles.expand}
+            >
+                <i className="fa-solid fa-expand"></i> {controls.isOpen ? 'Diminuir' : 'Expandir'}
+            </motion.button>
+
             {bounds.width > 0 && (
                 <ChartInner
                     data={data}
@@ -27,15 +36,36 @@ export default function Chart({ data, controls, playerJourney, updateCurrent, ne
 
 const mapTesting = false
 
-function mapConsole(message){
-    if( mapTesting ){
-        console.log( message )
+function mapConsole(message) {
+    if (mapTesting) {
+        console.log(message)
     }
 }
 
 function ChartInner({ data, controls, width, height, playerJourney, updateCurrent, nextQuestion }) {
 
-    let margin = {
+    function mapClick(e) {
+        console.log('mapclick', e.target)
+
+        if (controls.isOpen == false) {
+            controls.open()
+        }
+        else {
+            if (e.target.hasAttribute('qref')) {
+                const targetQuestion = e.target.getAttribute('qref')
+                if (playerJourney.find(el => el.to == targetQuestion || el.from == targetQuestion)) {
+                    updateCurrent(targetQuestion)
+                }
+            }
+        }
+    }
+
+    let margin = isMobile ? {
+        top: 80,
+        right: 50,
+        bottom: 100,
+        left: 50,
+    } : {
         top: 100,
         right: 100,
         bottom: 100,
@@ -57,17 +87,41 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
     let nextObj = data.find(el => el.ref == nextQuestion)
     let nextPosition = nextObj != null ? { x: xScale(nextObj.x), y: yScale(nextObj.y) } : { x: currentPosition.x, y: currentPosition.y }
 
+    const [wasPathAnimated, setWasPathAnimated] = useState([])
+    const [textRects, setTextRects] = useState(data)
+
+    useEffect(() => {
+
+        const newRects = []
+
+        data.map(item=>{
+
+            var text = d3.select(`text#text_${item.ref}`)
+            var bbox = text.node().getBBox()
+
+            newRects.push({ref:item.ref, w: bbox.width, h: bbox.height})
+
+        })
+
+        setTextRects(newRects)
+
+    },[])
+
     const fixIconPosition = (position) => {
-        return {
+        return isMobile ? {
+            x: position.x - xScale(1.5),
+            y: position.y - yScale(2.7)
+        } : {
             x: position.x - xScale(.09),
             y: position.y - yScale(.09)
         }
     }
 
     return (
-        <>
-            <svg viewBox={`0 0 ${width} ${height}`}>
+        <div onClick={(e) => mapClick(e)}>
+            <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
+                {/* Lines */}
                 {data.map((baseItem, index) => {
 
                     mapConsole('')
@@ -108,12 +162,12 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                                     pathLengthStart = 0
                                     pathLength = 1
 
-                                    if( currentFrom == fromRef ){
+                                    if (currentFrom == fromRef) {
                                         mapConsole('🟢 🟢 🟢')
                                         pathLengthStart = 0
                                         pathLength = 1
                                     }
-                                    else{
+                                    else {
                                         mapConsole('🟢 🟢 🔴')
                                         pathLengthStart = 1
                                         pathLength = 1
@@ -132,12 +186,24 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                                     pathLength = 1
                                 }
                                 else {
-
                                     mapConsole('🔴 🔴')
                                     pathLengthStart = 0
                                     pathLength = 0
-
                                 }
+                            }
+
+                            // was path animated
+                            if (baseItem.current == true) {
+                                if (wasPathAnimated.find(el => el.to == baseItem.ref && el.from == currentFrom)) {
+                                    pathLengthStart = 1
+                                    pathLength = 1
+                                }
+
+                                setTimeout(() => {
+                                    if (pathLengthStart == 0 && pathLength == 1) {
+                                        setWasPathAnimated([...wasPathAnimated, { from: fromRef, to: baseItem.ref }])
+                                    }
+                                }, 1600)
                             }
 
                             /* Lines */
@@ -179,23 +245,39 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                     let isThisNextVisible = nextQuestion == item.ref ? true : false
 
                     return <g key={`${index}_${item.ref}`}>
-                        <circle onClick={() => updateCurrent(item.ref)} fill="orange" cx={xScale(item.x)} cy={yScale(item.y)} r="15" />
-
-                        <motion.text
+                        <circle qref={item.ref} fill="orange" cx={xScale(item.x)} cy={yScale(item.y)} r="15" />
+                        <motion.g
                             initial={{ opacity: 0 }}
-                            animate={{ opacity: controls.isOpen ? 1 : 0 }}
-                            alignmentBaseline="middle"
-                            fill="white"
-                            x={xScale(item.x) - 18}
-                            y={yScale(item.y) + 30}>
-                            {item.ref}
-                        </motion.text>
+                            animate={{ opacity: controls.isOpen ? 1 : 0 }}>
+                            <motion.rect
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: controls.isOpen ? 1 : 0 }}
+                                transition={{ duration: 1, delay: 1 }}
+                                x={xScale(item.x) - 18}
+                                y={yScale(item.y) + 20}
+                                width={textRects.find(el=>el.ref==item.ref).w}
+                                height={textRects.find(el=>el.ref==item.ref).h}
+                                fill="black"
+                                fill-opacity={.6}
+                            />
+                            <text
+                                id={`text_${item.ref}`}
+                                qref={item.ref}
+
+                                alignmentBaseline="middle"
+                                fill="white"
+                                x={xScale(item.x) - 18}
+                                y={yScale(item.y) + 30}>
+                                {item.ref}
+                            </text>
+                        </motion.g>
+
 
                         {isThisNextVisible &&
                             <motion.circle fill="white" key={`next_${nextPosition}`}
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 2 }}
-                                transition={{ duration: .6, delay:.1, type: 'tween', repeat: Infinity, repeatType: "mirror" }}
+                                transition={{ duration: .6, delay: .1, type: 'tween', repeat: Infinity, repeatType: "mirror" }}
 
                                 cx={xScale(item.x)}
                                 cy={yScale(item.y)}
@@ -222,8 +304,8 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                     y={fixIconPosition(currentPosition).y}
                 >
                     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="-136 0 538 202"
-                        width={xScale(1.3)}
-                        height={yScale(1.3)}
+                        width={isMobile ? xScale(7) : xScale(1.3)}
+                        height={isMobile ? yScale(7) : yScale(1.3)}
                     >
                         <path d="M77.63,152.48s-16.33,25.14,2.63,39.71c7,5.36,17.67,19.3,72.56-2.5s54.29-39,39.17-53-106-6.43-108.69,6-5.67,9.79-5.67,9.79Z" fill="#fbb432" />
                         <path d="M73,168.76s-10.23,16.88,17.55,30.17c21.8,10.43,37.09-13.82,35.84-21.87s39.6-37.88,61.15-37.88c0,0,10,1.26-4.26-11S66.23,124.9,73,168.76Z" fill="#da932b" />
@@ -247,6 +329,6 @@ function ChartInner({ data, controls, width, height, playerJourney, updateCurren
                 </motion.g>
 
             </svg>
-        </>
+        </div>
     )
 }

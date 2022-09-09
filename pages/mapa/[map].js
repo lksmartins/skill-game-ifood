@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getToken } from '../../lib/helper'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
@@ -28,7 +28,8 @@ export async function getServerSideProps(context) {
 
 export default function Play({ questions, map }) {
 
-    const [isMapOpen, setIsMapOpen] = useState(true)
+    // MAP
+    const [isMapOpen, setIsMapOpen] = useState(false)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
 
     const toggleMapOpen = () => {
@@ -68,9 +69,15 @@ export default function Play({ questions, map }) {
         { x: 20, y: 20, ref: "Q010", from: ['Q008'], current: false },
     ]
 
-    const [mapData, updateMapData] = useState(map=='faco-minhas-entregas'?mapDataset1:mapDataset2)
-
+    const [mapData, updateMapData] = useState(map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2)
     const [playerJourney, updatePlayerJourney] = useState([])
+
+    const mapControlsObj = {
+        ...mapControls,
+        isOpen: isMapOpen,
+        isMapAnimating: isMapAnimating,
+        setIsMapAnimating: (bool) => setIsMapAnimating(bool)
+    }
 
     const updateCurrent = (ref) => {
 
@@ -87,17 +94,40 @@ export default function Play({ questions, map }) {
         updatePlayerJourney([...playerJourney, { from: from, to: ref }])
     }
 
-    const mapControlsObj = {
-        ...mapControls,
-        isOpen: isMapOpen,
-        isMapAnimating: isMapAnimating,
-        setIsMapAnimating: (bool) => setIsMapAnimating(bool)
+    useEffect(() => {
+
+        let lastPlayerJourney = playerJourney[playerJourney.length - 1]
+        if (lastPlayerJourney != null) {
+            updateActiveSlide(lastPlayerJourney.to)
+        }
+
+    }, [playerJourney])
+
+    // SLIDER
+    const updateActiveSlide = (activeSlideRef) => {
+        const activeSlideIndex = questions.findIndex(el => el.ref == activeSlideRef)
+        updateSlidesPositions(moveTo(questions, activeSlideIndex))
+        setCurrentSlide(activeSlideIndex)
+
     }
+    const moveTo = (slides, moveTo) => {
+
+        const positions = []
+
+        slides.map((slide, i) => {
+            let position = '0vw'
+            position = `${(i - moveTo) * 100}vw`
+            positions.push(position)
+        })
+
+        return positions
+
+    }
+    const [slidesPositions, updateSlidesPositions] = useState(moveTo(questions, 0))
+    const [currentSlide, setCurrentSlide] = useState(0)
 
     return (
         <main>
-
-            <button style={{ position: 'absolute', bottom: '100px', left: '0', zIndex: 30 }} onClick={() => toggleMapOpen()}>{isMapOpen ? 'CLOSE' : 'OPEN'}</button>
 
             <Map
                 data={mapData}
@@ -111,7 +141,11 @@ export default function Play({ questions, map }) {
 
             <Slider
                 slides={questions}
-                controls={true}
+                moveTo={moveTo}
+                currentSlide={currentSlide}
+                setCurrentSlide={setCurrentSlide}
+                slidesPositions={slidesPositions}
+                updateSlidesPositions={updateSlidesPositions}
                 mapControls={mapControlsObj}
                 setNextQuestion={setNextQuestion}
                 addToJourney={updateCurrent}

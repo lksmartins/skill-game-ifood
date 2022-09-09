@@ -1,15 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styles from './styles/Slider.module.css'
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect'
 
-export default function Slider({ slides, controls, mapControls, setNextQuestion, addToJourney }) {
+const sliderTesting = false
 
-    const [currentSlide, setCurrentSlide] = useState(0)
+const sliderConsole = (message)=>{
+
+    if( sliderTesting ){
+        console.log(message)
+    }
+
+}
+
+export default function Slider({
+    slides,
+    moveTo,
+    currentSlide,
+    setCurrentSlide,
+    slidesPositions,
+    updateSlidesPositions,
+    mapControls,
+    setNextQuestion,
+    addToJourney }) {
+
     const [currentAlternative, setCurrentAlternative] = useState(null)
 
     const chooseAlternative = (alternative) => {
 
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
+
+        if(isMobile){
+            const elements = document.getElementsByClassName(styles.confirm)
+            let confirm
+            for( const item of elements ) {
+                if( item.getAttribute('qref') == alternative.questionRef ) confirm = item
+            }
+            confirm.scrollIntoView({ behavior: "smooth" })
+        }
     }
 
     const confirmAlternative = () => {
@@ -17,26 +45,26 @@ export default function Slider({ slides, controls, mapControls, setNextQuestion,
         const question = findQuestion(currentAlternative.nextQuestion)
         const activeSlide = slides.findIndex(q => q.ref == question.ref)
 
-        console.log('mapcontrols')
-        console.log(mapControls)
+        sliderConsole('mapcontrols')
+        sliderConsole(mapControls)
 
         // move ifood bag on map
-        console.log('open map')
+        sliderConsole('open map')
         mapControls.open()
         mapControls.setIsMapAnimating(true)
         setNextQuestion(null)
 
         setTimeout(() => {
-            console.log('addToJourney')
+            sliderConsole('addToJourney')
             addToJourney(question.ref)
 
             setTimeout(() => {
-                console.log('close map')
+                sliderConsole('close map')
                 mapControls.close()
 
                 // move slide
                 setTimeout(() => {
-                    console.log('move slides')
+                    sliderConsole('move slides')
                     mapControls.setIsMapAnimating(false)
                     setCurrentSlide(activeSlide)
                     updateSlidesPositions(moveTo(slides, activeSlide))
@@ -47,25 +75,6 @@ export default function Slider({ slides, controls, mapControls, setNextQuestion,
         }, 1250)
 
     }
-
-    const moveTo = (slides, moveTo) => {
-
-        const positions = []
-
-        slides.map((slide, i) => {
-
-            let position = '0vw'
-            position = `${(i - moveTo) * 100}vw`
-
-            positions.push(position)
-
-        })
-
-        return positions
-
-    }
-
-    const [slidesPositions, updateSlidesPositions] = useState(moveTo(slides, 0))
 
     const findQuestion = (questionRef) => {
         return slides.find(item => item.ref == questionRef)
@@ -104,36 +113,39 @@ export default function Slider({ slides, controls, mapControls, setNextQuestion,
         updateSlidesPositions(moveTo(slides, currentSlide + 1))
     }
 
-    if( mapControls.isMapAnimating ) return <div className={`${styles.slider} ${!mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
+    const textBubble = useRef('textBubble')
+
+    if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
         Carregando...
     </div>
 
     return (<>
-        <div className={`${styles.slider} ${!mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
+        <div className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
 
             {slides.map((slide, index) => {
                 return <div
                     key={slide.id}
                     className={`${styles.slide} ${`moveLeft_${slidesPositions[index]}`}`}
                 >
-                    <div className={styles.title}>
-                        {slide.ref} - {slide.text}
-                    </div>
-                    <div className={styles.image}>
-                        <img src={'image' in slide && slide.image ? slide.image : '/QuestionSlider/placeholder.png'} />
-                    </div>
-                    <div className={styles.alternatives}>
-                        {buildAlternatives(slide)}
-                        <button className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar</button>
+                    <div className={styles.wrapper}>
+                        <div className={styles.image}>
+                            <img src={'image' in slide && slide.image ? slide.image : '/QuestionSlider/placeholder.png'} />
+                        </div>
+                        <div className={styles.alternatives}>
+                            <div className={styles.bubble}>
+                                <div className={styles.text} ref={textBubble}>{slide.ref} - {slide.text}</div>
+                                {/* <div className={styles.buttons}>
+                                    <i onClick={()=>scrollUp()} className="fa-solid fa-square-caret-up"></i>
+                                    <i onClick={()=>scrollDown()} className="fa-solid fa-square-caret-down"></i>
+                                </div> */}
+                            </div>
+                            {buildAlternatives(slide)}
+                            <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i class="fa-solid fa-circle-chevron-right"></i></button>
+                        </div>
                     </div>
                 </div>
             })
             }
         </div>
-
-        {controls && <div className={styles.controls}>
-            <button onClick={() => prevSlide()}>PREV</button>
-            <button onClick={() => nextSlide()}>NEXT</button>
-        </div>}
     </>)
 }
