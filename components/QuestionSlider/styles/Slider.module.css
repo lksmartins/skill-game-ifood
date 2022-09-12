@@ -228,7 +228,6 @@
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: bold;
   /* width */
@@ -258,7 +257,6 @@
   padding: 0.5rem 2rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
