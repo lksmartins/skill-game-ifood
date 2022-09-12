@@ -54,25 +54,7 @@ export default function Slider({
         mapControls.setIsMapAnimating(true)
         setNextQuestion(null)
 
-        setTimeout(() => {
-            sliderConsole('addToJourney')
-            addToJourney(question.ref)
-
-            setTimeout(() => {
-                sliderConsole('close map')
-                mapControls.close()
-
-                // move slide
-                setTimeout(() => {
-                    sliderConsole('move slides')
-                    mapControls.setIsMapAnimating(false)
-                    setCurrentSlide(activeSlide)
-                    updateSlidesPositions(moveTo(slides, activeSlide))
-                }, 1600)
-
-            }, 1800)
-
-        }, 1250)
+        alternativeAnimation(question.ref, activeSlide)
 
     }
 

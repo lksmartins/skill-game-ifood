@@ -182,6 +182,26 @@ export default function Play({ questions, map }) {
     const [slidesPositions, updateSlidesPositions] = useState(moveTo(questions, 0))
     const [currentSlide, setCurrentSlide] = useState(0)
 
+    const alternativeAnimation = (questionRef, activeSlide) => {
+
+        setTimeout(() => {
+            updateCurrent(questionRef)
+
+            setTimeout(() => {
+                mapControls.close()
+
+                // move slide
+                setTimeout(() => {
+                    setIsMapAnimating(false)
+                    setCurrentSlide(activeSlide)
+                    updateSlidesPositions(moveTo(questions, activeSlide))
+                }, 1600)
+
+            }, 1800)
+
+        }, 1300)
+    }
+
     return (
         <main>
 
