@@ -20,12 +20,12 @@ export default function Chart(props) {
                 >
                     <i className="fa-solid fa-expand"></i> {controls.isOpen ? 'Diminuir' : 'Expandir'}
                 </button>
-                {process.env.ENV == 'dev' && <button
+                <button
                     onClick={() => resetLocalMap('map')}
                     className={styles.expand}
                 >
                     <i className="fa-solid fa-trash-can"></i> Reset
-                </button>}
+                </button>
             </div>
 
             {bounds.width > 0 && (
