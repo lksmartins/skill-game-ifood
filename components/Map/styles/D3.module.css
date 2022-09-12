@@ -2,7 +2,7 @@
   width: 100%;
   -webkit-transition: all 0.6s ease;
   transition: all 0.6s ease;
-  background: #9FD558;
+  background: #890019;
   position: relative;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .parent .svgContainer {
-  background-image: url("/Map/bg_desktop_sem_icones.svg");
+  background-color: #890019;
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: 100% 40%;
@@ -60,11 +60,11 @@
 }
 
 .parent.open {
-  height: 70vh;
+  height: 55vh;
 }
 
 .parent.closed {
-  height: 35vh;
+  height: 55vh;
 }
 
 .controls {

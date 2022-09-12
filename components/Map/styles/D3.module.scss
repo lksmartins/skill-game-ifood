@@ -3,7 +3,7 @@ $mainRed: #EA1D2C;
 .parent {
     width: 100%;
     transition: all 0.6s ease;
-    background: #9FD558;
+    background: #890019;
     position: relative;
 
     .buttonGroup {
@@ -36,7 +36,8 @@ $mainRed: #EA1D2C;
 
 
     .svgContainer {
-        background-image: url('/Map/bg_desktop_sem_icones.svg');
+        background-color: #890019;
+        //background-image: url('/Map/bg_desktop_sem_icones.svg');
         background-repeat: no-repeat;
         background-size: 100%;
         background-position: 100% 40%;
@@ -51,11 +52,11 @@ $mainRed: #EA1D2C;
     }
 
     &.open {
-        height: 70vh;
+        height: 55vh;
     }
 
     &.closed {
-        height: 35vh;
+        height: 55vh;
     }
 }
 

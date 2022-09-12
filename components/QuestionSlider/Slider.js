@@ -1,6 +1,5 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from './styles/Slider.module.css'
-import { isMobile } from 'react-device-detect'
 
 const sliderTesting = false
 
@@ -31,21 +30,28 @@ export default function Slider({
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
-        mapControls.open()
+        //mapControls.open()
 
-        setTimeout(() =>{
+        const elements = document.getElementsByClassName(styles.confirm)
+        let confirm
+        for (const item of elements) {
+            if (item.getAttribute('qref') == alternative.questionRef) confirm = item
+            item.disabled = false
+        }
+
+        /* setTimeout(() => {
             const elements = document.getElementsByClassName(styles.confirm)
             let confirm
             for (const item of elements) {
                 if (item.getAttribute('qref') == alternative.questionRef) confirm = item
+                item.disabled = false
             }
             confirm.scrollIntoView({ behavior: "smooth" })
-        },600)
-        
+        }, 600) */
+
     }
 
     const confirmAlternative = () => {
-
         const question = findQuestion(currentAlternative.nextQuestion)
         const activeSlide = slides.findIndex(q => q.ref == question.ref)
 
@@ -59,7 +65,6 @@ export default function Slider({
         setNextQuestion(null)
 
         alternativeAnimation(question.ref, activeSlide)
-
     }
 
     const findQuestion = (questionRef) => {
@@ -107,8 +112,15 @@ export default function Slider({
 
     const textBubble = useRef('textBubble')
 
+    useEffect(() => {
+        const elements = document.getElementsByClassName(styles.confirm)
+        for (const item of elements) {
+            item.setAttribute('disabled', false)
+        }
+    }, [slidesPositions])
+
     if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
-        Carregando...
+        <i style={{ marginRight: '1rem' }} className="fa-solid fa-circle-notch fa-spin"></i> Carregando...
     </div>
 
     return (<>
@@ -125,11 +137,7 @@ export default function Slider({
                         </div>
                         <div className={styles.alternatives}>
                             <div className={styles.bubble}>
-                                <div className={styles.text} ref={textBubble}>{slide.ref} - {slide.text}</div>
-                                {/* <div className={styles.buttons}>
-                                    <i onClick={()=>scrollUp()} className="fa-solid fa-square-caret-up"></i>
-                                    <i onClick={()=>scrollDown()} className="fa-solid fa-square-caret-down"></i>
-                                </div> */}
+                                <div className={styles.text} ref={textBubble}>{slide.text}</div>
                             </div>
                             {buildAlternatives(slide)}
                             <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
