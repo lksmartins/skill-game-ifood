@@ -209,7 +209,7 @@
             left: 0vw !important;
         }
 
-        @for $i from 100 through 1000 {
+        @for $i from 100 through 5000 {
             &:global(.moveLeft_#{$i}vw) {
                 left: #{$i}vw !important;
             }
