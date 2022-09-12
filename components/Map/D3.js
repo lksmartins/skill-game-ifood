@@ -352,16 +352,24 @@ function ChartInner(props) {
                                 transition = { duration: 2, delay: .1, type: 'tween', repeat: Infinity, repeatType: "alternate" }
                             }
 
+                            let lineColor = '#6F6C87'
+                            let isMain = false
+                            for( const el of data ){
+                                if( el.main == true && el.ref == fromRef ) isMain = true
+                            }
+
+                            if( baseItem.main==true && isMain==true ){
+                                lineColor = '#ECB751'
+                            }
+
                             /* Lines */
                             return <g key={`lines_${Math.random(0, 10000000)}_${index}`}>
 
                                 {/* Road */}
                                 {/* Curved lines */}
-
-
                                 {'curve' in baseItem ? createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
-                                    color: "#6F6C87",
+                                    color: lineColor,
                                     strokeWidth: 10,
                                     pathLength: [1, 1]
                                 })
@@ -371,8 +379,8 @@ function ChartInner(props) {
                                         x2={toX}
                                         y1={fromY}
                                         y2={toY}
-                                        stroke="#6F6C87"
-                                        strokeWidth="10"
+                                        stroke={lineColor}
+                                        strokeWidth={10}
                                         strokeOpacity={1}
                                     />}
 
