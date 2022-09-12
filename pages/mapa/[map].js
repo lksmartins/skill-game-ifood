@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { getToken } from '../../lib/helper'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
 export default function Play({ questions, map }) {
 
     // MAP
-    const [isMapOpen, setIsMapOpen] = useState(false)
+    const [isMapOpen, setIsMapOpen] = useState(true)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
 
     const toggleMapOpen = () => {
@@ -45,12 +45,12 @@ export default function Play({ questions, map }) {
     const [nextQuestion, setNextQuestion] = useState('')
 
     const mapDataset1 = [
-        { x: 0, y: 5, ref: "Q001", from: [], current: true },
+        { x: 0, y: 9, ref: "Q001", from: [], current: true },
         { x: 5, y: 0, ref: "Q002", from: ['Q001'], current: false },
         { x: 10, y: 0, ref: "Q003", from: ['Q002'], current: false },
         { x: 10, y: 5, ref: "Q004", from: ['Q002'], current: false },
         { x: 5, y: 10, ref: "Q005", from: ['Q002'], current: false },
-        { x: 5, y: 20, ref: "Q006", from: ['Q001','Q005'], current: false },
+        { x: 10, y: 30, ref: "Q006", from: ['Q001', 'Q005'], current: false },
         { x: 10, y: 15, ref: "Q007", from: ['Q006'], current: false },
         { x: 15, y: 10, ref: "Q008", from: ['Q007'], current: false },
         { x: 15, y: 15, ref: "Q009", from: ['Q007'], current: false },
@@ -83,7 +83,28 @@ export default function Play({ questions, map }) {
     const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
     const [localJourney, setLocalJourney] = useLocalStorage('journey')
     const [localMapLoaded, setLocalMapLoaded] = useState(false)
-    const [mapData, updateMapData] = useState(usedMap)
+    const [mapData, updateMapData] = useState([
+        { x: 0, y: 10, ref: "Q001", from: [], current: true },
+        { x: 6.5, y: 5, ref: "Q002", from: ['Q001'], current: false },
+        { x: 13.5, y: 0, ref: "Q003", from: ['Q002'], current: false },
+        { x: 11, y: 8, ref: "Q004", from: ['Q002'], current: false },
+        { x: 7, y: 15, ref: "Q005", from: ['Q002'], current: false },
+        { x: 7.5, y: 27, ref: "Q006", from: ['Q001', 'Q005'], current: false },
+        { x: 13, y: 19, ref: "Q007", from: ['Q006'], current: false },
+        { x: 15, y: 7, ref: "Q008", from: ['Q007'], current: false },
+        { x: 17, y: 10, ref: "Q009", from: ['Q007'], current: false },
+        { x: 17.5, y: 17, ref: "Q010", from: ['Q007'], current: false },
+        { x: 20, y: 30, ref: "Q011", from: ['Q006'], current: false },
+        { x: 25, y: 20, ref: "Q012", from: ['Q011'], current: false },
+        { x: 25, y: 30, ref: "Q013", from: ['Q011'], current: false },
+        { x: 30, y: 15, ref: "Q014", from: ['Q013'], current: false },
+        { x: 35, y: 20, ref: "Q015", from: ['Q013'], current: false },
+        { x: 35, y: 30, ref: "Q016", from: ['Q013'], current: false },
+        { x: 45, y: 15, ref: "Q017", from: ['Q016'], current: false },
+        { x: 50, y: 10, ref: "Q018", from: ['Q017'], current: false },
+        { x: 50, y: 20, ref: "Q019", from: ['Q017'], current: false },
+        { x: 45, y: 30, ref: "Q020", from: ['Q016'], current: false },
+    ])
     const [playerJourney, updatePlayerJourney] = useState([])
 
     const mapControlsObj = {
@@ -108,7 +129,7 @@ export default function Play({ questions, map }) {
         updatePlayerJourney([...playerJourney, { from: from, to: ref }])
     }
 
-    const resetLocalInfo = ()=>{
+    const resetLocalInfo = () => {
         resetLocal('map')
         resetLocal('journey')
     }
@@ -130,7 +151,7 @@ export default function Play({ questions, map }) {
             }
 
             //Journey
-            if( localJourney != '' ){
+            if (localJourney != '') {
                 updatePlayerJourney(localJourney)
             }
 
@@ -156,6 +177,30 @@ export default function Play({ questions, map }) {
         }
 
     }, [playerJourney])
+
+    const currentQuestionMarker = useRef()
+    const svgContainer = useRef()
+
+    useEffect(() => {
+
+        const target = currentQuestionMarker.current
+        if (target != null) {
+            if( isMapOpen == false ){
+            setTimeout(() => {
+                const targetY = target.getAttribute('cy')
+                console.log("🚀 target", target, targetY)
+                svgContainer.current.style.top = `-${targetY-140}px`
+            },1000)
+        }else{
+            svgContainer.current.style.top = 0
+        }
+    }
+
+    }, [isMapOpen])
+
+    console.log("🚀 ~ file: [map].js ~ line 202 ~ Play ~ window.innerHeight", window.innerHeight, window.innerHeight * .25, window.innerHeight - (window.innerHeight * .25))
+
+    const height = (window.innerHeight - (window.innerHeight * .25)) || 600
 
     // SLIDER
     const updateActiveSlide = (activeSlideRef) => {
@@ -214,6 +259,9 @@ export default function Play({ questions, map }) {
                 updateCurrent={updateCurrent}
                 nextQuestion={nextQuestion}
                 resetLocalMap={resetLocalInfo}
+                currentQuestionMarker={currentQuestionMarker}
+                svgContainerRef={svgContainer}
+                height={height}
             />
 
             <Slider

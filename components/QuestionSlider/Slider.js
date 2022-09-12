@@ -4,9 +4,9 @@ import { isMobile } from 'react-device-detect'
 
 const sliderTesting = false
 
-const sliderConsole = (message)=>{
+const sliderConsole = (message) => {
 
-    if( sliderTesting ){
+    if (sliderTesting) {
         console.log(message)
     }
 
@@ -31,11 +31,11 @@ export default function Slider({
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
-        if(isMobile){
+        if (isMobile) {
             const elements = document.getElementsByClassName(styles.confirm)
             let confirm
-            for( const item of elements ) {
-                if( item.getAttribute('qref') == alternative.questionRef ) confirm = item
+            for (const item of elements) {
+                if (item.getAttribute('qref') == alternative.questionRef) confirm = item
             }
             confirm.scrollIntoView({ behavior: "smooth" })
         }
@@ -96,8 +96,8 @@ export default function Slider({
         updateSlidesPositions(moveTo(slides, currentSlide + 1))
     }
 
-    const sliderClick = (e)=>{
-        if( mapControls.isOpen ){
+    const sliderClick = (e) => {
+        if (mapControls.isOpen) {
             mapControls.close()
         }
     }
@@ -109,7 +109,7 @@ export default function Slider({
     </div>
 
     return (<>
-        <div onClick={(e)=>sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
+        <div onClick={(e) => sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
 
             {slides.map((slide, index) => {
                 return <div
@@ -129,7 +129,7 @@ export default function Slider({
                                 </div> */}
                             </div>
                             {buildAlternatives(slide)}
-                            <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i class="fa-solid fa-circle-chevron-right"></i></button>
+                            <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>

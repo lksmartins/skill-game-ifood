@@ -2,6 +2,7 @@
     width: 100%;
     transition: all 0.6s ease;
     background: #9FD558;
+    
     position: relative;
 
     .buttonGroup {
@@ -28,8 +29,14 @@
     }
 
 
-    svg {
-        border: 1px solid black;
+    .svgContainer {
+        //background-image: url('/Map/bg_desktop_sem_icones.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        width: 100%;
+        top: 0rem;
+        transition: all 0.6s ease;
     }
 
     &.open {
