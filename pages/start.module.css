@@ -2,7 +2,6 @@
   width: 100vw;
   height: 100vh;
   background-color: #EA1D2C;
-  background-image: url("/start-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -17,9 +16,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -29,14 +28,14 @@
 
 .start .grid .logo {
   position: relative;
-  height: 16vh;
+  height: 17vh;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -46,9 +45,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: -webkit-fill-available;
-  height: -moz-available;
-  height: fill;
+  height: auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -70,29 +67,36 @@
   color: #5C5C5C;
   border-radius: 20px;
   padding: 1rem 2rem;
+  max-width: 900px;
 }
 
 .start .grid .text a {
-  background: #EA1D2C;
+  background: #FFFFFF;
   -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  padding: .5rem 6rem;
+  padding: 1rem 5rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  line-height: 2rem;
   font-weight: 400;
   font-size: 2rem;
   text-align: center;
   text-decoration: none;
-  color: white;
+  text-transform: uppercase;
+  color: #EA1D2C;
+}
+
+.start .grid .text a small {
+  font-size: .9rem;
 }
 
 .start .grid .text a:hover {
   -webkit-transform: translateY(-1rem);
           transform: translateY(-1rem);
   font-weight: bold;
-  -webkit-box-shadow: 5px 16px 12px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 16px 12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
 }
 
 .start .grid .image {

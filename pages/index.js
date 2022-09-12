@@ -24,7 +24,7 @@ export default function Index() {
                 </div>
                 <BrowserView>
                     <div className={styles.image}>
-                        <Image src="/ifood-logo.svg" width="100" height="100" objectFit="contain" />
+                        <Image src="/homeIcon.svg" width="500" height="500" objectFit="contain" />
                     </div>
                 </BrowserView>
 

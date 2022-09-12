@@ -3,6 +3,7 @@ $mainRed: #EA1D2C;
 .index {
     width: 100vw;
     height: 100vh;
+    padding: 0 6rem;
     background-color: $mainRed;
 
     .grid {
@@ -22,6 +23,7 @@ $mainRed: #EA1D2C;
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            padding-left: 5rem;
         }
 
         .text {
@@ -60,6 +62,7 @@ $mainRed: #EA1D2C;
 
         .image {
             grid-area: image;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
