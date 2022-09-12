@@ -31,14 +31,17 @@ export default function Slider({
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
-        if (isMobile) {
+        mapControls.open()
+
+        setTimeout(() =>{
             const elements = document.getElementsByClassName(styles.confirm)
             let confirm
             for (const item of elements) {
                 if (item.getAttribute('qref') == alternative.questionRef) confirm = item
             }
             confirm.scrollIntoView({ behavior: "smooth" })
-        }
+        },600)
+        
     }
 
     const confirmAlternative = () => {

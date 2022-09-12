@@ -44,6 +44,10 @@ $mainRed: #EA1D2C;
         width: 100%;
         top: 0rem;
         transition: all 0.6s ease;
+
+        .startCircle{
+            font-size: 2rem;
+        }
     }
 
     &.open {

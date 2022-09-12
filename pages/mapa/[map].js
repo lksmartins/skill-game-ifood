@@ -45,26 +45,26 @@ export default function Play({ questions, map }) {
     const [nextQuestion, setNextQuestion] = useState('')
 
     const mapDataset1 = [
-        { x: 0, y: 15.5, ref: "Q001", from: [], current: true },
-        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false },
-        { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false },
-        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false },
-        { x: 6.4, y: 20.5, ref: "Q005", from: ['Q002'], current: false },
-        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false },
-        { x: 12.3, y: 27, ref: "Q007", from: ['Q006'], current: false },
-        { x: 14.5, y: 8, ref: "Q008", from: ['Q007'], current: false },
-        { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false },
-        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false },
-        { x: 22.5, y: 28, ref: "Q011", from: ['Q006'], current: false },
-        { x: 30.05, y: 34, ref: "Q012", from: ['Q011'], current: false },
-        { x: 26.05, y: 14, ref: "Q013", from: ['Q011'], current: false },
-        { x: 25.7, y: 0, ref: "Q014", from: ['Q013'], current: false },
-        { x: 32.6, y: 0, ref: "Q015", from: ['Q013'], current: false },
-        { x: 37.5, y: 31, ref: "Q016", from: ['Q013'], current: false },
-        { x: 43.5, y: 11, ref: "Q017", from: ['Q016'], current: false },
-        { x: 50, y: 1, ref: "Q018", from: ['Q017'], current: false },
-        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false },
-        { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false },
+        { x: 0, y: 15.5, ref: "Q001", from: [], current: true, main: true },
+        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false, main: false },
+        { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false, main: false },
+        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false, main: false },
+        { x: 6.4, y: 20.5, ref: "Q005", from: ['Q002'], current: false, main: false },
+        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false, main: true },
+        { x: 12.3, y: 28, ref: "Q007", from: ['Q006'], current: false, main: false },
+        { x: 14.5, y: 8, ref: "Q008", from: ['Q007'], current: false, main: false },
+        { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false, main: false },
+        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false, main: false },
+        { x: 22.5, y: 28, ref: "Q011", from: ['Q006'], current: false, main: true },
+        { x: 30.05, y: 34, ref: "Q012", from: ['Q011'], current: false, main: true },
+        { x: 26.05, y: 14, ref: "Q013", from: ['Q011'], current: false, main: false },
+        { x: 25.7, y: 0, ref: "Q014", from: ['Q013'], current: false, main: false },
+        { x: 32.6, y: 0, ref: "Q015", from: ['Q013'], current: false, main: false },
+        { x: 37.5, y: 31, ref: "Q016", from: ['Q013'], current: false, main: false },
+        { x: 43.5, y: 11, ref: "Q017", from: ['Q016'], current: false, main: false },
+        { x: 50, y: 1, ref: "Q018", from: ['Q017'], current: false, main: false },
+        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false, main: false },
+        { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false, main: false },
     ]
 
     const mapDataset2 = [
@@ -80,7 +80,28 @@ export default function Play({ questions, map }) {
     ]
 
     let usedMap = map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2
-    const [mapData, updateMapData] = useState(usedMap)
+    const [mapData, updateMapData] = useState([
+        { x: 0, y: 15.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
+        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false, main: false, isNext: false },
+        { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false, main: false, isNext: false },
+        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false, main: false, isNext: false },
+        { x: 6.4, y: 20.5, ref: "Q005", from: ['Q002'], current: false, main: false, isNext: false },
+        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false, main: true, isNext: false },
+        { x: 12.3, y: 28, ref: "Q007", from: ['Q006'], current: false, main: false, isNext: false },
+        { x: 14.8, y: 8, ref: "Q008", from: ['Q007'], current: false, main: false, isNext: false },
+        { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false, main: false, isNext: false },
+        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false, main: false, isNext: false },
+        { x: 22.5, y: 28, ref: "Q011", from: ['Q006'], current: false, main: true, isNext: false },
+        { x: 30.05, y: 34, ref: "Q012", from: ['Q011'], current: false, main: true, isNext: false },
+        { x: 26.05, y: 14, ref: "Q013", from: ['Q011'], current: false, main: false, isNext: false },
+        { x: 25.7, y: 0, ref: "Q014", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 32.6, y: 0, ref: "Q015", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 37.5, y: 31, ref: "Q016", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 43.5, y: 11, ref: "Q017", from: ['Q016'], current: false, main: false, isNext: false },
+        { x: 50, y: 1, ref: "Q018", from: ['Q017'], current: false, main: false, isNext: false },
+        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false, main: false, isNext: false },
+        { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false, main: false, isNext: false },
+    ])
     const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
     const [localJourney, setLocalJourney] = useLocalStorage('journey')
     const [localMapLoaded, setLocalMapLoaded] = useState(false)

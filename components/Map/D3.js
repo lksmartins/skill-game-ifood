@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect'
 
 export default function Chart(props) {
 
-    const {controls, resetLocalMap} = props
+    const { controls, resetLocalMap } = props
     let [ref, bounds] = useMeasure()
 
     return <>
@@ -72,10 +72,10 @@ function ChartInner(props) {
         bottom: 100,
         left: 50,
     } : {
-        top: 120,
-        right: 140,
-        bottom: 100,
-        left: 140,
+        top: height / 5.5,
+        right: width / 13,
+        bottom: height / 6.5,
+        left: width / 13,
     }
 
     let xScale = d3
@@ -126,12 +126,12 @@ function ChartInner(props) {
     const curve = d3.line().curve(d3.curveNatural)
 
     const createIcon = (currentPosition) => {
-        
-        const currentFrom = playerJourney[playerJourney.length-1]?.from
-        const prevPos = data.find(el=>el.ref==currentFrom)
+
+        const currentFrom = playerJourney[playerJourney.length - 1]?.from
+        const prevPos = data.find(el => el.ref == currentFrom)
 
         return <motion.g
-            initial={{ x: fixIconPosition(prevPos||data[0].x).x, y: fixIconPosition(prevPos||data[0].y).y }}
+            initial={{ x: fixIconPosition(prevPos || data[0].x).x, y: fixIconPosition(prevPos || data[0].y).y }}
             animate={{ x: fixIconPosition(currentPosition).x, y: fixIconPosition(currentPosition).y }}
             transition={{ duration: 1.5, delay: 0.01, type: 'spring' }}
             x={fixIconPosition(currentPosition).x}
@@ -192,7 +192,7 @@ function ChartInner(props) {
                 r="10" />
     }
 
-    const createCurrentCircle = (x=data[0].x, y=data[0].y) => {
+    const createCurrentCircle = (x = data[0].x, y = data[0].y) => {
 
         return <motion.circle fill="white" ref={currentQuestionMarker} key={`current_circle_${data[0].ref}_${Math.random()}`}
             initial={{ scale: 0 }}
@@ -204,7 +204,47 @@ function ChartInner(props) {
             r="10" />
     }
 
-    const createLine = ()=>{
+    const createCircle = (questionRef, isMain, x, y) => {
+        return <circle
+            qref={questionRef}
+            fill={isMain == true ? '#6DDA36' : '#DADADA'}
+            cx={xScale(x)}
+            cy={yScale(y)}
+            r="24" />
+    }
+
+    const createStartCircle = () => {
+        return <g className={styles.startCircle}>
+            {/* <line
+                x1={0}
+                x2={xScale(data[0].x)}
+                y1={0}
+                y2={yScale(data[0].y)}
+                stroke="#6F6C87"
+                strokeWidth="10"
+                strokeOpacity={1}
+            /> */}
+
+            <a href="/start">
+                <circle
+                    fill="red"
+                    cx={0}
+                    cy={0}
+                    r="180"
+                />
+            </a>
+
+            <text
+                alignmentBaseline="middle"
+                fill="white"
+                x={width * 0.015}
+                y={height * 0.12}>
+                INÍCIO
+            </text>
+        </g>
+    }
+
+    const createLine = () => {
 
     }
 
@@ -212,12 +252,16 @@ function ChartInner(props) {
         <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
+                {createStartCircle()}
+
                 {/* Lines */}
                 {data.map((baseItem, index) => {
 
                     mapConsole('')
                     mapConsole(`baseItem ${baseItem.ref}`)
                     mapConsole(playerJourney)
+
+                    let isThisNextVisible = nextQuestion == baseItem.ref
 
                     if (baseItem.from.length > 0) {
 
@@ -299,6 +343,15 @@ function ChartInner(props) {
 
                             }
 
+                            let transition = { duration: 2, delay: 0.2, type: 'spring' }
+
+                            // if is next
+                            if( isThisNextVisible && fromRef == currentObj.ref ){
+                                pathLengthStart = 0
+                                pathLength = 1
+                                transition = { duration: 2, delay: .1, type: 'tween', repeat: Infinity, repeatType: "alternate" }
+                            }
+
                             /* Lines */
                             return <g key={`lines_${Math.random(0, 10000000)}_${index}`}>
 
@@ -325,14 +378,14 @@ function ChartInner(props) {
                                 {<motion.line
                                     initial={{ pathLength: pathLengthStart }}
                                     animate={{ pathLength: pathLength }}
-                                    transition={{ duration: 2, delay: 0.2, type: 'spring' }}
+                                    transition={ transition }
 
                                     x1={fromX}
                                     x2={toX}
                                     y1={fromY}
                                     y2={toY}
                                     stroke="red"
-                                    strokeWidth="10"
+                                    strokeWidth="16"
                                 />}
                             </g>
                         })
@@ -348,7 +401,7 @@ function ChartInner(props) {
 
                     return <g key={`${index}_${item.ref}`}>
 
-                        <circle qref={item.ref} fill="green" cx={xScale(item.x)} cy={yScale(item.y)} r="24" />
+                        {createCircle(item.ref, item.main, item.x, item.y)}
 
                         <motion.g
                             initial={{ opacity: 0 }}
@@ -357,9 +410,9 @@ function ChartInner(props) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: controls.isOpen ? 1 : 0 }}
                                 transition={{ duration: 1, delay: 1 }}
-                                x={xScale(item.x) - 18}
-                                y={yScale(item.y) + 25}
-                                width={textRects.find(el => el.ref == item.ref).w}
+                                x={xScale(item.x) - 23}
+                                y={yScale(item.y) + 26}
+                                width={textRects.find(el => el.ref == item.ref).w+10}
                                 height={textRects.find(el => el.ref == item.ref).h}
                                 fill="black"
                                 fillOpacity={.6}
