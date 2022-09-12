@@ -227,6 +227,7 @@ export default function Play({ questions, map }) {
                 setNextQuestion={setNextQuestion}
                 addToJourney={updateCurrent}
                 toggleMapOpen={toggleMapOpen}
+                alternativeAnimation={alternativeAnimation}
             />
 
         </main>

@@ -21,7 +21,8 @@ export default function Slider({
     updateSlidesPositions,
     mapControls,
     setNextQuestion,
-    addToJourney }) {
+    alternativeAnimation
+}) {
 
     const [currentAlternative, setCurrentAlternative] = useState(null)
 
