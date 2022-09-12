@@ -81,7 +81,7 @@ export default function Play({ questions, map }) {
 
     let usedMap = map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2
     const [mapData, updateMapData] = useState([
-        { x: 0, y: 15.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
+        { x: 0, y: 25.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
         { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false, main: false, isNext: false },
         { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false, main: false, isNext: false },
         { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false, main: false, isNext: false },

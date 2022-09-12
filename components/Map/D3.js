@@ -215,7 +215,7 @@ function ChartInner(props) {
 
     const createStartCircle = () => {
         return <g className={styles.startCircle}>
-            {/* <line
+            {<line
                 x1={0}
                 x2={xScale(data[0].x)}
                 y1={0}
@@ -223,7 +223,7 @@ function ChartInner(props) {
                 stroke="#6F6C87"
                 strokeWidth="10"
                 strokeOpacity={1}
-            /> */}
+            />}
 
             <a href="/start">
                 <circle
@@ -233,7 +233,6 @@ function ChartInner(props) {
                     r="180"
                 />
             </a>
-
             <text
                 alignmentBaseline="middle"
                 fill="white"
@@ -354,11 +353,11 @@ function ChartInner(props) {
 
                             let lineColor = '#6F6C87'
                             let isMain = false
-                            for( const el of data ){
-                                if( el.main == true && el.ref == fromRef ) isMain = true
+                            for (const el of data) {
+                                if (el.main == true && el.ref == fromRef) isMain = true
                             }
 
-                            if( baseItem.main==true && isMain==true ){
+                            if (baseItem.main == true && isMain == true) {
                                 lineColor = '#ECB751'
                             }
 
