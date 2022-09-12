@@ -30,9 +30,10 @@
 
 
     .svgContainer {
-        //background-image: url('/Map/bg_desktop_sem_icones.svg');
+        background-image: url('/Map/bg_desktop_sem_icones.svg');
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: 100%;
+        background-position: 100% 40%;
         position: absolute;
         width: 100%;
         top: 0rem;
@@ -40,7 +41,7 @@
     }
 
     &.open {
-        height: 75vh;
+        height: 70vh;
     }
 
     &.closed {

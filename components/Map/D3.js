@@ -72,10 +72,10 @@ function ChartInner(props) {
         bottom: 100,
         left: 50,
     } : {
-        top: 100,
-        right: 100,
+        top: 120,
+        right: 140,
         bottom: 100,
-        left: 100,
+        left: 140,
     }
 
     let xScale = d3
@@ -204,6 +204,10 @@ function ChartInner(props) {
             r="10" />
     }
 
+    const createLine = ()=>{
+
+    }
+
     return (
         <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
@@ -314,7 +318,7 @@ function ChartInner(props) {
                                     y2={toY}
                                     stroke="#6F6C87"
                                     strokeWidth="10"
-                                    strokeOpacity={.3}
+                                    strokeOpacity={0}
                                 />}
 
                                 {/* Red road */}
@@ -344,7 +348,7 @@ function ChartInner(props) {
 
                     return <g key={`${index}_${item.ref}`}>
 
-                        <circle qref={item.ref} fill="orange" cx={xScale(item.x)} cy={yScale(item.y)} r="15" fillOpacity={.5} />
+                        <circle qref={item.ref} fill="green" cx={xScale(item.x)} cy={yScale(item.y)} r="24" />
 
                         <motion.g
                             initial={{ opacity: 0 }}
@@ -354,7 +358,7 @@ function ChartInner(props) {
                                 animate={{ opacity: controls.isOpen ? 1 : 0 }}
                                 transition={{ duration: 1, delay: 1 }}
                                 x={xScale(item.x) - 18}
-                                y={yScale(item.y) + 20}
+                                y={yScale(item.y) + 25}
                                 width={textRects.find(el => el.ref == item.ref).w}
                                 height={textRects.find(el => el.ref == item.ref).h}
                                 fill="black"
@@ -367,7 +371,7 @@ function ChartInner(props) {
                                 alignmentBaseline="middle"
                                 fill="white"
                                 x={xScale(item.x) - 18}
-                                y={yScale(item.y) + 30}>
+                                y={yScale(item.y) + 36}>
                                 {item.ref}
                             </text>
                         </motion.g>

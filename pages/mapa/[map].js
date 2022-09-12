@@ -45,26 +45,26 @@ export default function Play({ questions, map }) {
     const [nextQuestion, setNextQuestion] = useState('')
 
     const mapDataset1 = [
-        { x: 0, y: 9, ref: "Q001", from: [], current: true },
-        { x: 5, y: 0, ref: "Q002", from: ['Q001'], current: false },
-        { x: 10, y: 0, ref: "Q003", from: ['Q002'], current: false },
-        { x: 10, y: 5, ref: "Q004", from: ['Q002'], current: false },
-        { x: 5, y: 10, ref: "Q005", from: ['Q002'], current: false },
-        { x: 10, y: 30, ref: "Q006", from: ['Q001', 'Q005'], current: false },
-        { x: 10, y: 15, ref: "Q007", from: ['Q006'], current: false },
-        { x: 15, y: 10, ref: "Q008", from: ['Q007'], current: false },
-        { x: 15, y: 15, ref: "Q009", from: ['Q007'], current: false },
-        { x: 15, y: 20, ref: "Q010", from: ['Q007'], current: false },
-        { x: 20, y: 30, ref: "Q011", from: ['Q006'], current: false },
-        { x: 25, y: 20, ref: "Q012", from: ['Q011'], current: false },
-        { x: 25, y: 30, ref: "Q013", from: ['Q011'], current: false },
-        { x: 30, y: 15, ref: "Q014", from: ['Q013'], current: false },
-        { x: 35, y: 20, ref: "Q015", from: ['Q013'], current: false },
-        { x: 35, y: 30, ref: "Q016", from: ['Q013'], current: false },
-        { x: 45, y: 15, ref: "Q017", from: ['Q016'], current: false },
-        { x: 50, y: 10, ref: "Q018", from: ['Q017'], current: false },
-        { x: 50, y: 20, ref: "Q019", from: ['Q017'], current: false },
-        { x: 45, y: 30, ref: "Q020", from: ['Q016'], current: false },
+        { x: 0, y: 15.5, ref: "Q001", from: [], current: true },
+        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false },
+        { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false },
+        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false },
+        { x: 6.4, y: 20.5, ref: "Q005", from: ['Q002'], current: false },
+        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false },
+        { x: 12.3, y: 27, ref: "Q007", from: ['Q006'], current: false },
+        { x: 14.5, y: 8, ref: "Q008", from: ['Q007'], current: false },
+        { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false },
+        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false },
+        { x: 22.5, y: 28, ref: "Q011", from: ['Q006'], current: false },
+        { x: 30.05, y: 34, ref: "Q012", from: ['Q011'], current: false },
+        { x: 26.05, y: 14, ref: "Q013", from: ['Q011'], current: false },
+        { x: 25.7, y: 0, ref: "Q014", from: ['Q013'], current: false },
+        { x: 32.6, y: 0, ref: "Q015", from: ['Q013'], current: false },
+        { x: 37.5, y: 31, ref: "Q016", from: ['Q013'], current: false },
+        { x: 43.5, y: 11, ref: "Q017", from: ['Q016'], current: false },
+        { x: 50, y: 1, ref: "Q018", from: ['Q017'], current: false },
+        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false },
+        { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false },
     ]
 
     const mapDataset2 = [
@@ -80,31 +80,10 @@ export default function Play({ questions, map }) {
     ]
 
     let usedMap = map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2
+    const [mapData, updateMapData] = useState(usedMap)
     const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
     const [localJourney, setLocalJourney] = useLocalStorage('journey')
     const [localMapLoaded, setLocalMapLoaded] = useState(false)
-    const [mapData, updateMapData] = useState([
-        { x: 0, y: 10, ref: "Q001", from: [], current: true },
-        { x: 6.5, y: 5, ref: "Q002", from: ['Q001'], current: false },
-        { x: 13.5, y: 0, ref: "Q003", from: ['Q002'], current: false },
-        { x: 11, y: 8, ref: "Q004", from: ['Q002'], current: false },
-        { x: 7, y: 15, ref: "Q005", from: ['Q002'], current: false },
-        { x: 7.5, y: 27, ref: "Q006", from: ['Q001', 'Q005'], current: false },
-        { x: 13, y: 19, ref: "Q007", from: ['Q006'], current: false },
-        { x: 15, y: 7, ref: "Q008", from: ['Q007'], current: false },
-        { x: 17, y: 10, ref: "Q009", from: ['Q007'], current: false },
-        { x: 17.5, y: 17, ref: "Q010", from: ['Q007'], current: false },
-        { x: 20, y: 30, ref: "Q011", from: ['Q006'], current: false },
-        { x: 25, y: 20, ref: "Q012", from: ['Q011'], current: false },
-        { x: 25, y: 30, ref: "Q013", from: ['Q011'], current: false },
-        { x: 30, y: 15, ref: "Q014", from: ['Q013'], current: false },
-        { x: 35, y: 20, ref: "Q015", from: ['Q013'], current: false },
-        { x: 35, y: 30, ref: "Q016", from: ['Q013'], current: false },
-        { x: 45, y: 15, ref: "Q017", from: ['Q016'], current: false },
-        { x: 50, y: 10, ref: "Q018", from: ['Q017'], current: false },
-        { x: 50, y: 20, ref: "Q019", from: ['Q017'], current: false },
-        { x: 45, y: 30, ref: "Q020", from: ['Q016'], current: false },
-    ])
     const [playerJourney, updatePlayerJourney] = useState([])
 
     const mapControlsObj = {
@@ -185,22 +164,23 @@ export default function Play({ questions, map }) {
 
         const target = currentQuestionMarker.current
         if (target != null) {
-            if( isMapOpen == false ){
-            setTimeout(() => {
-                const targetY = target.getAttribute('cy')
-                console.log("🚀 target", target, targetY)
-                svgContainer.current.style.top = `-${targetY-140}px`
-            },1000)
-        }else{
-            svgContainer.current.style.top = 0
+            if (isMapOpen == false) {
+                setTimeout(() => {
+                    const targetY = target.getAttribute('cy')
+                    console.log("🚀 target", target, targetY)
+                    svgContainer.current.style.top = `-${targetY - 140}px`
+                }, 1000)
+            } else {
+                svgContainer.current.style.top = 0
+            }
         }
-    }
 
     }, [isMapOpen])
 
-    console.log("🚀 ~ file: [map].js ~ line 202 ~ Play ~ window.innerHeight", window.innerHeight, window.innerHeight * .25, window.innerHeight - (window.innerHeight * .25))
-
-    const height = (window.innerHeight - (window.innerHeight * .25)) || 600
+    let height 
+    if (typeof window !== "undefined") {
+        height = (window.innerHeight - (window.innerHeight * 0.335)) || 600
+    }   
 
     // SLIDER
     const updateActiveSlide = (activeSlideRef) => {
