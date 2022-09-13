@@ -175,6 +175,7 @@ function ChartInner(props) {
             d={curve(points)}
             stroke={color}
             strokeWidth={strokeWidth}
+            className={styles.shadow}
             fill="none" />
 
     }
@@ -395,6 +396,7 @@ function ChartInner(props) {
                                         stroke={lineColor}
                                         strokeWidth={lineWidth}
                                         strokeOpacity={1}
+                                        className={styles.shadow}
                                     />}
 
                                 {createCurvedLine({
