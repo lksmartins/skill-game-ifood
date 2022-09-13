@@ -21,7 +21,7 @@ export default function start() {
                         </ul>
                     </div>
                     <div className={styles.image}>
-                        <Image src="/QuestionSlider/placeholder.svg" width="250" height="250" objectFit="contain" />
+                        <Image src="/bag_wbg.svg" width="250" height="250" objectFit="contain" />
                     </div>
                     <Link href="/entrega"><a>Iniciar minha jornada</a></Link>
                 </div>

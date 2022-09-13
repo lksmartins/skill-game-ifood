@@ -14,7 +14,7 @@ export default function entrega() {
                 </div>
                 <div className={styles.text}>
                     <div className={styles.image}>
-                        <Image src="/QuestionSlider/placeholder.svg" width="250" height="250" objectFit="contain" />
+                        <Image src="/bag_wbg.svg" width="250" height="250" objectFit="contain" />
                     </div>
                     <Link href="/mapa/faco-minhas-entregas"><a>IFOOD BÁSICO<br /><small>(faço a minha própria entrega)</small></a></Link>
                     <Link href="/mapa/uso-entregas-ifood"><a>IFOOD ENTREGA<br /><small>(entrega é feita por pessoas entregadoras parceiras iFood)</small></a></Link>

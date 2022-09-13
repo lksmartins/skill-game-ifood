@@ -6,6 +6,7 @@
 }
 
 .index .grid {
+  margin: 0 auto;
   display: -ms-grid;
   display: grid;
   height: 100%;
@@ -16,6 +17,7 @@
       grid-template-columns: 1fr 1fr;
   padding: 0 3rem;
   padding-bottom: 6rem;
+  max-width: 1360px;
 }
 
 .index .grid .logo {
@@ -34,7 +36,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-left: 5rem;
+  padding-left: 6rem;
 }
 
 .index .grid .text {

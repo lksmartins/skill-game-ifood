@@ -7,6 +7,7 @@ $mainRed: #EA1D2C;
     background-color: $mainRed;
 
     .grid {
+        margin: 0 auto;
         display: grid;
         height: 100%;
         grid-template-areas: 'logo logo'
@@ -15,6 +16,7 @@ $mainRed: #EA1D2C;
         grid-template-columns: 1fr 1fr;
         padding: 0 3rem;
         padding-bottom: 6rem;
+        max-width: 1360px;
 
         .logo {
             grid-area: logo;
@@ -23,7 +25,7 @@ $mainRed: #EA1D2C;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding-left: 5rem;
+            padding-left: 6rem;
         }
 
         .text {

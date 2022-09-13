@@ -364,7 +364,7 @@ function ChartInner(props) {
                                 transition = { duration: 2, delay: .1, type: 'tween', repeat: Infinity, repeatType: "alternate" }
                             }
 
-                            let lineColor = '#6F6C87'
+                            let lineColor = '#AFAFAF'
                             let lineWidth = 10
                             let isMain = false
                             for (const el of data) {
@@ -385,7 +385,7 @@ function ChartInner(props) {
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: lineColor,
                                     strokeWidth: lineWidth,
-                                    pathLength: [1, 1]
+                                    pathLength: [1,1]
                                 })
                                     :
                                     <line
