@@ -10,7 +10,6 @@ export default function MyApp({ Component, pageProps }) {
       <Head>
         <title>Ifood</title>
         <link rel="icon" href="https://branching-stories.s3.amazonaws.com/fav.ico" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="//vjs.zencdn.net/7.10.2/video-js.min.css" rel="stylesheet" />
         <script src="//vjs.zencdn.net/7.10.2/video.min.js" />
       </Head>

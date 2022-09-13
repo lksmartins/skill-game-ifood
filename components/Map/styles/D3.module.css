@@ -59,6 +59,10 @@
   font-size: 2rem;
 }
 
+.parent .svgContainer .startCircle * {
+  text-decoration: none;
+}
+
 .parent.open {
   height: 55vh;
 }

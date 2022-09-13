@@ -232,14 +232,15 @@ function ChartInner(props) {
                     cy={0}
                     r="180"
                 />
+            
+                <text
+                    alignmentBaseline="middle"
+                    fill="white"
+                    x={width * 0.015}
+                    y={height * 0.15}>
+                    INÍCIO
+                </text>
             </a>
-            <text
-                alignmentBaseline="middle"
-                fill="white"
-                x={width * 0.015}
-                y={height * 0.12}>
-                INÍCIO
-            </text>
         </g>
     }
 
