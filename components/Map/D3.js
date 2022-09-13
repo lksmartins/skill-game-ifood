@@ -166,12 +166,12 @@ function ChartInner(props) {
 
     //https://www.essycode.com/posts/d3-animation-along-path/
 
-    const createCurvedLine = ({ color, strokeWidth, points, pathLength }) => {
+    const createCurvedLine = ({ color, strokeWidth, points, pathLength, transition = { duration: 2, delay: 0.2, type: 'spring' } }) => {
 
         return <motion.path
             initial={{ pathLength: pathLength[0] }}
             animate={{ pathLength: pathLength[1] }}
-            transition={{ duration: 2, delay: 0.2, type: 'spring' }}
+            transition={transition}
             d={curve(points)}
             stroke={color}
             strokeWidth={strokeWidth}
@@ -205,12 +205,23 @@ function ChartInner(props) {
     }
 
     const createCircle = (questionRef, isMain, x, y) => {
-        return <circle
-            qref={questionRef}
-            fill={isMain == true ? '#6DDA36' : '#DADADA'}
-            cx={xScale(x)}
-            cy={yScale(y)}
-            r="24" />
+        return <g style={{cursor: 'pointer'}}>
+            <circle
+                className={styles.shadow}
+                fill="none"
+                stroke="white"
+                strokeWidth={5}
+                cx={xScale(x)}
+                cy={yScale(y)}
+                r="26" />
+
+            <circle
+                qref={questionRef}
+                fill={isMain == true ? '#6DDA36' : '#DADADA'}
+                cx={xScale(x)}
+                cy={yScale(y)}
+                r="20" />
+        </g>
     }
 
     const createStartCircle = () => {
@@ -221,7 +232,7 @@ function ChartInner(props) {
                 y1={0}
                 y2={yScale(data[0].y)}
                 stroke="#6F6C87"
-                strokeWidth="10"
+                strokeWidth={20}
                 strokeOpacity={1}
             />}
 
@@ -232,7 +243,7 @@ function ChartInner(props) {
                     cy={0}
                     r="180"
                 />
-            
+
                 <text
                     alignmentBaseline="middle"
                     fill="white"
@@ -353,6 +364,7 @@ function ChartInner(props) {
                             }
 
                             let lineColor = '#6F6C87'
+                            let lineWidth = 10
                             let isMain = false
                             for (const el of data) {
                                 if (el.main == true && el.ref == fromRef) isMain = true
@@ -360,6 +372,7 @@ function ChartInner(props) {
 
                             if (baseItem.main == true && isMain == true) {
                                 lineColor = '#ECB751'
+                                lineWidth = 20
                             }
 
                             /* Lines */
@@ -370,7 +383,7 @@ function ChartInner(props) {
                                 {'curve' in baseItem ? createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: lineColor,
-                                    strokeWidth: 10,
+                                    strokeWidth: lineWidth,
                                     pathLength: [1, 1]
                                 })
                                     :
@@ -380,15 +393,16 @@ function ChartInner(props) {
                                         y1={fromY}
                                         y2={toY}
                                         stroke={lineColor}
-                                        strokeWidth={10}
+                                        strokeWidth={lineWidth}
                                         strokeOpacity={1}
                                     />}
 
                                 {createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: "red",
-                                    strokeWidth: 20,
-                                    pathLength: [pathLengthStart, pathLength]
+                                    strokeWidth: lineWidth,
+                                    pathLength: [pathLengthStart, pathLength],
+                                    transition: transition
                                 })}
 
                                 {/* Red road */}
@@ -428,8 +442,8 @@ function ChartInner(props) {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: controls.isOpen ? 1 : 0 }}
                                 transition={{ duration: 1, delay: 1 }}
-                                x={xScale(item.x) - 23}
-                                y={yScale(item.y) + 26}
+                                x={xScale(item.x) - 22.5}
+                                y={yScale(item.y) + 30}
                                 width={textRects.find(el => el.ref == item.ref).w + 10}
                                 height={textRects.find(el => el.ref == item.ref).h}
                                 fill="black"
@@ -442,7 +456,7 @@ function ChartInner(props) {
                                 alignmentBaseline="middle"
                                 fill="white"
                                 x={xScale(item.x) - 17}
-                                y={yScale(item.y) + 36}>
+                                y={yScale(item.y) + 40}>
                                 {item.ref}
                             </text>
                         </motion.g>

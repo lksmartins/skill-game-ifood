@@ -50,6 +50,11 @@ $mainRed: #EA1D2C;
             font-size: 2rem;
             *{text-decoration: none;}
         }
+
+        .shadow{
+            //box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+            filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .25));
+        }
     }
 
     &.open {
