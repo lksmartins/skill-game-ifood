@@ -243,11 +243,11 @@ export default function Play({ questions, map }) {
                     setIsMapAnimating(false)
                     setCurrentSlide(activeSlide)
                     updateSlidesPositions(moveTo(questions, activeSlide))
-                }, 1600)
+                }, 1200)
 
             }, 1800)
 
-        }, 1300)
+        }, 600)
     }
 
     return (

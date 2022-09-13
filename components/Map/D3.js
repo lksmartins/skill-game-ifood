@@ -168,15 +168,19 @@ function ChartInner(props) {
 
     const createCurvedLine = ({ color, strokeWidth, points, pathLength, transition = { duration: 2, delay: 0.2, type: 'spring' } }) => {
 
-        return <motion.path
+        return <g><motion.path
             initial={{ pathLength: pathLength[0] }}
             animate={{ pathLength: pathLength[1] }}
             transition={transition}
             d={curve(points)}
             stroke={color}
             strokeWidth={strokeWidth}
-            className={styles.shadow}
+            className={`${styles.shadow}`}
             fill="none" />
+            
+            {/* <line className={`${styles.road}`} x1={points[0][0]} y1={points[0][1]} x2={points[1][0]} y2={points[1][1]} stroke="black" strokeWidth={10}
+                stroke-dasharray="4" /> */}
+        </g>
 
     }
 
@@ -206,7 +210,7 @@ function ChartInner(props) {
     }
 
     const createCircle = (questionRef, isMain, x, y) => {
-        return <g style={{cursor: 'pointer'}}>
+        return <g style={{ cursor: 'pointer' }}>
             <circle
                 className={styles.shadow}
                 fill="none"
@@ -232,7 +236,7 @@ function ChartInner(props) {
                 x2={xScale(data[0].x)}
                 y1={0}
                 y2={yScale(data[0].y)}
-                stroke="#6F6C87"
+                stroke="#AFAFAF"
                 strokeWidth={20}
                 strokeOpacity={1}
             />}
@@ -379,8 +383,8 @@ function ChartInner(props) {
                             /* Lines */
                             return <g key={`lines_${Math.random(0, 10000000)}_${index}`}>
 
-                                {/* Road */}
-                                {/* Curved lines */}
+                                {/* Base Roads */}
+                                {/* Curved or Straight lines */}
                                 {'curve' in baseItem ? createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: lineColor,
@@ -399,6 +403,7 @@ function ChartInner(props) {
                                         className={styles.shadow}
                                     />}
 
+                                {/* Red Roads */}
                                 {createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: "red",
@@ -407,8 +412,7 @@ function ChartInner(props) {
                                     transition: transition
                                 })}
 
-                                {/* Red road */}
-                                {<motion.line
+                                {/*<motion.line
                                     initial={{ pathLength: pathLengthStart }}
                                     animate={{ pathLength: pathLength }}
                                     transition={transition}
@@ -420,7 +424,7 @@ function ChartInner(props) {
                                     stroke="red"
                                     strokeWidth="16"
                                     opacity={0}
-                                />}
+                                />*/}
                             </g>
                         })
 
@@ -443,7 +447,7 @@ function ChartInner(props) {
                             <motion.rect
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: controls.isOpen ? 1 : 0 }}
-                                transition={{ duration: 1, delay: 1 }}
+                                transition={{ duration: .6, delay: .5 }}
                                 x={xScale(item.x) - 22.5}
                                 y={yScale(item.y) + 30}
                                 width={textRects.find(el => el.ref == item.ref).w + 10}
