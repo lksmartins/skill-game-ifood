@@ -39,16 +39,6 @@ export default function Slider({
             item.disabled = false
         }
 
-        /* setTimeout(() => {
-            const elements = document.getElementsByClassName(styles.confirm)
-            let confirm
-            for (const item of elements) {
-                if (item.getAttribute('qref') == alternative.questionRef) confirm = item
-                item.disabled = false
-            }
-            confirm.scrollIntoView({ behavior: "smooth" })
-        }, 600) */
-
     }
 
     const confirmAlternative = () => {
@@ -110,8 +100,6 @@ export default function Slider({
         }
     }
 
-    const textBubble = useRef('textBubble')
-
     useEffect(() => {
         const elements = document.getElementsByClassName(styles.confirm)
         for (const item of elements) {
@@ -135,12 +123,14 @@ export default function Slider({
                         <div className={styles.image}>
                             <img src={'image' in slide && slide.image ? slide.image : '/QuestionSlider/placeholder.png'} />
                         </div>
-                        <div className={styles.alternatives}>
-                            <div className={styles.bubble}>
-                                <div className={styles.text} ref={textBubble}>{slide.text}</div>
+                        <div className={styles.text}>
+                            <div className={styles.title}>
+                                {slide.text}
                             </div>
-                            {buildAlternatives(slide)}
-                            <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
+                            <div className={styles.alternatives}>
+                                {buildAlternatives(slide)}
+                                <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>

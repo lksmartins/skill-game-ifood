@@ -65,7 +65,7 @@
 }
 
 .slider {
-  width: 100vw;
+  width: 100%;
   height: 45vh !important;
   position: relative;
   overflow-x: hidden !important;
@@ -107,6 +107,7 @@
 .slider .slide {
   width: 100vw !important;
   height: auto !important;
+  min-height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -146,7 +147,6 @@
 }
 
 .slider .slide .wrapper .image {
-  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,8 +158,7 @@
           align-items: center;
 }
 
-.slider .slide .wrapper .alternatives {
-  width: 100%;
+.slider .slide .wrapper .text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,15 +169,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1rem;
-  position: relative;
 }
 
-.slider .slide .wrapper .alternatives .bubble {
-  width: 100%;
+.slider .slide .wrapper .text .title {
   height: auto;
   padding: 2rem;
   background-color: #F5F0EB;
@@ -194,30 +191,36 @@
           align-items: center;
   gap: 1rem;
   border-radius: 28px;
-}
-
-.slider .slide .wrapper .alternatives .bubble .text {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  font-size: 1.2rem;
   font-weight: bold;
-  /* width */
+  font-size: 1.2rem;
+  -webkit-box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
 }
 
-.slider .slide .wrapper .alternatives .bubble .text::-webkit-scrollbar {
-  display: none;
+.slider .slide .wrapper .text .alternatives {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  min-width: 26vw;
 }
 
-.slider .slide .wrapper .alternatives .bubble .buttons i {
-  font-size: 2rem;
-}
-
-.slider .slide .wrapper .alternatives .alternative {
+.slider .slide .wrapper .text .alternatives .alternative {
   background: #EA1D2C;
 }
 
-.slider .slide .wrapper .alternatives button {
+.slider .slide .wrapper .text .alternatives button {
   width: 100%;
   font-size: 1.2rem;
   background: #EA1D2C;
@@ -232,12 +235,12 @@
   cursor: pointer;
 }
 
-.slider .slide .wrapper .alternatives button:hover {
-  -webkit-filter: brightness(1.35);
-          filter: brightness(1.35);
+.slider .slide .wrapper .text .alternatives button:hover {
+  background-color: black !important;
+  color: white;
 }
 
-.slider .slide .wrapper .alternatives button.selected {
+.slider .slide .wrapper .text .alternatives button.selected {
   background-color: black !important;
   color: white;
   -webkit-box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
@@ -252,7 +255,7 @@
           animation-direction: alternate;
 }
 
-.slider .slide .wrapper .alternatives .confirm {
+.slider .slide .wrapper .text .alternatives .confirm {
   width: auto;
   -ms-flex-item-align: end;
       align-self: flex-end;
@@ -262,24 +265,24 @@
   padding-right: 3rem;
 }
 
-.slider .slide .wrapper .alternatives .confirm:disabled {
+.slider .slide .wrapper .text .alternatives .confirm:disabled {
   -webkit-filter: grayscale(1) brightness(1.5);
           filter: grayscale(1) brightness(1.5);
 }
 
-.slider .slide .wrapper .alternatives .confirm i {
+.slider .slide .wrapper .text .alternatives .confirm i {
   position: absolute;
   top: .6rem;
   font-size: 1.5rem;
   right: 0.7rem;
 }
 
-.slider .slide .wrapper .alternatives .confirm:hover {
+.slider .slide .wrapper .text .alternatives .confirm:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.slider .slide .wrapper .alternatives .confirm:hover i {
+.slider .slide .wrapper .text .alternatives .confirm:hover i {
   -webkit-animation-duration: 0.4s;
           animation-duration: 0.4s;
   -webkit-animation-name: moveRight;

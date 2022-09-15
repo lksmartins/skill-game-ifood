@@ -29,7 +29,7 @@
 }
 
 .slider {
-    width: 100vw;
+    width: 100%;
     height: 45vh !important;
     position: relative;
     overflow-x: hidden !important;
@@ -63,6 +63,7 @@
     .slide {
         width: 100vw !important;
         height: auto !important;
+        min-height: 100%;
         display: flex;
         gap: 2rem;
         flex-direction: column;
@@ -84,120 +85,109 @@
             padding: 1rem 3rem;
 
             .image {
-                width: 50%;
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
             }
 
-            .alternatives {
-                width: 100%;
+            .text {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: flex-start;
+                align-items: center;
                 gap: 1rem;
-                position: relative;
 
-                .bubble {
-                    width: 100%;
+                .title {
                     height: auto;
                     padding: 2rem;
                     background-color: #F5F0EB;
-                    //aspect-ratio: 16/9;
-                    //background-image: url('/bubble.svg');
-                    //background-size: contain;
-                    //background-repeat: no-repeat;
                     z-index: 20;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     gap: 1rem;
                     border-radius: 28px;
-
-                    .text {
-                        width: 100%;
-                        height: 100%;
-                        overflow-y: scroll;
-                        font-size: 1.2rem;
-                        font-weight: bold;
-
-                        /* width */
-                        &::-webkit-scrollbar {
-                            display: none;
-                        }
-                    }
-
-                    .buttons {
-                        i {
-                            font-size: 2rem
-                        }
-                    }
-                }
-
-                .alternative{
-                    background: #EA1D2C;
-                }
-
-                button {
-                    width: 100%;
+                    font-weight: bold;
                     font-size: 1.2rem;
-                    background: #EA1D2C;
-                    box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
-                    border: none;
-                    border-radius: 28.2003px;
-                    color: #FFFFFF;
-                    padding: 0.5rem 2rem;
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-
-                    &:hover{
-                        filter: brightness(1.35);
-                    }
-
-                    &.selected {
-                        background-color: black !important;
-                        color: white;
-                        box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
-
-                        animation-duration: 0.6s;
-                        animation-name: pulse;
-                        animation-iteration-count: infinite;
-                        animation-direction: alternate;
-                    }
+                    box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
                 }
 
-                .confirm {
-                    width: auto;
-                    align-self: flex-end;
-                    margin-top: 1.5rem;
-                    background-color: blueviolet;
+                .alternatives {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: 1rem;
                     position: relative;
-                    padding-right: 3rem;
+                    min-width: 26vw;
 
-                    &:disabled{
-                        filter: grayscale(1) brightness(1.5);
+                    .alternative {
+                        background: #EA1D2C;
                     }
 
-                    i {
-                        position: absolute;
-                        top: .6rem;
-                        font-size: 1.5rem;
-                        right: 0.7rem;
-                    }
+                    button {
+                        width: 100%;
+                        font-size: 1.2rem;
+                        background: #EA1D2C;
+                        box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
+                        border: none;
+                        border-radius: 28.2003px;
+                        color: #FFFFFF;
+                        padding: 0.5rem 2rem;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
 
-                    &:hover {
-                        transform: scale(1.1);
+                        &:hover {
+                            background-color: black !important;
+                            color: white;
+                        }
 
-                        i {
-                            animation-duration: 0.4s;
-                            animation-name: moveRight;
+                        &.selected {
+                            background-color: black !important;
+                            color: white;
+                            box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
+
+                            animation-duration: 0.6s;
+                            animation-name: pulse;
                             animation-iteration-count: infinite;
                             animation-direction: alternate;
                         }
                     }
+
+                    .confirm {
+                        width: auto;
+                        align-self: flex-end;
+                        margin-top: 1.5rem;
+                        background-color: blueviolet;
+                        position: relative;
+                        padding-right: 3rem;
+
+                        &:disabled {
+                            filter: grayscale(1) brightness(1.5);
+                        }
+
+                        i {
+                            position: absolute;
+                            top: .6rem;
+                            font-size: 1.5rem;
+                            right: 0.7rem;
+                        }
+
+                        &:hover {
+                            transform: scale(1.1);
+
+                            i {
+                                animation-duration: 0.4s;
+                                animation-name: moveRight;
+                                animation-iteration-count: infinite;
+                                animation-direction: alternate;
+                            }
+                        }
+                    }
                 }
             }
+
+
         }
 
         &:global(.moveLeft_0vw) {
@@ -219,32 +209,35 @@
 
 @media (max-width: 900px) {
 
-    .slider{
-        .slide{
+    .slider {
+        .slide {
             overflow: auto;
             padding: 1rem;
             padding-bottom: 2rem;
             margin-top: 8vh;
             background: red !important;
 
-            .wrapper{
+            .wrapper {
                 flex-direction: column !important;
                 width: 100%;
                 height: auto;
                 margin: 0;
                 padding: 0;
 
-                .image{display: none;}
-                .alternatives{
+                .image {
+                    display: none;
+                }
+
+                .alternatives {
                     padding-top: unset !important;
                     height: auto;
                     align-items: center;
 
-                    button.selected{
+                    button.selected {
                         animation-name: pulseMobile;
                     }
 
-                    .bubble{
+                    .bubble {
                         position: relative !important;
                         top: unset !important;
                         left: unset !important;
@@ -255,9 +248,10 @@
                         background-image: unset !important;
                     }
 
-                    .confirm{
+                    .confirm {
                         font-size: 1.5rem;
                         padding-right: 4rem;
+
                         i {
                             top: .6rem;
                             font-size: 2rem;

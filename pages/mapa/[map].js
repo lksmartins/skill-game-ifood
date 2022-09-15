@@ -74,7 +74,7 @@ export default function Play({ questions, map }) {
         { x: 33.2, y: 15, curve: [30, 25], ref: "F001_Q013", from: ['F001_Q012'], current: false, main: false, isNext: false },
         { x: 33.1, y: 3, ref: "F001_Q014", from: ['F001_Q013'], current: false, main: false, isNext: false },
         { x: 33.5, y: 30, ref: "F001_Q015", from: ['F001_Q013'], current: false, main: false, isNext: false },
-        { x: 38.7, y: 29.5, ref: "F001_Q016", from: ['F001_Q013'], current: false, main: false, isNext: false },
+        { x: 38.7, y: 29.3, ref: "F001_Q016", from: ['F001_Q013'], current: false, main: false, isNext: false },
         { x: 41.5, y: 10, ref: "F001_Q017", from: ['F001_Q016'], current: false, main: false, isNext: false },
         { x: 47, y: 2, curve: [43.5, 2], ref: "F001_Q018", from: ['F001_Q017'], current: false, main: false, isNext: false },
         { x: 50, y: 17.3, curve: [46, 9], ref: "F001_Q019", from: ['F001_Q017'], current: false, main: false, isNext: false },
@@ -198,11 +198,6 @@ export default function Play({ questions, map }) {
     const currentQuestionMarker = useRef()
     const svgContainer = useRef()
 
-    let height
-    if (typeof window !== "undefined") {
-        height = (window.innerHeight - (window.innerHeight * 0.50)) || 600
-    }
-
     // SLIDER
     const updateActiveSlide = (activeSlideRef) => {
         const activeSlideIndex = questions.findIndex(el => el.ref == activeSlideRef)
@@ -262,7 +257,6 @@ export default function Play({ questions, map }) {
                 resetLocalMap={resetLocalInfo}
                 currentQuestionMarker={currentQuestionMarker}
                 svgContainerRef={svgContainer}
-                height={height}
             />
 
             <Slider

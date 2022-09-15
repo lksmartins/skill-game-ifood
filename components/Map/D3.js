@@ -12,25 +12,10 @@ export default function Chart(props) {
 
     return <>
         <div className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`} id="svg-container" ref={ref}>
-
-            {/* <div className={styles.buttonGroup}>
-                <button
-                    onClick={() => controls.isOpen ? controls.close() : controls.open()}
-                    className={styles.expand}
-                >
-                    <i className="fa-solid fa-expand"></i> {controls.isOpen ? 'Diminuir' : 'Expandir'}
-                </button>
-                <button
-                    onClick={() => resetLocalMap('map')}
-                    className={styles.expand}
-                >
-                    <i className="fa-solid fa-trash-can"></i> Reset
-                </button>
-            </div> */}
-
             {bounds.width > 0 && (
                 <ChartInner
                     width={bounds.width}
+                    height={bounds.height}
                     {...props}
                 />
             )}
@@ -74,9 +59,12 @@ function ChartInner(props) {
     } : {
         top: height / 4,
         right: width / 18,
-        bottom: height / 6.5,
+        bottom: height / 4.13,
         left: width / 17,
     }
+
+    console.log('height')
+    console.log(height)
 
     let xScale = d3
         .scaleLinear()
