@@ -74,7 +74,7 @@ function ChartInner(props) {
     } : {
         top: height / 4,
         right: width / 18,
-        bottom: height / 12.5,
+        bottom: height / 6.5,
         left: width / 17,
     }
 
@@ -280,7 +280,7 @@ function ChartInner(props) {
                     fill="red"
                     cx={0}
                     cy={0}
-                    r="180"
+                    r={Math.trunc(height/2.3)}
                 />
 
                 <text
