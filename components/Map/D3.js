@@ -175,7 +175,6 @@ function ChartInner(props) {
             d={curve(points)}
             stroke={color}
             strokeWidth={strokeWidth}
-            className={`${styles.shadow}`}
             fill="none" />
             
             {/* <line className={`${styles.road}`} x1={points[0][0]} y1={points[0][1]} x2={points[1][0]} y2={points[1][1]} stroke="black" strokeWidth={10}
@@ -368,8 +367,8 @@ function ChartInner(props) {
                                 transition = { duration: 2, delay: .1, type: 'tween', repeat: Infinity, repeatType: "alternate" }
                             }
 
-                            let lineColor = '#AFAFAF'
-                            let lineWidth = 10
+                            let lineColor = '#DADADA'
+                            let lineWidth = 5
                             let isMain = false
                             for (const el of data) {
                                 if (el.main == true && el.ref == fromRef) isMain = true
@@ -377,7 +376,7 @@ function ChartInner(props) {
 
                             if (baseItem.main == true && isMain == true) {
                                 lineColor = '#ECB751'
-                                lineWidth = 20
+                                lineWidth = 10
                             }
 
                             /* Lines */
@@ -400,7 +399,6 @@ function ChartInner(props) {
                                         stroke={lineColor}
                                         strokeWidth={lineWidth}
                                         strokeOpacity={1}
-                                        className={styles.shadow}
                                     />}
 
                                 {/* Red Roads */}
@@ -411,20 +409,6 @@ function ChartInner(props) {
                                     pathLength: [pathLengthStart, pathLength],
                                     transition: transition
                                 })}
-
-                                {/*<motion.line
-                                    initial={{ pathLength: pathLengthStart }}
-                                    animate={{ pathLength: pathLength }}
-                                    transition={transition}
-
-                                    x1={fromX}
-                                    x2={toX}
-                                    y1={fromY}
-                                    y2={toY}
-                                    stroke="red"
-                                    strokeWidth="16"
-                                    opacity={0}
-                                />*/}
                             </g>
                         })
 

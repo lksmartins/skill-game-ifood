@@ -3,12 +3,17 @@ import { getToken } from '../../lib/helper'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import styles from './play.module.css'
 
 export async function getServerSideProps(context) {
 
     const jwt = await getToken()
 
-    const res = await fetch(`${process.env.API_URL}/questions`, {
+    const flowRef = context.query.map == 'faco-minhas-entregas' ? 'F001' : 'F002'
+
+    console.log(`${process.env.API_URL}/flow/${flowRef}`)
+
+    const res = await fetch(`${process.env.API_URL}/flow/${flowRef}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -17,6 +22,8 @@ export async function getServerSideProps(context) {
     })
 
     const data = await res.json()
+
+    console.log("🚀 data", data)
 
     return {
         props: {
@@ -101,6 +108,8 @@ export default function Play({ questions, map }) {
         { x: 50, y: 2, ref: "Q018", from: ['Q017'], current: false, main: false, isNext: false },
         { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false, main: false, isNext: false },
         { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false, main: false, isNext: false },
+
+        { x: 27.5, y: 20, ref: "Q021", from: ['Q011'], current: false, main: false, isNext: false },
     ])
     const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
     const [localJourney, setLocalJourney] = useLocalStorage('journey')
@@ -251,7 +260,7 @@ export default function Play({ questions, map }) {
     }
 
     return (
-        <main>
+        <main className={styles.mapPage}>
 
             <Map
                 data={mapData}

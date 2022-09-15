@@ -73,8 +73,8 @@ export default function Slider({
 
     const buildAlternatives = (question) => {
 
-        if (!('alternativesRelation' in question)) return
-        const alternatives = question.alternativesRelation
+        if (!('alternatives' in question)) return
+        const alternatives = question.alternatives
         if (alternatives == null) return
         if (alternatives.length == 0) return
 
