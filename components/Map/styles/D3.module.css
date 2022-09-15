@@ -44,11 +44,11 @@
 }
 
 .parent .svgContainer {
-  outline: 2px solid white;
   position: absolute;
   width: 100%;
-  height: 65vh !important;
-  top: -4vh;
+  height: 56vh !important;
+  top: -1vh;
+  outline: 5px solid red;
   background-color: #890019;
   background-image: url("/Map/bg_desktop_sem_icones.svg");
   background-repeat: no-repeat;

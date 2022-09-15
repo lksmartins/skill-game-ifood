@@ -5,13 +5,23 @@ import Slider from '../../components/QuestionSlider/Slider'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import styles from './play.module.css'
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+    return {
+        paths: [
+            '/mapa/faco-minhas-entregas',
+            '/mapa/uso-entregas-ifood'
+        ],
+        fallback: false, // can also be true or 'blocking'
+    }
+}
+
+export async function getStaticProps(context) {
+    console.log("🚀 ~ file: [map].js ~ line 19 ~ getStaticProps ~ context", context)
 
     const jwt = await getToken()
 
-    const flowRef = context.query.map == 'faco-minhas-entregas' ? 'F001' : 'F002'
-
-    console.log(`${process.env.API_URL}/flow/${flowRef}`)
+    const { map } = context.params
+    const flowRef = map == 'faco-minhas-entregas' ? 'F001' : 'F002'
 
     const res = await fetch(`${process.env.API_URL}/flow/${flowRef}`, {
         method: 'GET',
@@ -23,12 +33,10 @@ export async function getServerSideProps(context) {
 
     const data = await res.json()
 
-    console.log("🚀 data", data)
-
     return {
         props: {
             questions: data,
-            map: context.query.map
+            map: map
         }
     }
 
@@ -37,7 +45,7 @@ export async function getServerSideProps(context) {
 export default function Play({ questions, map }) {
 
     // MAP
-    const [isMapOpen, setIsMapOpen] = useState(false)
+    const [isMapOpen, setIsMapOpen] = useState(true)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
 
     const toggleMapOpen = () => {
@@ -52,26 +60,31 @@ export default function Play({ questions, map }) {
     const [nextQuestion, setNextQuestion] = useState('')
 
     const mapDataset1 = [
-        { x: 0, y: 15.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
-        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false, main: false, isNext: false },
+        { x: 0, y: 25.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
+        { x: 4, y: 5, ref: "Q002", from: ['Q001'], current: false, main: false, isNext: false },
         { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 6.4, y: 20.5, ref: "Q005", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false, main: true, isNext: false },
-        { x: 12.3, y: 28, ref: "Q007", from: ['Q006'], current: false, main: false, isNext: false },
+        { x: 9, y: 10, ref: "Q004", from: ['Q002'], current: false, main: false, isNext: false },
+        { x: 3.5, y: 20, ref: "Q005", from: ['Q002'], current: false, main: false, isNext: false },
+        { x: 7, y: 32, ref: "Q006", from: ['Q001', 'Q005'], current: false, main: true, isNext: false },
+        { x: 12, y: 20, ref: "Q007", from: ['Q006'], current: false, main: false, isNext: false },
         { x: 14.8, y: 8, ref: "Q008", from: ['Q007'], current: false, main: false, isNext: false },
         { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false, main: false, isNext: false },
-        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false, main: false, isNext: false },
-        { x: 22.5, y: 28, ref: "Q011", from: ['Q006'], current: false, main: true, isNext: false },
-        { x: 30.05, y: 34, ref: "Q012", from: ['Q011'], current: false, main: true, isNext: false },
-        { x: 26.05, y: 14, ref: "Q013", from: ['Q011'], current: false, main: false, isNext: false },
-        { x: 25.7, y: 0, ref: "Q014", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 32.6, y: 0, ref: "Q015", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 37.5, y: 31, ref: "Q016", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 43.5, y: 11, ref: "Q017", from: ['Q016'], current: false, main: false, isNext: false },
-        { x: 50, y: 1, ref: "Q018", from: ['Q017'], current: false, main: false, isNext: false },
-        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false, main: false, isNext: false },
+        { x: 16, y: 24.7, ref: "Q010", from: ['Q007'], current: false, main: false, isNext: false },
+        { x: 18.85, y: 31.5, ref: "Q011", from: ['Q006', 'Q010'], current: false, main: true, isNext: false },
+        { x: 25.05, y: 31.8, ref: "Q012", from: ['Q011', 'Q024'], current: false, main: true, isNext: false },
+        { x: 33.2, y: 15, curve: [30, 25], ref: "Q013", from: ['Q012'], current: false, main: false, isNext: false },
+        { x: 33.1, y: 3, ref: "Q014", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 33.5, y: 30, ref: "Q015", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 38.7, y: 26.5, ref: "Q016", from: ['Q013'], current: false, main: false, isNext: false },
+        { x: 41.5, y: 10, ref: "Q017", from: ['Q016'], current: false, main: false, isNext: false },
+        { x: 47, y: 2, curve: [43.5, 2], ref: "Q018", from: ['Q017'], current: false, main: false, isNext: false },
+        { x: 50, y: 17.3, curve: [46, 9], ref: "Q019", from: ['Q017'], current: false, main: false, isNext: false },
         { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false, main: false, isNext: false },
+        { x: 22.5, y: 10, ref: "Q021", from: ['Q011'], current: false, main: false, isNext: false },
+        { x: 21.5, y: 0, ref: "Q022", from: ['Q021'], current: false, main: false, isNext: false },
+        { x: 26.5, y: 5, ref: "Q023", from: ['Q021'], current: false, main: false, isNext: false },
+        { x: 23.5, y: 21.5, ref: "Q024", from: ['Q021'], current: false, main: false, isNext: false },
+        { x: 30, y: 33, ref: "Q0121", from: ['Q012'], current: false, main: true, isNext: false },
     ]
 
     const mapDataset2 = [
@@ -87,30 +100,7 @@ export default function Play({ questions, map }) {
     ]
 
     let usedMap = map == 'faco-minhas-entregas' ? mapDataset1 : mapDataset2
-    const [mapData, updateMapData] = useState([
-        { x: 0, y: 25.5, ref: "Q001", from: [], current: true, main: true, isNext: false },
-        { x: 6.1, y: 7, ref: "Q002", from: ['Q001'], current: false, main: false, isNext: false },
-        { x: 11.5, y: 0, ref: "Q003", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 9.5, y: 13.5, ref: "Q004", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 6.6, y: 21, ref: "Q005", from: ['Q002'], current: false, main: false, isNext: false },
-        { x: 7, y: 40, ref: "Q006", from: ['Q001', 'Q005'], current: false, main: true, isNext: false },
-        { x: 12.3, y: 28, ref: "Q007", from: ['Q006'], current: false, main: false, isNext: false },
-        { x: 14.8, y: 8, ref: "Q008", from: ['Q007'], current: false, main: false, isNext: false },
-        { x: 16.9, y: 14, ref: "Q009", from: ['Q007'], current: false, main: false, isNext: false },
-        { x: 17, y: 24.7, ref: "Q010", from: ['Q007'], current: false, main: false, isNext: false },
-        { x: 23.5, y: 28, ref: "Q011", from: ['Q006','Q010'], current: false, main: true, isNext: false },
-        { x: 30.05, y: 33.8, curve: [28, 28.5], ref: "Q012", from: ['Q011'], current: false, main: true, isNext: false },
-        { x: 26.2, y: 14, ref: "Q013", from: ['Q011'], current: false, main: false, isNext: false },
-        { x: 26.1, y: 0, ref: "Q014", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 33.1, y: 0, curve: [30.8, 11.7], ref: "Q015", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 37.7, y: 31.7, curve: [31.6, 26], ref: "Q016", from: ['Q013'], current: false, main: false, isNext: false },
-        { x: 43.5, y: 12, ref: "Q017", from: ['Q016'], current: false, main: false, isNext: false },
-        { x: 50, y: 2, ref: "Q018", from: ['Q017'], current: false, main: false, isNext: false },
-        { x: 49, y: 17.3, ref: "Q019", from: ['Q017'], current: false, main: false, isNext: false },
-        { x: 47.5, y: 35, ref: "Q020", from: ['Q016'], current: false, main: false, isNext: false },
-
-        { x: 27.5, y: 20, ref: "Q021", from: ['Q011'], current: false, main: false, isNext: false },
-    ])
+    const [mapData, updateMapData] = useState(usedMap)
     const [localMap, setLocalMap, resetLocal] = useLocalStorage('map')
     const [localJourney, setLocalJourney] = useLocalStorage('journey')
     const [localMapLoaded, setLocalMapLoaded] = useState(false)
@@ -190,29 +180,10 @@ export default function Play({ questions, map }) {
     const currentQuestionMarker = useRef()
     const svgContainer = useRef()
 
-    useEffect(() => {
-
-        const target = currentQuestionMarker.current
-        if (target != null) {
-            if (isMapOpen == false) {
-                setTimeout(() => {
-                    const targetY = target.getAttribute('cy')
-                    console.log("🚀 target", target, targetY)
-                    let top = targetY - 140
-                    top = top > height/1.5 ? 0 : top
-                    //svgContainer.current.style.top = `-${top}px`
-                }, 1000)
-            } else {
-                svgContainer.current.style.top = 0
-            }
-        }
-
-    }, [isMapOpen])
-
-    let height 
+    let height
     if (typeof window !== "undefined") {
         height = (window.innerHeight - (window.innerHeight * 0.50)) || 600
-    }   
+    }
 
     // SLIDER
     const updateActiveSlide = (activeSlideRef) => {

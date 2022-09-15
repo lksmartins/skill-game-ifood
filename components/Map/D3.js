@@ -72,10 +72,10 @@ function ChartInner(props) {
         bottom: 100,
         left: 50,
     } : {
-        top: height / 5.5,
-        right: width / 13,
-        bottom: height / 6.5,
-        left: width / 13,
+        top: height / 4,
+        right: width / 18,
+        bottom: height / 12.5,
+        left: width / 17,
     }
 
     let xScale = d3
@@ -217,14 +217,14 @@ function ChartInner(props) {
                 strokeWidth={5}
                 cx={xScale(x)}
                 cy={yScale(y)}
-                r="26" />
+                r={Math.trunc(height/20)} />
 
             <circle
                 qref={questionRef}
                 fill={isMain == true ? '#6DDA36' : '#DADADA'}
                 cx={xScale(x)}
                 cy={yScale(y)}
-                r="20" />
+                r={Math.trunc(height/20)} />
         </g>
     }
 
@@ -235,8 +235,8 @@ function ChartInner(props) {
                 x2={xScale(data[0].x)}
                 y1={0}
                 y2={yScale(data[0].y)}
-                stroke="#AFAFAF"
-                strokeWidth={20}
+                stroke="#DADADA"
+                strokeWidth={10}
                 strokeOpacity={1}
             />}
 
