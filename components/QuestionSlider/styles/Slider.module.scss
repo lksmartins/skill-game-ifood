@@ -30,7 +30,7 @@
 
 .slider {
     width: 100%;
-    height: 45vh !important;
+    height: fill;
     position: relative;
     overflow-x: hidden !important;
     overflow-y: auto !important;
@@ -82,7 +82,7 @@
             justify-content: center;
             align-items: center;
             gap: 2rem;
-            padding: 1rem 3rem;
+            padding: 1rem 5rem;
 
             .image {
                 display: flex;
@@ -207,58 +207,11 @@
 
 }
 
-@media (max-width: 900px) {
-
-    .slider {
-        .slide {
-            overflow: auto;
-            padding: 1rem;
-            padding-bottom: 2rem;
-            margin-top: 8vh;
-            background: red !important;
-
-            .wrapper {
-                flex-direction: column !important;
-                width: 100%;
-                height: auto;
-                margin: 0;
-                padding: 0;
-
-                .image {
-                    display: none;
-                }
-
-                .alternatives {
-                    padding-top: unset !important;
-                    height: auto;
-                    align-items: center;
-
-                    button.selected {
-                        animation-name: pulseMobile;
-                    }
-
-                    .bubble {
-                        position: relative !important;
-                        top: unset !important;
-                        left: unset !important;
-                        width: 100%;
-                        height: auto;
-                        aspect-ratio: unset !important;
-                        padding: 1rem;
-                        background-image: unset !important;
-                    }
-
-                    .confirm {
-                        font-size: 1.5rem;
-                        padding-right: 4rem;
-
-                        i {
-                            top: .6rem;
-                            font-size: 2rem;
-                            right: 0.7rem;
-                        }
-                    }
-                }
+@media (max-width: 640px) {
+    .slider{
+        .slide{
+            .wrapper{
+                flex-direction: column;
             }
         }
     }

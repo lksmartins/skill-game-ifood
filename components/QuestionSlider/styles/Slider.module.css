@@ -66,7 +66,9 @@
 
 .slider {
   width: 100%;
-  height: 45vh !important;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill;
   position: relative;
   overflow-x: hidden !important;
   overflow-y: auto !important;
@@ -143,7 +145,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 2rem;
-  padding: 1rem 3rem;
+  padding: 1rem 5rem;
 }
 
 .slider .slide .wrapper .image {
@@ -23505,56 +23507,12 @@
   left: -3000vw !important;
 }
 
-@media (max-width: 900px) {
-  .slider .slide {
-    overflow: auto;
-    padding: 1rem;
-    padding-bottom: 2rem;
-    margin-top: 8vh;
-    background: red !important;
-  }
+@media (max-width: 640px) {
   .slider .slide .wrapper {
-    -webkit-box-orient: vertical !important;
-    -webkit-box-direction: normal !important;
-        -ms-flex-direction: column !important;
-            flex-direction: column !important;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 0;
-  }
-  .slider .slide .wrapper .image {
-    display: none;
-  }
-  .slider .slide .wrapper .alternatives {
-    padding-top: unset !important;
-    height: auto;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .slider .slide .wrapper .alternatives button.selected {
-    -webkit-animation-name: pulseMobile;
-            animation-name: pulseMobile;
-  }
-  .slider .slide .wrapper .alternatives .bubble {
-    position: relative !important;
-    top: unset !important;
-    left: unset !important;
-    width: 100%;
-    height: auto;
-    aspect-ratio: unset !important;
-    padding: 1rem;
-    background-image: unset !important;
-  }
-  .slider .slide .wrapper .alternatives .confirm {
-    font-size: 1.5rem;
-    padding-right: 4rem;
-  }
-  .slider .slide .wrapper .alternatives .confirm i {
-    top: .6rem;
-    font-size: 2rem;
-    right: 0.7rem;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=Slider.module.css.map */
