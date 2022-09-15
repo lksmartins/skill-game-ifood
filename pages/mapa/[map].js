@@ -149,17 +149,21 @@ export default function Play({ questions, map }) {
 
     useEffect(() => {
 
-        if (localMapLoaded == false) {
+        /* if (localMapLoaded == false) {
 
             //Map
             if (localMap == '') {
                 setLocalMap(mapData)
             }
             else {
-                updateMapData(localMap)
+                let found = false
                 localMap.map(item => {
-                    if (item.current == true) updateCurrent(item.ref)
+                    if (item.current == true){
+                        updateCurrent(item.ref)
+                    }
                 })
+                if( found == false ) localMap[0].current = true
+                updateMapData(localMap)
                 setLocalMapLoaded(true)
             }
 
@@ -168,7 +172,7 @@ export default function Play({ questions, map }) {
                 updatePlayerJourney(localJourney)
             }
 
-        }
+        } */
 
     }, [])
 
