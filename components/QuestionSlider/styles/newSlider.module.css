@@ -130,9 +130,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   gap: 2rem;
   padding: 1rem 5rem;
 }
@@ -285,6 +285,21 @@
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
+}
+
+@media (max-width: 1024px) {
+  .slider .slide .wrapper {
+    padding: 1rem 2rem 0 0.5rem;
+  }
+  .slider .slide .wrapper .text .title {
+    padding: 0.5rem 1rem;
+  }
+  .slider .slide .wrapper .text .alternatives {
+    gap: 0.25rem;
+  }
+  .slider .slide .wrapper .text .alternatives .confirm {
+    margin-top: 0.5rem;
+  }
 }
 
 @media (max-width: 640px) {
