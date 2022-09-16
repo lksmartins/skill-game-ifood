@@ -60,6 +60,7 @@ function ChartInner(props) {
         1280: { r: 19, l: 19, b: 4.2 },
         1366: { r: 16, l: 16, b: 4.2 },
         1440: { r: 19, l: 19, b: 4.2 },
+        1560: { r: 11.7, l: 12, b: 4.2 },
         1600: { r: 16, l: 16, b: 4.2 },
         1680: { r: 19, l: 19, b: 4.2 },
         1880: { r: 12, l: 12, b: 4.2 },
@@ -114,10 +115,13 @@ function ChartInner(props) {
 
         data.map(item => {
 
-            var text = d3.select(`text#text_${item.ref}`)
-            var bbox = text.node().getBBox()
+            if (!item.ref.includes('helper')) {
 
-            newRects.push({ ref: item.ref, w: bbox.width, h: bbox.height })
+                var text = d3.select(`text#text_${item.ref}`)
+                var bbox = text.node().getBBox()
+
+                newRects.push({ ref: item.ref, w: bbox.width, h: bbox.height })
+            }
 
         })
 
@@ -255,26 +259,30 @@ function ChartInner(props) {
             r="10" />
     }
 
+    const isHelper = (ref)=>{
+        return ref.includes('helper')
+    }
+
     const createCircle = (questionRef, isMain, x, y) => {
 
-        const isHelper = questionRef.includes('helper')
+        const _isHelper = isHelper(questionRef)
 
         return <g style={{ cursor: 'pointer' }}>
             <circle
-                className={isHelper ? styles.hidden : styles.shadow}
+                className={_isHelper ? styles.hidden : styles.shadow}
                 fill="none"
                 stroke="white"
                 strokeWidth={5}
-                opacity={isHelper ? 0 : 1}
+                opacity={_isHelper ? 0 : 1}
                 cx={xScale(x)}
                 cy={yScale(y)}
                 r={Math.trunc(height / 20)} />
 
             <circle
-                className={isHelper && styles.hidden}
+                className={_isHelper && styles.hidden}
                 qref={questionRef}
                 fill={isMain == true ? '#6DDA36' : '#DADADA'}
-                opacity={isHelper ? 0 : 1}
+                opacity={_isHelper ? 0 : 1}
                 cx={xScale(x)}
                 cy={yScale(y)}
                 r={Math.trunc(height / 20)} />
@@ -312,13 +320,43 @@ function ChartInner(props) {
         </g>
     }
 
-    const createLine = () => {
+    const createText = (item)=>{
+
+        if( isHelper(item.ref) ) return null
+
+        return <motion.g
+            initial={{ opacity: 0 }}
+            animate={{ opacity: controls.isOpen ? 1 : 0 }}>
+
+            <motion.rect
+                initial={{ opacity: 0 }}
+                animate={{ opacity: controls.isOpen ? 1 : 0 }}
+                transition={{ duration: .6, delay: .5 }}
+                x={xScale(item.x) - 22.5}
+                y={yScale(item.y) + 30}
+                width={textRects.find(el => el.ref == item.ref).w + 10}
+                height={textRects.find(el => el.ref == item.ref).h}
+                fill="black"
+                fillOpacity={.6}
+            />
+
+            <text
+                id={`text_${item.ref}`}
+                qref={item.ref}
+
+                alignmentBaseline="middle"
+                fill="white"
+                x={xScale(item.x) - 17}
+                y={yScale(item.y) + 40}>
+                {item.ref}
+            </text>
+        </motion.g>
 
     }
 
     return (
         <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
-            {/* <div style={{position:'absolute'}}>{width} x {height} - {w}</div> */}
+            <div style={{ position: 'absolute' }}>{width} x {height} - {w}</div>
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
                 {createStartCircle()}
@@ -479,31 +517,7 @@ function ChartInner(props) {
 
                         {createCircle(item.ref, item.main, item.x, item.y)}
 
-                        <motion.g
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: controls.isOpen ? 1 : 0 }}>
-                            <motion.rect
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: controls.isOpen ? 1 : 0 }}
-                                transition={{ duration: .6, delay: .5 }}
-                                x={xScale(item.x) - 22.5}
-                                y={yScale(item.y) + 30}
-                                width={textRects.find(el => el.ref == item.ref).w + 10}
-                                height={textRects.find(el => el.ref == item.ref).h}
-                                fill="black"
-                                fillOpacity={.6}
-                            />
-                            <text
-                                id={`text_${item.ref}`}
-                                qref={item.ref}
-
-                                alignmentBaseline="middle"
-                                fill="white"
-                                x={xScale(item.x) - 17}
-                                y={yScale(item.y) + 40}>
-                                {item.ref}
-                            </text>
-                        </motion.g>
+                        {createText(item)}
 
                         {createNextQuestionCircle({ isVisible: isThisNextVisible, x: item.x, y: item.y })}
 
