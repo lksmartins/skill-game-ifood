@@ -2,30 +2,32 @@
 $mainRed: #EA1D2C;
 
 .start {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     background-color: $mainRed;
-    //background-image: url('/start-bg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 
     .grid {
-        height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0 3rem;
-        padding-bottom: 6rem;
+        padding: 3rem;
+        margin: 0;
 
         .logo {
             position: relative;
-            height: 17vh;
+            height: 6rem;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 3rem;
         }
 
         .text {
