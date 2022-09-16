@@ -32,6 +32,7 @@ $mainRed: #EA1D2C;
 
         .content {
             display: flex;
+            gap: 2rem;
 
             .text {
                 grid-area: text;
@@ -99,18 +100,22 @@ $mainRed: #EA1D2C;
             padding: 0 3rem;
             padding-bottom: unset;
 
-            .image {
-                min-height: 30vh;
-            }
+            .content{
+                gap: 0;
 
-            .text {
-                gap: 1rem;
-                padding: 2rem 0;
-                height: fill;
-                justify-content: flex-start;
-
-                a {
-                    width: 100%;
+                .image {
+                    min-height: 30vh;
+                }
+    
+                .text {
+                    gap: 1rem;
+                    padding: 2rem 0;
+                    height: fill;
+                    justify-content: flex-start;
+    
+                    a {
+                        width: 100%;
+                    }
                 }
             }
 

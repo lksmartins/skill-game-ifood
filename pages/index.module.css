@@ -48,6 +48,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 2rem;
 }
 
 .index .grid .content .text {
@@ -132,10 +133,13 @@
     padding: 0 3rem;
     padding-bottom: unset;
   }
-  .index .grid .image {
+  .index .grid .content {
+    gap: 0;
+  }
+  .index .grid .content .image {
     min-height: 30vh;
   }
-  .index .grid .text {
+  .index .grid .content .text {
     gap: 1rem;
     padding: 2rem 0;
     height: -webkit-fill-available;
@@ -145,7 +149,7 @@
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
-  .index .grid .text a {
+  .index .grid .content .text a {
     width: 100%;
   }
 }

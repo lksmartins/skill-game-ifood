@@ -10,7 +10,7 @@ export default function entrega() {
             <div className={styles.grid}>
 
                 <div className={styles.logo}>
-                    <Image src="/ifood-logo.svg" width="200" height="200" objectFit="contain" />
+                    <Link href="/"><a><Image src="/ifood-logo.svg" width="200" height="200" objectFit="contain" /></a></Link>
                 </div>
                 <div className={styles.text}>
                     <div className={styles.image}>
