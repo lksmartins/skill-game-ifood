@@ -51,6 +51,30 @@ function ChartInner(props) {
         }
     }
 
+    const defaultDividers = {
+        r: 16, l: 16, b: 4.2
+    }
+
+    const dividers = {
+        1024: { r: 16, l: 16, b: 4.2 },
+        1280: { r: 19, l: 19, b: 4.2 },
+        1366: { r: 16, l: 16, b: 4.2 },
+        1440: { r: 19, l: 19, b: 4.2 },
+        1600: { r: 16, l: 16, b: 4.2 },
+        1680: { r: 19, l: 19, b: 4.2 },
+        1880: { r: 12, l: 12, b: 4.2 },
+        1920: { r: 15, l: 15, b: 4.2 },
+    }
+
+    let w = 0
+    for (const res in dividers) {
+        if (res - 40 < width || res == width) w = res
+    }
+
+    const rightDivider = dividers[w] ? dividers[w].r : defaultDividers.r
+    const leftDivider = dividers[w] ? dividers[w].l : defaultDividers.l
+    const bottomDivider = dividers[w] ? dividers[w].b : defaultDividers.b
+
     let margin = isMobile ? {
         top: 80,
         right: 50,
@@ -58,9 +82,9 @@ function ChartInner(props) {
         left: 50,
     } : {
         top: height / 4,
-        right: width / 18,
-        bottom: height / 4.13,
-        left: width / 17,
+        right: width / rightDivider,
+        bottom: height / bottomDivider,
+        left: width / leftDivider,
     }
 
     console.log('height')
@@ -152,7 +176,7 @@ function ChartInner(props) {
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 277.96 316"
                 width={isMobile ? xScale(7) : xScale(4)}
                 height={isMobile ? yScale(7) : yScale(4)}
-                >
+            >
                 <defs>
                     <clipPath id="clippath">
                         <rect x="4.96" width="273" height="316" fill="none" />
@@ -199,7 +223,7 @@ function ChartInner(props) {
             stroke={color}
             strokeWidth={strokeWidth}
             fill="none" />
-            
+
             {/* <line className={`${styles.road}`} x1={points[0][0]} y1={points[0][1]} x2={points[1][0]} y2={points[1][1]} stroke="black" strokeWidth={10}
                 stroke-dasharray="4" /> */}
         </g>
@@ -232,22 +256,28 @@ function ChartInner(props) {
     }
 
     const createCircle = (questionRef, isMain, x, y) => {
+
+        const isHelper = questionRef.includes('helper')
+
         return <g style={{ cursor: 'pointer' }}>
             <circle
-                className={styles.shadow}
+                className={isHelper ? styles.hidden : styles.shadow}
                 fill="none"
                 stroke="white"
                 strokeWidth={5}
+                opacity={isHelper ? 0 : 1}
                 cx={xScale(x)}
                 cy={yScale(y)}
-                r={Math.trunc(height/20)} />
+                r={Math.trunc(height / 20)} />
 
             <circle
+                className={isHelper && styles.hidden}
                 qref={questionRef}
                 fill={isMain == true ? '#6DDA36' : '#DADADA'}
+                opacity={isHelper ? 0 : 1}
                 cx={xScale(x)}
                 cy={yScale(y)}
-                r={Math.trunc(height/20)} />
+                r={Math.trunc(height / 20)} />
         </g>
     }
 
@@ -268,7 +298,7 @@ function ChartInner(props) {
                     fill="red"
                     cx={0}
                     cy={0}
-                    r={Math.trunc(height/2.3)}
+                    r={Math.trunc(height / 2.3)}
                 />
 
                 <text
@@ -288,6 +318,7 @@ function ChartInner(props) {
 
     return (
         <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
+            {/* <div style={{position:'absolute'}}>{width} x {height} - {w}</div> */}
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
                 {createStartCircle()}
@@ -411,7 +442,7 @@ function ChartInner(props) {
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: lineColor,
                                     strokeWidth: lineWidth,
-                                    pathLength: [1,1]
+                                    pathLength: [1, 1]
                                 })
                                     :
                                     <line
