@@ -13,20 +13,26 @@ export default function Index() {
                 <div className={styles.logo}>
                     <Image src="/ifood-logo.svg" width="100" height="100" objectFit="contain" />
                 </div>
-                <MobileView>
-                    <div className={styles.image}>
-                        <Image src="/sacolinha_voando.svg" width="100" height="100" objectFit="contain" />
+                <div className={styles.content}>
+                    <MobileView>
+                        <div className={styles.image}>
+                            <Image src="/sacolinha_voando.svg" width="100" height="100" objectFit="contain" />
+                        </div>
+                    </MobileView>
+
+                    <div className={styles.text}>
+                        <h1>
+                            <div>Guia interativo</div>
+                            Política de cancelamento de pedidos ifood
+                        </h1>
+                        <Link href="/start"><a>Iniciar</a></Link>
                     </div>
-                </MobileView>
-                <div className={styles.text}>
-                    <h1>Guia interativo de política de cancelamento da ifood</h1>
-                    <Link href="/start"><a>Iniciar</a></Link>
+                    <BrowserView>
+                        <div className={styles.image}>
+                            <Image src="/bag_wbg.svg" width="500" height="500" objectFit="contain" />
+                        </div>
+                    </BrowserView>
                 </div>
-                <BrowserView>
-                    <div className={styles.image}>
-                        <Image src="/bag_wbg.svg" width="500" height="500" objectFit="contain" />
-                    </div>
-                </BrowserView>
 
 
             </div>

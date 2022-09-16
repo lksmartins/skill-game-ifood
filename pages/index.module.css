@@ -1,47 +1,56 @@
 .index {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   padding: 0 6rem;
   background-color: #EA1D2C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .index .grid {
   margin: 0 auto;
-  display: -ms-grid;
-  display: grid;
-  height: 100%;
-      grid-template-areas: 'logo logo' 'text image';
-  -ms-grid-rows: 16vh;
-      grid-template-rows: 16vh;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
   padding: 0 3rem;
-  padding-bottom: 6rem;
   max-width: 1360px;
+  gap: 0.75rem;
 }
 
 .index .grid .logo {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: logo;
   position: relative;
   height: 16vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: -1.5rem;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-left: 6rem;
 }
 
-.index .grid .text {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
+.index .grid .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.index .grid .content .text {
   grid-area: text;
   text-transform: uppercase;
   display: -webkit-box;
@@ -58,11 +67,14 @@
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 1rem;
-  padding: 0 6rem;
   color: white;
 }
 
-.index .grid .text a {
+.index .grid .content .text h1 div {
+  margin-bottom: 0.25rem;
+}
+
+.index .grid .content .text a {
   background: #FFFFFF;
   -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
@@ -78,7 +90,7 @@
   color: #EA1D2C;
 }
 
-.index .grid .text a:hover {
+.index .grid .content .text a:hover {
   -webkit-transform: translateY(-1rem);
           transform: translateY(-1rem);
   font-weight: bold;
@@ -86,9 +98,7 @@
           box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
 }
 
-.index .grid .image {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
+.index .grid .content .image {
   grid-area: image;
   height: 100%;
   display: -webkit-box;
