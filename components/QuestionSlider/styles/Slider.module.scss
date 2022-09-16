@@ -1,3 +1,5 @@
+@import './_positions';
+
 @keyframes pulse {
     from {
         transform: scale(1)
@@ -40,18 +42,6 @@
     color: black;
     border-radius: 1.5rem 0 0 0;
     box-shadow: 0px 0px 12.82003px rgba(0, 0, 0, 0.25);
-
-    /* &.mapOpen {
-        .slide{
-            .wrapper{
-                .alternatives{
-                    .alternative{
-                        pointer-events: none;
-                    }
-                }
-            }
-        }
-    } */
 
     &.loading {
         display: flex;
@@ -188,20 +178,6 @@
             }
 
 
-        }
-
-        &:global(.moveLeft_0vw) {
-            left: 0vw !important;
-        }
-
-        @for $i from 100 through 3000 {
-            &:global(.moveLeft_#{$i}vw) {
-                left: #{$i}vw !important;
-            }
-
-            &:global(.moveLeft_-#{$i}vw) {
-                left: -#{$i}vw !important;
-            }
         }
     }
 
