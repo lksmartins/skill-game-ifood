@@ -84,7 +84,7 @@
   -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  padding: 1rem 5rem;
+  padding: 1.25rem 5rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   line-height: 2rem;
@@ -94,10 +94,18 @@
   text-decoration: none;
   text-transform: uppercase;
   color: #EA1D2C;
+  width: 100%;
 }
 
-.start .grid .text a small {
-  font-size: .9rem;
+.start .grid .text a.max {
+  max-width: 35rem;
+}
+
+.start .grid .text a .small {
+  margin-top: 0.5rem;
+  font-size: 0.95rem !important;
+  line-height: 1.5rem;
+  font-style: italic;
 }
 
 .start .grid .text a:hover {
@@ -136,6 +144,15 @@
   .start .grid .text {
     height: auto;
     padding: unset;
+  }
+  .start .grid .text a {
+    padding: 2rem 1rem;
+  }
+  .start .grid .text a .small {
+    margin-top: 0.4rem;
+    font-size: 0.95rem !important;
+    line-height: 1rem;
+    font-style: italic;
   }
 }
 /*# sourceMappingURL=start.module.css.map */

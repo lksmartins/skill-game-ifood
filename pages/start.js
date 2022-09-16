@@ -23,7 +23,7 @@ export default function start() {
                     <div className={styles.image}>
                         <Image src="/bag_wbg.svg" width="250" height="250" objectFit="contain" />
                     </div>
-                    <Link href="/entrega"><a>Iniciar minha jornada</a></Link>
+                    <Link href="/entrega"><a className={styles.max}>Iniciar minha jornada</a></Link>
                 </div>
 
             </div>

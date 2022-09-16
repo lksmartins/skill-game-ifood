@@ -1,4 +1,3 @@
-
 $mainRed: #EA1D2C;
 
 .start {
@@ -41,19 +40,19 @@ $mainRed: #EA1D2C;
             color: white;
             font-size: 1.2rem;
 
-            .paragraph{
+            .paragraph {
                 background-color: white;
                 color: #5C5C5C;
                 border-radius: 20px;
-                padding: 1rem 2rem;       
-                max-width: 900px         
+                padding: 1rem 2rem;
+                max-width: 900px
             }
 
             a {
                 background: #FFFFFF;
                 box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 40px;
-                padding: 1rem 5rem;
+                padding: 1.25rem 5rem;
                 transition: all 0.3s ease;
                 line-height: 2rem;
                 font-weight: 400;
@@ -62,10 +61,20 @@ $mainRed: #EA1D2C;
                 text-decoration: none;
                 text-transform: uppercase;
                 color: $mainRed;
+                width: 100%;
 
-                small{font-size: .9rem;}
+                &.max {
+                    max-width: 35rem;
+                }
 
-                &:hover{
+                .small {
+                    margin-top: 0.5rem;
+                    font-size: 0.95rem !important;
+                    line-height: 1.5rem;
+                    font-style: italic;
+                }
+
+                &:hover {
                     transform: translateY(-1rem);
                     //font-style: italic;
                     font-weight: bold;
@@ -83,19 +92,33 @@ $mainRed: #EA1D2C;
     }
 }
 
-@media (max-width: 768px){
-    .start{
+@media (max-width: 768px) {
+    .start {
         height: auto;
         padding-bottom: unset;
 
-        .grid{
+        .grid {
             height: auto;
+
             .logo {
                 justify-content: center;
             }
-            .text{
+
+            .text {
                 height: auto;
                 padding: unset;
+
+                a {
+                    padding: 2rem 1rem;
+                    //line-height: 1.25rem;
+
+                    .small {
+                        margin-top: 0.4rem;
+                        font-size: 0.95rem !important;
+                        line-height: 1rem;
+                        font-style: italic;
+                    }
+                }
             }
         }
     }
