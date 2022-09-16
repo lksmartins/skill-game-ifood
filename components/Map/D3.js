@@ -356,7 +356,7 @@ function ChartInner(props) {
 
     return (
         <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
-            <div style={{ position: 'absolute' }}>{width} x {height} - {w}</div>
+            {/* <div style={{ position: 'absolute' }}>{width} x {height} - {w}</div> */}
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
                 {createStartCircle()}

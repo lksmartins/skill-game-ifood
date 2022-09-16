@@ -3,6 +3,7 @@ import { getToken } from '../../lib/helper'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import getFilesFromDir from '@lib/getFilesFromDir'
 import styles from './play.module.css'
 
 export async function getStaticPaths() {
@@ -35,13 +36,14 @@ export async function getStaticProps(context) {
     return {
         props: {
             questions: data,
-            map: flowRef
+            map: flowRef,
+            files: getFilesFromDir('QuestionSlider')
         }
     }
 
 }
 
-export default function Play({ questions, map }) {
+export default function Play({ questions, map, files }) {
 
     // MAP
     const [isMapOpen, setIsMapOpen] = useState(false)
@@ -267,6 +269,7 @@ export default function Play({ questions, map }) {
             />
 
             <Slider
+                files={files}
                 slides={questions}
                 moveTo={moveTo}
                 currentSlide={currentSlide}

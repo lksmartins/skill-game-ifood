@@ -1,0 +1,16 @@
+.loading{
+    *{font-size: 2rem;}
+}
+
+.animation{
+    *{cursor: default !important;}
+    overflow: hidden;
+
+    div{
+        svg{
+            width: auto !important;
+            height: 100% !important;
+            max-height: 40vh !important;
+        }
+    }
+}

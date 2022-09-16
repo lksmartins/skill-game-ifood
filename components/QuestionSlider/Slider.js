@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import styles from './styles/Slider.module.css'
+import React, { useState, useEffect } from 'react'
+import Animation from './Animation'
+import styles from './styles/newSlider.module.css'
 
 const sliderTesting = false
 
@@ -12,6 +13,7 @@ const sliderConsole = (message) => {
 }
 
 export default function Slider({
+    files,
     slides,
     moveTo,
     currentSlide,
@@ -115,13 +117,18 @@ export default function Slider({
         <div onClick={(e) => sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
 
             {slides.map((slide, index) => {
+
+                const fileName = `anima_${slide.ref}.json`
+                const found = files.find(file => file == fileName)
+                const image = found ? <Animation file={`/QuestionSlider/${found}`}/> : <img src="/QuestionSlider/placeholder.png" />
+
                 return <div
                     key={slide.id}
                     className={`${styles.slide} ${`moveLeft_${slidesPositions[index]}`}`}
                 >
                     <div className={styles.wrapper}>
                         <div className={styles.image}>
-                            <img src={'image' in slide && slide.image ? slide.image : '/QuestionSlider/placeholder.png'} />
+                            {image}
                         </div>
                         <div className={styles.text}>
                             <div className={styles.title}>

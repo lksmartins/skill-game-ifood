@@ -1,0 +1,18 @@
+.loading * {
+  font-size: 2rem;
+}
+
+.animation {
+  overflow: hidden;
+}
+
+.animation * {
+  cursor: default !important;
+}
+
+.animation div svg {
+  width: auto !important;
+  height: 100% !important;
+  max-height: 40vh !important;
+}
+/*# sourceMappingURL=Animation.module.css.map */
