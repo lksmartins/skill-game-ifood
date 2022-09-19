@@ -85,7 +85,7 @@ export default function Play({ questions, map, files }) {
         { x: 21.5, y: 0, ref: "F001_Q022", from: ['F001_Q021'], current: false, main: false, isNext: false },
         { x: 26.5, y: 5, ref: "F001_Q023", from: ['F001_Q021'], current: false, main: false, isNext: false },
         { x: 23.5, y: 21.5, ref: "F001_Q024", from: ['F001_Q021'], current: false, main: false, isNext: false },
-        { x: 30, y: 33, ref: "F001_Q0121", from: ['F001_Q012'], current: false, main: true, isNext: false },
+        { x: 30, y: 33, ref: "F001_Q121", from: ['F001_Q012'], current: false, main: true, isNext: false },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false },
         { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false },
@@ -116,7 +116,7 @@ export default function Play({ questions, map, files }) {
         { x: 21.5, y: 0, ref: "F002_Q022", from: ['F002_Q021'], current: false, main: false, isNext: false },
         { x: 26.5, y: 5, ref: "F002_Q023", from: ['F002_Q021'], current: false, main: false, isNext: false },
         { x: 23.5, y: 21.5, ref: "F002_Q024", from: ['F002_Q021'], current: false, main: false, isNext: false },
-        { x: 30, y: 33, ref: "F002_Q0121", from: ['F002_Q012'], current: false, main: true, isNext: false },
+        { x: 30, y: 33, ref: "F002_Q121", from: ['F002_Q012'], current: false, main: true, isNext: false },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false },
         { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false },
