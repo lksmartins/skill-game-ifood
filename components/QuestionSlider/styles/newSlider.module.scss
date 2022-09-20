@@ -1,3 +1,5 @@
+$mainRed: #EA1D2C;
+
 @keyframes pulse {
     from {
         transform: scale(1)
@@ -90,7 +92,7 @@
 
                 .title {
                     height: auto;
-                    padding: 2rem;
+                    padding: .75rem 1.5rem;
                     background-color: #F5F0EB;
                     z-index: 20;
                     display: flex;
@@ -108,7 +110,7 @@
                     flex-direction: column;
                     justify-content: center;
                     align-items: flex-start;
-                    gap: 1rem;
+                    gap: .65rem;
                     position: relative;
                     min-width: 26vw;
 
@@ -121,21 +123,22 @@
                         font-size: 1.2rem;
                         background: #EA1D2C;
                         box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
-                        border: none;
+                        border: 0.25rem solid $mainRed;
                         border-radius: 28.2003px;
                         color: #FFFFFF;
-                        padding: 0.5rem 2rem;
+                        padding: 0.25rem 2rem;
                         transition: all 0.3s ease;
                         cursor: pointer;
 
                         &:hover {
-                            background-color: black !important;
-                            color: white;
+                            background-color: white !important;
+                            color: $mainRed;
+                            border-color: $mainRed;
                         }
 
                         &.selected {
-                            background-color: black !important;
-                            color: white;
+                            background-color: white !important;
+                            color: $mainRed;
                             box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
 
                             animation-duration: 0.6s;
@@ -149,7 +152,8 @@
                         width: auto;
                         align-self: flex-end;
                         margin-top: 1.5rem;
-                        background-color: blueviolet;
+                        background-color: white;
+                        color: $mainRed;
                         position: relative;
                         padding-right: 3rem;
 
@@ -157,9 +161,15 @@
                             filter: grayscale(1) brightness(1.5);
                         }
 
+                        &:disabled:hover {
+                            transform: scale(1);
+                            cursor: not-allowed;
+                            i{animation-name: unset}
+                        }
+
                         i {
                             position: absolute;
-                            top: .6rem;
+                            top: .4rem;
                             font-size: 1.5rem;
                             right: 0.7rem;
                         }
