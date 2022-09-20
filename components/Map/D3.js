@@ -138,8 +138,6 @@ function ChartInner(props) {
         left: width / xDivider,
     }
 
-    console.log('margin', margin)
-
     let xScale = d3
         .scaleLinear()
         .domain(d3.extent(data.map(d => d.x)))
