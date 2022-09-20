@@ -36,7 +36,6 @@ function ChartInner(props) {
     const { data, controls, width, height, playerJourney, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
 
     function mapClick(e) {
-        console.log('mapclick', e.target)
 
         if (controls.isOpen == false) {
             controls.open()
