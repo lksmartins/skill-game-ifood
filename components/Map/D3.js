@@ -286,6 +286,19 @@ function ChartInner(props) {
         return ref.includes('helper')
     }
 
+    const BASE_COLOR = '#DADADA'
+    const ACTIVE_BASE_COLOR = '#6DDA36'
+    const LINE_COLOR = '#DADADA'
+    const MAIN_LINE_COLOR = '#ECB751'
+
+    const isVisited = (itemRef)=>{
+        for (const journeyItem of playerJourney) {
+            if (journeyItem.to == itemRef || journeyItem.from == itemRef ) return true
+        }
+        if( itemRef == currentObj.ref ) return true
+        return false
+    }
+
     const createCircle = (questionRef, isMain, x, y) => {
 
         const _isHelper = isHelper(questionRef)
@@ -304,7 +317,7 @@ function ChartInner(props) {
             <circle
                 className={_isHelper ? styles.hidden : ''}
                 qref={questionRef}
-                fill={isMain == true ? '#6DDA36' : '#DADADA'}
+                fill={isVisited(questionRef) == true ? ACTIVE_BASE_COLOR : BASE_COLOR}
                 opacity={_isHelper ? 0 : 1}
                 cx={xScale(x)}
                 cy={yScale(y)}
@@ -385,7 +398,7 @@ function ChartInner(props) {
     }
 
     return (
-        <div ref={svgContainerRef} key={`${Math.random()}_${data[0].ref}`} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
+        <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
             <div style={{ position: 'absolute', backgroundColor: '#000' }}>{width} x {Math.trunc(height)} - {w} / {Math.trunc(width / height)}</div>
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
@@ -489,16 +502,16 @@ function ChartInner(props) {
                                 transition = { duration: 2, delay: .1, type: 'tween', repeat: Infinity, repeatType: "alternate" }
                             }
 
-                            let lineColor = '#DADADA'
-                            let lineWidth = 5
+                            let lineColor = LINE_COLOR
+                            let lineWidth = 6
                             let isMain = false
                             for (const el of data) {
                                 if (el.main == true && el.ref == fromRef) isMain = true
                             }
 
                             if (baseItem.main == true && isMain == true) {
-                                lineColor = '#ECB751'
-                                lineWidth = 10
+                                lineColor = MAIN_LINE_COLOR
+                                lineWidth = 12
                             }
 
                             /* Lines */
@@ -527,7 +540,7 @@ function ChartInner(props) {
                                 {createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: "red",
-                                    strokeWidth: lineWidth,
+                                    strokeWidth: lineWidth/2,
                                     pathLength: [pathLengthStart, pathLength],
                                     transition: transition
                                 })}
