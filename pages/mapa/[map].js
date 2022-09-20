@@ -212,7 +212,6 @@ export default function Play({ questions, map, files }) {
         const activeSlideIndex = questions.findIndex(el => el.ref == activeSlideRef)
         updateSlidesPositions(moveTo(questions, activeSlideIndex))
         setCurrentSlide(activeSlideIndex)
-
     }
 
     const moveTo = (slides, moveTo) => {

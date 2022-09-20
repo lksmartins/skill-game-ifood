@@ -68,7 +68,7 @@
   width: 100%;
   height: -webkit-fill-available;
   height: -moz-available;
-  height: fill;
+  height: stretch;
   position: relative;
   overflow-x: hidden !important;
   overflow-y: auto !important;
