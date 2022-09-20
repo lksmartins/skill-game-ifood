@@ -180,14 +180,14 @@ export default function Play({ questions, map, files }) {
 
         }
 
-        console.log("🚀 compatibles.length == localMap.length", compatibles.length == localMap.length)
+        //console.log("🚀 compatibles.length == localMap.length", compatibles.length == localMap.length)
         return compatibles.length == localMap.length
 
     }
 
     useEffect(() => {
 
-        console.log('useEffect[]')
+        //console.log('useEffect[]')
 
         if (localMapLoaded == true) return
 
@@ -220,14 +220,14 @@ export default function Play({ questions, map, files }) {
 
     useEffect(() => {
         if (localMapLoaded == true) {
-            console.log('useEffect[mapData]', mapData)
+            //console.log('useEffect[mapData]', mapData)
             setLocalMap(mapData)
         }
     }, [mapData])
 
     useEffect(() => {
 
-        console.log('useEffect[playerJourney]', playerJourney)
+        //console.log('useEffect[playerJourney]', playerJourney)
         let lastPlayerJourney = playerJourney[playerJourney.length - 1]
         if (lastPlayerJourney != null) {
             updateActiveSlide(lastPlayerJourney.to)
