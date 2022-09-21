@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { getToken } from '../../lib/helper'
+import Progress from '@components/Progress/Progress'
 import Map from '../../components/Map/D3'
 import Slider from '../../components/QuestionSlider/Slider'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
@@ -48,6 +49,9 @@ export default function Play({ questions, map, files }) {
     // MAP
     const [isMapOpen, setIsMapOpen] = useState(false)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
+
+    // Progress
+    const [progress, setProgress] = useState(50)
 
     const toggleMapOpen = () => {
         setIsMapOpen(prev => !prev)
@@ -293,6 +297,8 @@ export default function Play({ questions, map, files }) {
 
     return (
         <main className={styles.mapPage}>
+
+            <Progress progress={progress}/>
 
             <Map
                 data={mapData}

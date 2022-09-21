@@ -1,0 +1,46 @@
+.wrapper {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .progress {
+  background: #EA1D2C;
+  width: 24vw;
+  height: 24vw;
+  border-radius: 12vw;
+  margin-top: -12vw;
+  margin-right: -12vw;
+  padding-top: 13.5vw;
+  padding-right: 13vw;
+  padding-left: 4vw;
+}
+
+.wrapper .image {
+  position: absolute;
+  top: 2vw;
+  right: 2.5vw;
+}
+
+.wrapper .text {
+  position: absolute;
+  background-color: white;
+  color: #EA1D2C;
+  border-radius: 1rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  margin-top: 4.3vw;
+  margin-right: -3vw;
+}
+/*# sourceMappingURL=Progress.module.css.map */
