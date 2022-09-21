@@ -102,6 +102,23 @@ export default function Slider({
         }
     }
 
+    /* useEffect(() => {
+        //add question 0
+        console.log("🚀 ~ file: Slider.js ~ line 118 ~ slides", slides)
+
+        const flowRef = slides[0].flowRef
+
+        slides.unshift({
+            alternatives: [{id: `${flowRef}_Q000-A_A`, ref: `${flowRef}_Q000-A_A`, questionRef: `${flowRef}_Q000`, text: 'SEGUIR', nextQuestion: `${flowRef}_Q001`}],
+            flowRef: flowRef,
+            id: `${flowRef}_000`,
+            isEnd: false,
+            isHidden: false,
+            ref: `${flowRef}_Q000`,
+            text: 'fase 0'
+        })
+    },[]) */
+
     useEffect(() => {
         const elements = document.getElementsByClassName(styles.confirm)
         for (const item of elements) {
@@ -112,6 +129,8 @@ export default function Slider({
     if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
         <i style={{ marginRight: '1rem' }} className="fa-solid fa-circle-notch fa-spin"></i> Carregando...
     </div>
+
+    
 
     return (<>
         <div onClick={(e) => sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
