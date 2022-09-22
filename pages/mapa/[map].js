@@ -47,7 +47,7 @@ export async function getStaticProps(context) {
 export default function Play({ questions, map, files }) {
 
     // MAP
-    const [isMapOpen, setIsMapOpen] = useState(true)
+    const [isMapOpen, setIsMapOpen] = useState(false)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
 
     // Progress
