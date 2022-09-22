@@ -75,22 +75,22 @@ function ChartInner(props) {
         h = {
             550: height / 8,
             520: height / 7,
-            490: height / 8,
-            450: height / 6,
-            410: height / 7,
-            390: height / 7,
-            370: height / 7,
-            345: height / 7
+            490: height / 7,
+            450: (width / proportion) / 8,
+            410: height / 10,
+            390: height / 10,
+            370: height / 8,
+            345: height / 8
         }
     }
 
     if (proportion == 3) {
         h = {
             550: height/13,
-            520: 34,
+            520: (width / proportion) / 20,
             490: 42,
-            410: 36,
-            390: width/40,
+            410: (width / proportion) / 20,
+            390: (width / proportion) / 20,
             365: width/55,
             345: 33,
             330: 38,
@@ -114,6 +114,7 @@ function ChartInner(props) {
     let w = resolution
 
     const xDivider = h[resolution] ? height / h[resolution] : absolute.x
+    //const xDivider = (width / height) * (width*0.0017) // 2488 x 365
     const bDivider = absolute.b
 
     let margin = isMobile ? {
