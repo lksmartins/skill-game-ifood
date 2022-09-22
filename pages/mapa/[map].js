@@ -173,6 +173,8 @@ export default function Play({ questions, map, files }) {
                 }
             }
 
+            if( localMap.filter(el=>el.isEnd==true).length < 9 ) found = false
+
             if (found == true) {
                 compatibles.push(item)
             }
