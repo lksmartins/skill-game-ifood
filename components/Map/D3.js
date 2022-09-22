@@ -363,8 +363,8 @@ function ChartInner(props) {
 
         if (found == null) return null
 
-        const w = found != null ? found.w + 10 : 30
-        const h = found != null ? found.h : 20
+        const w = found != null ? 'w' in found ? found.w + 10 : 30 : 30
+        const h = found != null ? 'h' in found ? found.h : 20 : 20
 
         return <motion.g
             initial={{ opacity: 0 }}
