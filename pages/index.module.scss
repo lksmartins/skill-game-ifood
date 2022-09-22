@@ -1,124 +1,56 @@
 $mainRed: #EA1D2C;
 
 .index {
-    width: 100%;
     min-height: 100vh;
-    padding: 0 6rem;
     background-color: $mainRed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
 
-    .grid {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        min-height: 100%;
-        padding: 0 3rem;
-        max-width: 1360px;
-        //outline: 1px solid white;
-        gap: 0.75rem;
+.text {
+    text-transform: uppercase;
+    color: white;
 
-        .logo {
-            position: relative;
-            height: 16vh;
-            display: flex;
-            margin-top: -1.5rem;
-            justify-content: flex-start;
-            align-items: center;
-            //outline: 1px solid white;
-            //*{outline: 1px solid white;}
+    h1{
+        div{
+            margin-bottom: 0.25rem;
         }
+    }
 
-        .content {
-            display: flex;
-            gap: 2rem;
+    a {
+        background: #FFFFFF;
+        box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 40px;
+        padding: .5rem 5rem;
+        transition: all 0.3s ease;
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: $mainRed;
 
-            .text {
-                grid-area: text;
-                text-transform: uppercase;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                align-items: flex-start;
-                gap: 1rem;
-                color: white;
-
-                h1{
-                    div{
-                        margin-bottom: 0.25rem;
-                    }
-                }
-
-                a {
-                    background: #FFFFFF;
-                    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-                    border-radius: 40px;
-                    padding: .5rem 5rem;
-                    transition: all 0.3s ease;
-
-                    font-weight: 400;
-                    font-size: 2rem;
-                    text-align: center;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    color: $mainRed;
-
-                    &:hover {
-                        transform: translateY(-1rem);
-                        //font-style: italic;
-                        font-weight: bold;
-                        box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
-                    }
-                }
-            }
-
-            .image {
-                grid-area: image;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+        &:hover {
+            transform: translateY(-1rem);
+            //font-style: italic;
+            font-weight: bold;
+            box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
         }
-
     }
 }
 
-@media (max-width: 768px) {
-
-    .index {
-
-        .grid {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-
-            padding: 0 3rem;
-            padding-bottom: unset;
-
-            .content{
-                gap: 0;
-
-                .image {
-                    min-height: 30vh;
-                }
+.image {
+    grid-area: image;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-                .text {
-                    gap: 1rem;
-                    padding: 2rem 0;
-                    height: fill;
-                    justify-content: flex-start;
-    
-                    a {
-                        width: 100%;
-                    }
-                }
-            }
 
+    &.mobile{
+        overflow: hidden;
+        div{
+            transform: scale(1.15) translateX(-.5rem) translateY(-.75rem);
         }
+    }
+    &.increase{
+        div{transform: scale(1.3) translateY(-1.5rem);}
     }
 }
