@@ -358,13 +358,13 @@ function ChartInner(props) {
 
         return <motion.g
             initial={{ opacity: 0 }}
-            animate={{ opacity: controls.isOpen ? 1 : 0 }}>
+            animate={{ opacity: item.ref == currentObj.ref ? controls.isOpen ? 1 : 0 : 0 }}>
 
             <motion.rect
                 initial={{ opacity: 0 }}
                 animate={{ opacity: controls.isOpen ? 1 : 0 }}
                 transition={{ duration: .6, delay: .5 }}
-                x={xScale(item.x) - 22.5}
+                x={xScale(item.x) - w/2}
                 y={yScale(item.y) + 30}
                 width={w}
                 height={h}
@@ -378,9 +378,9 @@ function ChartInner(props) {
 
                 alignmentBaseline="middle"
                 fill="white"
-                x={xScale(item.x) - 17}
+                x={xScale(item.x) - w/2.2}
                 y={yScale(item.y) + 40}>
-                {item.ref}
+                {item.stepName != '' ? item.stepName : item.ref}
             </text>
         </motion.g>
 
@@ -549,8 +549,6 @@ function ChartInner(props) {
 
                         {createCircle(item.ref, item.main, item.x, item.y)}
 
-                        {createText(item)}
-
                         {createNextQuestionCircle({ isVisible: isThisNextVisible, x: item.x, y: item.y })}
 
                     </g>
@@ -561,6 +559,15 @@ function ChartInner(props) {
 
                 {/* Icon */}
                 {createIcon(currentPosition)}
+
+                {data.map((item, index) => {
+
+                    return <g key={`${index}_${item.ref}_texts`}>
+
+                        {createText(item)}
+
+                    </g>
+                })}
 
             </svg>
         </div>

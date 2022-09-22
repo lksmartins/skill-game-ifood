@@ -120,7 +120,19 @@ export default function Play({ questions, map, files }) {
         { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false  },
     ]
 
-    const [mapData, updateMapData] = useState(map == 'F001' ? mapDataset1 : mapDataset2)
+    const feedMapData = (food, map)=>{
+
+        for( const item of food ){
+            for( const mapItem of map ){
+                if( mapItem.ref == item.ref ) mapItem.stepName = item.stepName
+            }
+        }
+
+        return map
+
+    }
+
+    const [mapData, updateMapData] = useState(map == 'F001' ? feedMapData(questions, mapDataset1) : feedMapData(questions, mapDataset2))
     //const [mapData, updateMapData] = useState()
     const [isMapOpen, setIsMapOpen] = useState(false)
     const [localMap, setLocalMap, resetLocal] = useLocalStorage(`map_${map}`)
