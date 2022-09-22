@@ -2,7 +2,8 @@ $mainRed: #EA1D2C;
 
 .parent {
     width: 100% !important;
-    height: calc(100vw / 1.5) !important;
+    height: 50vh !important;
+    min-height: 350px;
     transition: all 0.6s ease;
     background: #890019;
     position: relative;
@@ -36,7 +37,6 @@ $mainRed: #EA1D2C;
     }
 
     .svgContainer {
-        position: absolute;
         width: 100% !important;
         height: 100% !important;
         //height: 56vh !important;        
@@ -78,7 +78,7 @@ $mainRed: #EA1D2C;
     top: 0;
     left: 0;
 }
-
+/* 
 @media (max-width: 1024px) {
     .parent{
         height: calc(100vw / 2.2) !important;
@@ -125,4 +125,4 @@ $mainRed: #EA1D2C;
     .parent{
         height: calc(100vw / 1.9) !important;
     }
-}
+} */

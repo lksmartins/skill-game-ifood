@@ -70,12 +70,12 @@ export default function Play({ questions, map, files }) {
         { x: 4, y: 5, ref: 'F001_Q002', from: ['F001_Q001'], current: false, main: false, isNext: false, isEnd: false },
         { x: 11.5, y: 0, ref: 'F001_Q003', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 9, y: 10, ref: 'F001_Q004', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 3.5, y: 20, ref: 'F001_Q005', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 3.5, y: 20, ref: 'F001_Q005', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 7, y: 35, ref: 'F001_Q006', from: ['F001_Q001', 'F001_Q005'], current: false, main: true, isNext: false, isEnd: false },
         { x: 12, y: 20, ref: 'F001_Q007', from: ['F001_Q006'], current: false, main: false, isNext: false, isEnd: false },
         { x: 14.8, y: 8, ref: 'F001_Q008', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: true },
         { x: 16.9, y: 14, ref: 'F001_Q009', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 16, y: 24.7, ref: 'F001_Q010', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 16, y: 24.7, ref: 'F001_Q010', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: true },
         { x: 19.06, y: 35, ref: 'F001_Q011', from: ['F001_Q006', 'F001_Q010'], current: false, main: true, isNext: false, isEnd: false },
         { x: 25.05, y: 35, ref: 'F001_Q012', from: ['F001_Q011', 'F001_Q024'], current: false, main: true, isNext: false, isEnd: false },
         { x: 33.5, y: 15, curve: [30, 25], ref: 'F001_Q013', from: ['F001_Q012'], current: false, main: false, isNext: false, isEnd: false },
@@ -102,7 +102,7 @@ export default function Play({ questions, map, files }) {
         { x: 4, y: 5, ref: 'F002_Q002', from: ['F002_Q001'], current: false, main: false, isNext: false, isEnd: false },
         { x: 11.5, y: 0, ref: 'F002_Q003', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 9, y: 10, ref: 'F002_Q004', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 3.5, y: 20, ref: 'F002_Q005', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 3.5, y: 20, ref: 'F002_Q005', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 7, y: 35, ref: 'F002_Q006', from: ['F002_Q001', 'F002_Q005'], current: false, main: true, isNext: false, isEnd: false },
         { x: 14, y: 20, ref: 'F002_Q007', from: ['F002_Q006'], current: false, main: false, isNext: false, isEnd: true },
         { x: 19.06, y: 35, ref: 'F002_Q008', from: ['F002_Q006'], current: false, main: true, isNext: false, isEnd: false },
@@ -267,6 +267,7 @@ export default function Play({ questions, map, files }) {
 
         // update progress
         const totalEnds = mapData.filter(el=>el.isEnd==true)
+        console.log("🚀 ~ file: [map].js ~ line 270 ~ useEffect ~ totalEnds", totalEnds)
 
         let count = 0
         for( const end of totalEnds ) {
@@ -343,7 +344,7 @@ export default function Play({ questions, map, files }) {
     }
 
     return (
-        <main className={styles.mapPage}>
+        <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
 
             <Progress animationRef={progressRef} progress={progress}/>
 

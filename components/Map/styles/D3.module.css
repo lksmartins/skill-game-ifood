@@ -1,6 +1,7 @@
 .parent {
   width: 100% !important;
-  height: calc(100vw / 1.5) !important;
+  height: 50vh !important;
+  min-height: 350px;
   -webkit-transition: all 0.6s ease;
   transition: all 0.6s ease;
   background: #890019;
@@ -45,7 +46,6 @@
 }
 
 .parent .svgContainer {
-  position: absolute;
   width: 100% !important;
   height: 100% !important;
   background-color: #890019;
@@ -89,51 +89,52 @@
   left: 0;
 }
 
+/* 
 @media (max-width: 1024px) {
-  .parent {
-    height: calc(100vw / 2.2) !important;
-  }
+    .parent{
+        height: calc(100vw / 2.2) !important;
+    }
 }
 
 @media (max-width: 1024px) and (max-height: 600px) {
-  .parent {
-    height: calc(100vw / 1.8) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.8) !important;
+    }
 }
 
 @media (max-width: 1280px) {
-  .parent {
-    height: calc(100vw / 1.8) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.8) !important;
+    }
 }
 
 @media (max-width: 1366px) {
-  .parent {
-    height: calc(100vw / 1.7) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.7) !important;
+    }
 }
 
 @media (max-width: 1440px) {
-  .parent {
-    height: calc(100vw / 1.9) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.9) !important;
+    }
 }
 
 @media (max-width: 1600px) {
-  .parent {
-    height: calc(100vw / 1.7) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.7) !important;
+    }
 }
 
 @media (max-width: 1680px) {
-  .parent {
-    height: calc(100vw / 1.9) !important;
-  }
+    .parent{
+        height: calc(100vw / 1.9) !important;
+    }
 }
 
 @media (max-width: 1920px) and (max-height: 1200px) {
-  .parent {
-    height: calc(100vw / 1.9) !important;
-  }
-}
+    .parent{
+        height: calc(100vw / 1.9) !important;
+    }
+} */
 /*# sourceMappingURL=D3.module.css.map */

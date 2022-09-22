@@ -130,7 +130,7 @@ export default function Slider({
         <i style={{ marginRight: '1rem' }} className="fa-solid fa-circle-notch fa-spin"></i> Carregando...
     </div>
 
-    
+    console.log('currentSlide',currentSlide)
 
     return (<>
         <div onClick={(e) => sliderClick(e)} className={`${styles.slider} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
@@ -143,7 +143,7 @@ export default function Slider({
 
                 return <div
                     key={slide.id}
-                    className={`${styles.slide} ${`moveLeft_${slidesPositions[index]}`}`}
+                    className={`${styles.slide} ${slides[currentSlide].id == slide.id ? styles.showSlide : styles.hideSlide} ${`moveLeft_${slidesPositions[index]}`}`}
                 >
                     <div className={styles.wrapper}>
                         <div className={styles.image}>
