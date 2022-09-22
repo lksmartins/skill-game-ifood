@@ -51,7 +51,6 @@ export default function Play({ questions, map, files }) {
     const progressRef = useRef()
 
     // MAP
-    const [isMapOpen, setIsMapOpen] = useState(false)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
 
     const toggleMapOpen = () => {
@@ -78,20 +77,20 @@ export default function Play({ questions, map, files }) {
         { x: 16.9, y: 14, ref: 'F001_Q009', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: true },
         { x: 16, y: 24.7, ref: 'F001_Q010', from: ['F001_Q007'], current: false, main: false, isNext: false, isEnd: false },
         { x: 19.06, y: 35, ref: 'F001_Q011', from: ['F001_Q006', 'F001_Q010'], current: false, main: true, isNext: false, isEnd: false },
-        { x: 25.05, y: 31.8, ref: 'F001_Q012', from: ['F001_Q011', 'F001_Q024'], current: false, main: true, isNext: false, isEnd: false },
-        { x: 33.2, y: 15, curve: [30, 25], ref: 'F001_Q013', from: ['F001_Q012'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 33.1, y: 3, ref: 'F001_Q014', from: ['F001_Q013'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 25.05, y: 35, ref: 'F001_Q012', from: ['F001_Q011', 'F001_Q024'], current: false, main: true, isNext: false, isEnd: false },
+        { x: 33.5, y: 15, curve: [30, 25], ref: 'F001_Q013', from: ['F001_Q012'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 31, y: 3, ref: 'F001_Q014', from: ['F001_Q013'], current: false, main: false, isNext: false, isEnd: true },
         { x: 33.5, y: 30, ref: 'F001_Q015', from: ['F001_Q013'], current: false, main: false, isNext: false, isEnd: true },
         { x: 38.5, y: 29.3, ref: 'F001_Q016', from: ['F001_Q013'], current: false, main: false, isNext: false, isEnd: false },
         { x: 41.5, y: 10, ref: 'F001_Q017', from: ['F001_Q016'], current: false, main: false, isNext: false, isEnd: false },
         { x: 47, y: 2, curve: [43.5, 2], ref: 'F001_Q018', from: ['F001_Q017'], current: false, main: false, isNext: false, isEnd: true },
         { x: 50, y: 17.3, curve: [46, 9], ref: 'F001_Q019', from: ['F001_Q017'], current: false, main: false, isNext: false, isEnd: true },
         { x: 47.5, y: 35, curve: [43, 35], ref: 'F001_Q020', from: ['F001_Q016'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 22.5, y: 10, ref: 'F001_Q021', from: ['F001_Q011'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 21.5, y: 0, ref: 'F001_Q022', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 20.9, y: 10, ref: 'F001_Q021', from: ['F001_Q011'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 23.5, y: 0, ref: 'F001_Q022', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
         { x: 26.5, y: 5, ref: 'F001_Q023', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 23.5, y: 21.5, ref: 'F001_Q024', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 30, y: 33, ref: 'F001_Q121', from: ['F001_Q012'], current: false, main: true, isNext: false, isEnd: true },
+        { x: 23.1, y: 21.5, ref: 'F001_Q024', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 30, y: 35, ref: 'F001_Q121', from: ['F001_Q012'], current: false, main: true, isNext: false, isEnd: true },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false, isEnd: false },
         { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false },
@@ -123,6 +122,7 @@ export default function Play({ questions, map, files }) {
 
     const [mapData, updateMapData] = useState(map == 'F001' ? mapDataset1 : mapDataset2)
     //const [mapData, updateMapData] = useState()
+    const [isMapOpen, setIsMapOpen] = useState(false)
     const [localMap, setLocalMap, resetLocal] = useLocalStorage(`map_${map}`)
     const [localJourney, setLocalJourney] = useLocalStorage(`journey_${map}`)
     const [localMapLoaded, setLocalMapLoaded] = useState(false)
@@ -267,7 +267,6 @@ export default function Play({ questions, map, files }) {
 
         // update progress
         const totalEnds = mapData.filter(el=>el.isEnd==true)
-        console.log("🚀 ~ file: [map].js ~ line 258 ~ useEffect ~ totalEnds", totalEnds)
 
         let count = 0
         for( const end of totalEnds ) {
