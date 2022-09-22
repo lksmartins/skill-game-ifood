@@ -22,8 +22,8 @@ export default function Index() {
 
                     <div className={styles.text}>
                         <h1>
-                            <div>Guia interativo</div>
-                            Política de cancelamento de pedidos ifood
+                        <div>Guia Interativo para Restaurantes</div>
+                        Política de Cancelamento de Pedidos
                         </h1>
                         <Link href="/start"><a>Iniciar minha jornada</a></Link>
                     </div>
