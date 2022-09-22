@@ -70,7 +70,7 @@ export default function Play({ questions, map, files }) {
         { x: 1, y: 25.5, ref: 'F001_Q001', from: ['F001_Q000'], current: false, main: true, isNext: false, isEnd: false },
         { x: 4, y: 5, ref: 'F001_Q002', from: ['F001_Q001'], current: false, main: false, isNext: false, isEnd: false },
         { x: 11.5, y: 0, ref: 'F001_Q003', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 9, y: 10, ref: 'F001_Q004', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 9, y: 10, ref: 'F001_Q004', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 3.5, y: 20, ref: 'F001_Q005', from: ['F001_Q002'], current: false, main: false, isNext: false, isEnd: false },
         { x: 7, y: 35, ref: 'F001_Q006', from: ['F001_Q001', 'F001_Q005'], current: false, main: true, isNext: false, isEnd: false },
         { x: 12, y: 20, ref: 'F001_Q007', from: ['F001_Q006'], current: false, main: false, isNext: false, isEnd: false },
@@ -90,8 +90,8 @@ export default function Play({ questions, map, files }) {
         { x: 22.5, y: 10, ref: 'F001_Q021', from: ['F001_Q011'], current: false, main: false, isNext: false, isEnd: false },
         { x: 21.5, y: 0, ref: 'F001_Q022', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
         { x: 26.5, y: 5, ref: 'F001_Q023', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 23.5, y: 21.5, ref: 'F001_Q024', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 30, y: 33, ref: 'F001_Q121', from: ['F001_Q012'], current: false, main: true, isNext: false, isEnd: false },
+        { x: 23.5, y: 21.5, ref: 'F001_Q024', from: ['F001_Q021'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 30, y: 33, ref: 'F001_Q121', from: ['F001_Q012'], current: false, main: true, isNext: false, isEnd: true },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false, isEnd: false },
         { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false },
@@ -186,6 +186,20 @@ export default function Play({ questions, map, files }) {
 
     }
 
+    const updataMapDataFromLocalStorage = (local)=>{
+
+        const newData = [...mapData]
+
+        let i = 0
+        for( const item of local ){
+            newData[i].current = item.current
+            i++
+        }
+
+        updateMapData(newData)
+
+    }
+
     useEffect(() => {
 
         //console.log('useEffect[]')
@@ -213,7 +227,8 @@ export default function Play({ questions, map, files }) {
             }
         })
         if (found == false) localMap[0].current = true
-        updateMapData(localMap)
+
+        updataMapDataFromLocalStorage(localMap)
 
         //Journey
         if (localJourney != '') {
@@ -252,6 +267,7 @@ export default function Play({ questions, map, files }) {
 
         // update progress
         const totalEnds = mapData.filter(el=>el.isEnd==true)
+        console.log("🚀 ~ file: [map].js ~ line 258 ~ useEffect ~ totalEnds", totalEnds)
 
         let count = 0
         for( const end of totalEnds ) {
