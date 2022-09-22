@@ -141,8 +141,6 @@ function ChartInner(props) {
 
     let currentObj = data.find(el => el.current == true)
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
-    let nextObj = data.find(el => el.ref == nextQuestion)
-    let nextPosition = nextObj != null ? { x: xScale(nextObj.x), y: yScale(nextObj.y) } : { x: currentPosition.x, y: currentPosition.y }
 
     const [wasPathAnimated, setWasPathAnimated] = useState([])
     const [textRects, setTextRects] = useState(data)
@@ -330,7 +328,7 @@ function ChartInner(props) {
 
             <a href="/start">
                 <circle
-                    fill="red"
+                    fill="#EA1D2C"
                     cx={0}
                     cy={0}
                     r={Math.trunc(height / 2.3)}
