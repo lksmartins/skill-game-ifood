@@ -329,15 +329,15 @@ export default function Play({ questions, map, files }) {
 
             setTimeout(() => {
                 mapControls.close()
+                setCurrentSlide(activeSlide)
+                updateSlidesPositions(moveTo(questions, activeSlide))
 
                 // move slide
                 setTimeout(() => {
                     setIsMapAnimating(false)
-                    setCurrentSlide(activeSlide)
-                    updateSlidesPositions(moveTo(questions, activeSlide))
-                }, 1200)
+                }, 600)
 
-            }, 1800)
+            }, 1000)
 
         }, 600)
     }
