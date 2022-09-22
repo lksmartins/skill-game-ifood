@@ -92,8 +92,7 @@ $mainRed: #EA1D2C;
 
                 .title {
                     height: auto;
-                    padding: .75rem 1.5rem;
-                    background-color: #F5F0EB;
+                    padding: .5rem 1.5rem;
                     z-index: 20;
                     display: flex;
                     justify-content: center;
@@ -102,7 +101,6 @@ $mainRed: #EA1D2C;
                     border-radius: 28px;
                     font-weight: bold;
                     font-size: 1.2rem;
-                    box-shadow: 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
                 }
 
                 .alternatives {
