@@ -1,114 +1,82 @@
 .start {
-  width: 100%;
-  min-height: 100vh;
   background-color: #EA1D2C;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
 }
 
-.start .grid {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 3rem;
-  margin: 0;
+.start :global(.col), .start :global(.row) {
+  max-width: 1200px;
 }
 
-.start .grid .logo {
-  position: relative;
-  height: 6rem;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 3rem;
+.start .mainText {
+  background-color: #F9F2E8;
+  color: #5C5C5C;
+  border-radius: 20px;
 }
 
-.start .grid .text {
+.start .startButton {
+  background: #F9F2E8;
+  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 1.25rem 1rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  line-height: 1.5rem;
+  color: #EA1D2C;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: stretch;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 1.5rem;
-  padding: 0 6rem;
-  color: white;
-  font-size: 1.2rem;
 }
 
-.start .grid .text .paragraph {
-  background-color: white;
-  color: #5C5C5C;
-  border-radius: 20px;
-  padding: 1rem 2rem;
-  max-width: 900px;
+.start .startButton .image {
+  position: relative;
 }
 
-.start .grid .text a {
-  background: #FFFFFF;
-  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  padding: 1.25rem 5rem;
+.start .startButton .image img {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.start .startButton .innerText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #EA1D2C;
   line-height: 2rem;
   font-weight: 400;
   font-size: 2rem;
   text-align: center;
-  text-decoration: none;
   text-transform: uppercase;
-  color: #EA1D2C;
-  width: 100%;
 }
 
-.start .grid .text a.max {
-  max-width: 35rem;
-}
-
-.start .grid .text a .small {
+.start .startButton .innerText .small {
   margin-top: 0.5rem;
-  font-size: 0.95rem !important;
-  line-height: 1.5rem;
+  font-size: 0.9rem !important;
   font-style: italic;
 }
 
-.start .grid .text a:hover {
+.start .startButton:hover {
   -webkit-transform: translateY(-1rem);
           transform: translateY(-1rem);
   font-weight: bold;
@@ -116,43 +84,17 @@
           box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
 }
 
-.start .grid .image {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+.start .startButton:hover .image img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
-  .start {
-    height: auto;
-    padding-bottom: unset;
-  }
-  .start .grid {
-    height: auto;
-  }
-  .start .grid .logo {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .start .grid .text {
-    height: auto;
-    padding: unset;
-  }
-  .start .grid .text a {
-    padding: 2rem 1rem;
-  }
-  .start .grid .text a .small {
-    margin-top: 0.4rem;
-    font-size: 0.95rem !important;
-    line-height: 1rem;
-    font-style: italic;
+  .start .startButton {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
 /*# sourceMappingURL=start.module.css.map */

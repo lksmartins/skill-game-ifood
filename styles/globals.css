@@ -63,6 +63,7 @@ body {
   font-weight: 400;
   background: #141414;
   color: #E8EAED;
+  min-height: 100vh;
 }
 
 .main {
