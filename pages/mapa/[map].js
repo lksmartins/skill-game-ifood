@@ -46,12 +46,13 @@ export async function getStaticProps(context) {
 
 export default function Play({ questions, map, files }) {
 
+    // Progress
+    const [progress, setProgress] = useState(50)
+    const progressRef = useRef()
+
     // MAP
     const [isMapOpen, setIsMapOpen] = useState(false)
     const [isMapAnimating, setIsMapAnimating] = useState(false)
-
-    // Progress
-    const [progress, setProgress] = useState(50)
 
     const toggleMapOpen = () => {
         setIsMapOpen(prev => !prev)
@@ -93,7 +94,7 @@ export default function Play({ questions, map, files }) {
         { x: 30, y: 33, ref: 'F001_Q121', from: ['F001_Q012'], current: false, main: true, isNext: false, isEnd: false },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false, isEnd: false },
-        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false },
+        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false },
     ]
 
     const mapDataset2 = [
@@ -101,23 +102,23 @@ export default function Play({ questions, map, files }) {
         { x: 0, y: 25.5, ref: 'F002_Q001', from: ['F002_Q000'], current: false, main: true, isNext: false, isEnd: false },
         { x: 4, y: 5, ref: 'F002_Q002', from: ['F002_Q001'], current: false, main: false, isNext: false, isEnd: false },
         { x: 11.5, y: 0, ref: 'F002_Q003', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 9, y: 10, ref: 'F002_Q004', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 9, y: 10, ref: 'F002_Q004', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: true },
         { x: 3.5, y: 20, ref: 'F002_Q005', from: ['F002_Q002'], current: false, main: false, isNext: false, isEnd: false },
         { x: 7, y: 35, ref: 'F002_Q006', from: ['F002_Q001', 'F002_Q005'], current: false, main: true, isNext: false, isEnd: false },
-        { x: 14, y: 20, ref: 'F002_Q007', from: ['F002_Q006'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 14, y: 20, ref: 'F002_Q007', from: ['F002_Q006'], current: false, main: false, isNext: false, isEnd: true },
         { x: 19.06, y: 35, ref: 'F002_Q008', from: ['F002_Q006'], current: false, main: true, isNext: false, isEnd: false },
-        { x: 27, y: 35, ref: 'F002_Q009', from: ['F002_Q008'], current: false, main: true, isNext: false, isEnd: false },
+        { x: 27, y: 35, ref: 'F002_Q009', from: ['F002_Q008'], current: false, main: true, isNext: false, isEnd: true },
         { x: 23, y: 20, ref: 'F002_Q010', from: ['F002_Q008'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 22, y: 1, ref: 'F002_Q011', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 27, y: 1, ref: 'F002_Q012', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 22, y: 1, ref: 'F002_Q011', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 27, y: 1, ref: 'F002_Q012', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: true },
         { x: 31, y: 29, ref: 'F002_Q013', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 34, y: 6, ref: 'F002_Q014', from: ['F002_Q013'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 34, y: 6, ref: 'F002_Q014', from: ['F002_Q013'], current: false, main: false, isNext: false, isEnd: true },
         { x: 38.5, y: 29, ref: 'F002_Q015', from: ['F002_Q013'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 45, y: 6, curve:[42,13.5], ref: 'F002_Q016', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 48, y: 30, curve:[44,35], ref: 'F002_Q017', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: false },
+        { x: 45, y: 6, curve:[42,13.5], ref: 'F002_Q016', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 48, y: 30, curve:[44,35], ref: 'F002_Q017', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false, isEnd: false },
-        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false },
+        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false  },
     ]
 
     const [mapData, updateMapData] = useState(map == 'F001' ? mapDataset1 : mapDataset2)
@@ -226,6 +227,15 @@ export default function Play({ questions, map, files }) {
         }
     }, [mapData])
 
+    const getUniquePJ = (data)=>{
+        const uniques = []
+        for( const item of data ){
+            const found = uniques.find(el=>el.to==item.to && el.from==item.from)
+            if( found == null ) uniques.push(item)
+        }
+        return uniques
+    }
+
     useEffect(() => {
 
         //console.log('useEffect[playerJourney]', playerJourney)
@@ -238,7 +248,35 @@ export default function Play({ questions, map, files }) {
             setLocalJourney(playerJourney)
         }
 
+        // update progress
+        const totalEnds = mapData.filter(el=>el.isEnd==true)
+
+        let count = 0
+        for( const end of totalEnds ) {
+            const found = getUniquePJ(playerJourney).find(el=>el.from==end.ref || el.to==end.ref)
+            if( found != null ) count++
+        }
+
+        const percent = count == 0 ? 0 : Math.trunc((count*100) / totalEnds.length)
+
+        setProgress(percent)
+
     }, [playerJourney])
+
+    useEffect(() => {
+
+        progressRef.current.classList.add('animate1')
+
+        setTimeout(() =>{
+            progressRef.current.classList.remove('animate1')
+            progressRef.current.classList.add('animate2')
+
+            setTimeout(() => {
+                progressRef.current.classList.remove('animate2')
+            },[300])
+        },[300])
+
+    },[progress])
 
     const currentQuestionMarker = useRef()
     const svgContainer = useRef()
@@ -290,11 +328,10 @@ export default function Play({ questions, map, files }) {
     return (
         <main className={styles.mapPage}>
 
-            <Progress progress={progress}/>
+            <Progress animationRef={progressRef} progress={progress}/>
 
             <Map
                 data={mapData}
-                updateData={updateMapData}
                 controls={mapControlsObj}
                 playerJourney={playerJourney}
                 updatePlayerJourney={updatePlayerJourney}

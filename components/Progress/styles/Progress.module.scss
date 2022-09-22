@@ -27,6 +27,14 @@ $mainRed: #EA1D2C;
         position: absolute;
         top: 2vw;
         right: 2.5vw;
+        transition: all 0.3s ease;
+
+        &:global(.animate1){
+            transform: scale(1.5) rotate(25deg);
+        }
+        &:global(.animate2){
+            transform: scale(1.5) rotate(-25deg);
+        }
     }
 
     .text{

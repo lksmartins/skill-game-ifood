@@ -4,13 +4,13 @@ import { Circle } from 'rc-progress'
 import sacola from '../../public/Progress/sacola.svg'
 import Image from 'next/image'
 
-export default function Progress({progress=50}) {
+export default function Progress({animationRef, progress=50}) {
     return(
         <div className={styles.wrapper}>
 
             <div className={styles.text}>{progress}%</div>
 
-            <div className={styles.image}>
+            <div ref={animationRef} className={styles.image}>
                 <Image src={sacola} width="70%" height="80%" />
             </div>
 
