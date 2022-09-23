@@ -1,0 +1,198 @@
+$mainRed: #EA1D2C;
+$darkRed: #890019;
+
+@keyframes pulse {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.1)
+    }
+}
+
+@keyframes pulseMobile {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.05)
+    }
+}
+
+@keyframes moveRight {
+    from {
+        transform: translateX(0) scale(1);
+    }
+
+    to {
+        transform: translateX(0.3rem) scale(1.2);
+    }
+}
+
+.slider {
+    width: 100%;
+    height: auto;
+    min-height: 50vh;
+    position: relative;
+    z-index: 10;
+    transition: all 0.6s ease !important;
+    background-color: white;
+    color: black;
+    border-radius: 1.5rem 0 0 0;
+    box-shadow: 0px 0px 12.82003px rgba(0, 0, 0, 0.25);
+
+    &.loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+    }
+
+    .slide {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100%;
+        display: flex;
+        gap: 2rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 11;
+        transition: all 1s ease !important;
+
+        //*{outline:1px solid black;}
+
+        &.showSlide{
+            display: flex;
+        }
+        &.hideSlide{
+            display: none;
+        }
+
+        .wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem;
+            padding-bottom: 3rem;
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+
+                .title {
+                    height: auto;
+                    padding: .5rem 1.5rem;
+                    z-index: 20;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    border-radius: 28px;
+                    font-size: 1.2rem;
+                    color: #232323 !important;
+                }
+
+                .alternatives {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    gap: .65rem;
+                    position: relative;
+                    width: 100%;
+
+                    .alternative {
+                        background: #EA1D2C;
+                    }
+
+                    button {
+                        width: 100%;
+                        font-size: 1.2rem;
+                        background: #EA1D2C;
+                        border: 0.25rem solid $mainRed;
+                        border-radius: 0.5rem;
+                        color: #FFFFFF;
+                        padding: 0.25rem 2rem;
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                        border-bottom: 0.25rem solid $darkRed;
+
+                        &:after{
+                            content: " ";
+                            width: 90%;
+                            height: 30px;
+                            background: $darkRed;
+                        }
+
+                        &:hover {
+                            background-color: white !important;
+                            color: $mainRed;
+                            border-color: $mainRed;
+                        }
+
+                        &.selected {
+                            background-color: white !important;
+                            color: $mainRed;
+                            box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
+
+                            animation-duration: 0.6s;
+                            animation-name: pulse;
+                            animation-iteration-count: infinite;
+                            animation-direction: alternate;
+                        }
+                    }
+
+                    .confirm {
+                        width: auto;
+                        align-self: flex-end;
+                        margin-top: 1.5rem;
+                        background-color: white;
+                        color: $mainRed;
+                        position: relative;
+                        padding-right: 3rem;
+
+                        &:disabled {
+                            filter: grayscale(1) brightness(1.5);
+                            font-weight: bold;
+                        }
+
+                        &:disabled:hover {
+                            transform: scale(1);
+                            cursor: not-allowed;
+                            i{animation-name: unset}
+                        }
+
+                        i {
+                            position: absolute;
+                            top: .4rem;
+                            font-size: 1.5rem;
+                            right: 0.7rem;
+                        }
+
+                        &:hover {
+                            transform: scale(1.1);
+
+                            i {
+                                animation-duration: 0.4s;
+                                animation-name: moveRight;
+                                animation-iteration-count: infinite;
+                                animation-direction: alternate;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+
+}

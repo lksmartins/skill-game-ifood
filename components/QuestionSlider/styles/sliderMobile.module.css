@@ -133,24 +133,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  gap: 2rem;
-  padding: 1rem 5rem;
-}
-
-.slider .slide .wrapper .image {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
+  gap: 2rem;
+  padding: 1rem;
+  padding-bottom: 3rem;
 }
 
 .slider .slide .wrapper .text {
@@ -205,7 +193,7 @@
           align-items: flex-start;
   gap: .65rem;
   position: relative;
-  min-width: 26vw;
+  width: 100%;
 }
 
 .slider .slide .wrapper .text .alternatives .alternative {
@@ -216,15 +204,21 @@
   width: 100%;
   font-size: 1.2rem;
   background: #EA1D2C;
-  -webkit-box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
-          box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
   border: 0.25rem solid #EA1D2C;
-  border-radius: 28.2003px;
+  border-radius: 0.5rem;
   color: #FFFFFF;
   padding: 0.25rem 2rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   cursor: pointer;
+  border-bottom: 0.25rem solid #890019;
+}
+
+.slider .slide .wrapper .text .alternatives button:after {
+  content: " ";
+  width: 90%;
+  height: 30px;
+  background: #890019;
 }
 
 .slider .slide .wrapper .text .alternatives button:hover {
@@ -298,280 +292,4 @@
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
 }
-
-@media (max-width: 1024px) {
-  .slider .slide .wrapper {
-    padding: 1rem 2rem 0 0.5rem;
-  }
-  .slider .slide .wrapper .text .title {
-    padding: 0.5rem 1rem;
-  }
-  .slider .slide .wrapper .text .alternatives {
-    gap: 0.25rem;
-  }
-  .slider .slide .wrapper .text .alternatives .confirm {
-    margin-top: 0.5rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .slider .slide .wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-}
-
-.slider .slide:global(.moveLeft_0vw) {
-  left: 0vw !important;
-}
-
-.slider .slide:global(.moveLeft_100vw) {
-  left: 100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-100vw) {
-  left: -100vw !important;
-}
-
-.slider .slide:global(.moveLeft_200vw) {
-  left: 200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-200vw) {
-  left: -200vw !important;
-}
-
-.slider .slide:global(.moveLeft_300vw) {
-  left: 300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-300vw) {
-  left: -300vw !important;
-}
-
-.slider .slide:global(.moveLeft_400vw) {
-  left: 400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-400vw) {
-  left: -400vw !important;
-}
-
-.slider .slide:global(.moveLeft_500vw) {
-  left: 500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-500vw) {
-  left: -500vw !important;
-}
-
-.slider .slide:global(.moveLeft_600vw) {
-  left: 600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-600vw) {
-  left: -600vw !important;
-}
-
-.slider .slide:global(.moveLeft_700vw) {
-  left: 700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-700vw) {
-  left: -700vw !important;
-}
-
-.slider .slide:global(.moveLeft_800vw) {
-  left: 800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-800vw) {
-  left: -800vw !important;
-}
-
-.slider .slide:global(.moveLeft_900vw) {
-  left: 900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-900vw) {
-  left: -900vw !important;
-}
-
-.slider .slide:global(.moveLeft_1000vw) {
-  left: 1000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1000vw) {
-  left: -1000vw !important;
-}
-
-.slider .slide:global(.moveLeft_1100vw) {
-  left: 1100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1100vw) {
-  left: -1100vw !important;
-}
-
-.slider .slide:global(.moveLeft_1200vw) {
-  left: 1200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1200vw) {
-  left: -1200vw !important;
-}
-
-.slider .slide:global(.moveLeft_1300vw) {
-  left: 1300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1300vw) {
-  left: -1300vw !important;
-}
-
-.slider .slide:global(.moveLeft_1400vw) {
-  left: 1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1400vw) {
-  left: -1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_1400vw) {
-  left: 1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1400vw) {
-  left: -1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_1500vw) {
-  left: 1500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1500vw) {
-  left: -1500vw !important;
-}
-
-.slider .slide:global(.moveLeft_1600vw) {
-  left: 1600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1600vw) {
-  left: -1600vw !important;
-}
-
-.slider .slide:global(.moveLeft_1700vw) {
-  left: 1700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1700vw) {
-  left: -1700vw !important;
-}
-
-.slider .slide:global(.moveLeft_1800vw) {
-  left: 1800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1800vw) {
-  left: -1800vw !important;
-}
-
-.slider .slide:global(.moveLeft_1900vw) {
-  left: 1900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1900vw) {
-  left: -1900vw !important;
-}
-
-.slider .slide:global(.moveLeft_2000vw) {
-  left: 2000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2000vw) {
-  left: -2000vw !important;
-}
-
-.slider .slide:global(.moveLeft_2100vw) {
-  left: 2100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2100vw) {
-  left: -2100vw !important;
-}
-
-.slider .slide:global(.moveLeft_2200vw) {
-  left: 2200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2200vw) {
-  left: -2200vw !important;
-}
-
-.slider .slide:global(.moveLeft_2300vw) {
-  left: 2300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2300vw) {
-  left: -2300vw !important;
-}
-
-.slider .slide:global(.moveLeft_2400vw) {
-  left: 2400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2400vw) {
-  left: -2400vw !important;
-}
-
-.slider .slide:global(.moveLeft_2500vw) {
-  left: 2500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2500vw) {
-  left: -2500vw !important;
-}
-
-.slider .slide:global(.moveLeft_2600vw) {
-  left: 2600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2600vw) {
-  left: -2600vw !important;
-}
-
-.slider .slide:global(.moveLeft_2700vw) {
-  left: 2700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2700vw) {
-  left: -2700vw !important;
-}
-
-.slider .slide:global(.moveLeft_2800vw) {
-  left: 2800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2800vw) {
-  left: -2800vw !important;
-}
-
-.slider .slide:global(.moveLeft_2900vw) {
-  left: 2900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2900vw) {
-  left: -2900vw !important;
-}
-
-.slider .slide:global(.moveLeft_3000vw) {
-  left: 3000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-3000vw) {
-  left: -3000vw !important;
-}
-/*# sourceMappingURL=newSlider.module.css.map */
+/*# sourceMappingURL=sliderMobile.module.css.map */

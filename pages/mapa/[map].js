@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { getToken } from '../../lib/helper'
-import Progress from '@components/Progress/Progress'
-import Map from '../../components/Map/D3'
-import Slider from '../../components/QuestionSlider/Slider'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import getFilesFromDir from '@lib/getFilesFromDir'
+import { isMobile } from 'react-device-detect'
 import styles from './play.module.css'
+
+import Progress from '@components/Progress/Progress'
+import Map from '../../components/Map/D3'
+import MapMobile from '../../components/Map/D3mobile'
+import Slider from '../../components/QuestionSlider/Slider'
+import SliderMobile from '../../components/QuestionSlider/SliderMobile'
 
 export async function getStaticPaths() {
     return {
@@ -113,18 +117,18 @@ export default function Play({ questions, map, files }) {
         { x: 31, y: 29, ref: 'F002_Q013', from: ['F002_Q010'], current: false, main: false, isNext: false, isEnd: false },
         { x: 34, y: 6, ref: 'F002_Q014', from: ['F002_Q013'], current: false, main: false, isNext: false, isEnd: true },
         { x: 38.5, y: 29, ref: 'F002_Q015', from: ['F002_Q013'], current: false, main: false, isNext: false, isEnd: false },
-        { x: 45, y: 6, curve:[42,13.5], ref: 'F002_Q016', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
-        { x: 48, y: 30, curve:[44,35], ref: 'F002_Q017', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 45, y: 6, curve: [42, 13.5], ref: 'F002_Q016', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
+        { x: 48, y: 30, curve: [44, 35], ref: 'F002_Q017', from: ['F002_Q015'], current: false, main: false, isNext: false, isEnd: true },
 
         { x: 0, y: 0, ref: "helper0", from: [], current: false, main: false, isNext: false, isEnd: false },
-        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false  },
+        { x: 50, y: 35, ref: "helper1", from: [], current: false, main: false, isNext: false, isEnd: false },
     ]
 
-    const feedMapData = (food, map)=>{
+    const feedMapData = (food, map) => {
 
-        for( const item of food ){
-            for( const mapItem of map ){
-                if( mapItem.ref == item.ref ) mapItem.stepName = item.stepName
+        for (const item of food) {
+            for (const mapItem of map) {
+                if (mapItem.ref == item.ref) mapItem.stepName = item.stepName
             }
         }
 
@@ -163,7 +167,7 @@ export default function Play({ questions, map, files }) {
         updateMapData(newData)
         const lastPJ = playerJourney[playerJourney.length - 1]
         const newPJ = { from: from, to: ref }
-        if( lastPJ != newPJ ) updatePlayerJourney([...playerJourney, newPJ])
+        if (lastPJ != newPJ) updatePlayerJourney([...playerJourney, newPJ])
     }
 
     const resetLocalInfo = () => {
@@ -185,7 +189,7 @@ export default function Play({ questions, map, files }) {
                 }
             }
 
-            if( localMap.filter(el=>el.isEnd==true).length < 9 ) found = false
+            if (localMap.filter(el => el.isEnd == true).length < 9) found = false
 
             if (found == true) {
                 compatibles.push(item)
@@ -198,12 +202,12 @@ export default function Play({ questions, map, files }) {
 
     }
 
-    const updataMapDataFromLocalStorage = (local)=>{
+    const updataMapDataFromLocalStorage = (local) => {
 
         const newData = [...mapData]
 
         let i = 0
-        for( const item of local ){
+        for (const item of local) {
             newData[i].current = item.current
             i++
         }
@@ -226,7 +230,7 @@ export default function Play({ questions, map, files }) {
             return
         }
 
-        if (!isLocalMapCompatible(mapData, localMap)){
+        if (!isLocalMapCompatible(mapData, localMap)) {
             setLocalMap(mapData)
             return
         }
@@ -235,7 +239,7 @@ export default function Play({ questions, map, files }) {
         localMap.map(item => {
             if (item.current == true) {
                 updateCurrent(item.ref)
-                found=true
+                found = true
             }
         })
         if (found == false) localMap[0].current = true
@@ -256,11 +260,11 @@ export default function Play({ questions, map, files }) {
         }
     }, [mapData])
 
-    const getUniquePJ = (data)=>{
+    const getUniquePJ = (data) => {
         const uniques = []
-        for( const item of data ){
-            const found = uniques.find(el=>el.to==item.to && el.from==item.from)
-            if( found == null ) uniques.push(item)
+        for (const item of data) {
+            const found = uniques.find(el => el.to == item.to && el.from == item.from)
+            if (found == null) uniques.push(item)
         }
         return uniques
     }
@@ -278,16 +282,16 @@ export default function Play({ questions, map, files }) {
         }
 
         // update progress
-        const totalEnds = mapData.filter(el=>el.isEnd==true)
-        console.log("🚀 ~ file: [map].js ~ line 270 ~ useEffect ~ totalEnds", totalEnds)
+        const totalEnds = mapData.filter(el => el.isEnd == true)
+        //console.log("🚀 ~ file: [map].js ~ line 270 ~ useEffect ~ totalEnds", totalEnds)
 
         let count = 0
-        for( const end of totalEnds ) {
-            const found = getUniquePJ(playerJourney).find(el=>el.from==end.ref || el.to==end.ref)
-            if( found != null ) count++
+        for (const end of totalEnds) {
+            const found = getUniquePJ(playerJourney).find(el => el.from == end.ref || el.to == end.ref)
+            if (found != null) count++
         }
 
-        const percent = count == 0 ? 0 : Math.trunc((count*100) / totalEnds.length)
+        const percent = count == 0 ? 0 : Math.trunc((count * 100) / totalEnds.length)
 
         setProgress(percent)
 
@@ -297,16 +301,16 @@ export default function Play({ questions, map, files }) {
 
         progressRef.current.classList.add('animate1')
 
-        setTimeout(() =>{
+        setTimeout(() => {
             progressRef.current.classList.remove('animate1')
             progressRef.current.classList.add('animate2')
 
             setTimeout(() => {
                 progressRef.current.classList.remove('animate2')
-            },[300])
-        },[300])
+            }, [300])
+        }, [300])
 
-    },[progress])
+    }, [progress])
 
     const currentQuestionMarker = useRef()
     const svgContainer = useRef()
@@ -355,37 +359,80 @@ export default function Play({ questions, map, files }) {
         }, 600)
     }
 
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+
+        setIsLoading(false)
+
+    }, [isMobile])
+
     return (
         <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
 
-            <Progress animationRef={progressRef} progress={progress}/>
+            <Progress animationRef={progressRef} progress={progress} />
 
-            <Map
-                data={mapData}
-                controls={mapControlsObj}
-                playerJourney={playerJourney}
-                updatePlayerJourney={updatePlayerJourney}
-                updateCurrent={updateCurrent}
-                nextQuestion={nextQuestion}
-                resetLocalMap={resetLocalInfo}
-                currentQuestionMarker={currentQuestionMarker}
-                svgContainerRef={svgContainer}
-            />
+            {
+                isLoading ? <div>Loading...</div> : (
 
-            <Slider
-                files={files}
-                slides={questions}
-                moveTo={moveTo}
-                currentSlide={currentSlide}
-                setCurrentSlide={setCurrentSlide}
-                slidesPositions={slidesPositions}
-                updateSlidesPositions={updateSlidesPositions}
-                mapControls={mapControlsObj}
-                setNextQuestion={setNextQuestion}
-                addToJourney={updateCurrent}
-                toggleMapOpen={toggleMapOpen}
-                alternativeAnimation={alternativeAnimation}
-            />
+                    isMobile ? <MapMobile
+                        data={mapData}
+                        controls={mapControlsObj}
+                        playerJourney={playerJourney}
+                        updatePlayerJourney={updatePlayerJourney}
+                        updateCurrent={updateCurrent}
+                        nextQuestion={nextQuestion}
+                        resetLocalMap={resetLocalInfo}
+                        currentQuestionMarker={currentQuestionMarker}
+                        svgContainerRef={svgContainer}
+                    />
+                        :
+                        <Map
+                            data={mapData}
+                            controls={mapControlsObj}
+                            playerJourney={playerJourney}
+                            updatePlayerJourney={updatePlayerJourney}
+                            updateCurrent={updateCurrent}
+                            nextQuestion={nextQuestion}
+                            resetLocalMap={resetLocalInfo}
+                            currentQuestionMarker={currentQuestionMarker}
+                            svgContainerRef={svgContainer}
+                        />
+                )
+            }
+            {
+                isLoading ? <div>Loading...</div> : (
+                    isMobile ?
+                        <Slider
+                            files={files}
+                            slides={questions}
+                            moveTo={moveTo}
+                            currentSlide={currentSlide}
+                            setCurrentSlide={setCurrentSlide}
+                            slidesPositions={slidesPositions}
+                            updateSlidesPositions={updateSlidesPositions}
+                            mapControls={mapControlsObj}
+                            setNextQuestion={setNextQuestion}
+                            addToJourney={updateCurrent}
+                            toggleMapOpen={toggleMapOpen}
+                            alternativeAnimation={alternativeAnimation}
+                        /> :
+                        <Slider
+                            files={files}
+                            slides={questions}
+                            moveTo={moveTo}
+                            currentSlide={currentSlide}
+                            setCurrentSlide={setCurrentSlide}
+                            slidesPositions={slidesPositions}
+                            updateSlidesPositions={updateSlidesPositions}
+                            mapControls={mapControlsObj}
+                            setNextQuestion={setNextQuestion}
+                            addToJourney={updateCurrent}
+                            toggleMapOpen={toggleMapOpen}
+                            alternativeAnimation={alternativeAnimation}
+                        />
+                )}
+
 
         </main>
     )

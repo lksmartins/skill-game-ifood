@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import * as d3 from "d3"
-import useMeasure from "react-use-measure"
-import { motion } from "framer-motion"
-import styles from './styles/D3.module.css'
-import { isMobile } from 'react-device-detect'
+import React, { useState, useEffect, useRef } from 'react'
+import * as d3 from 'd3'
+import { motion } from 'framer-motion'
+import useMeasure from 'react-use-measure'
+import styles from './styles/D3mobile.module.css'
 
 export default function Chart(props) {
 
@@ -11,11 +10,16 @@ export default function Chart(props) {
     let [ref, bounds] = useMeasure()
 
     return <>
-        <div className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`} id="svg-container" ref={ref}>
+        <div
+            style={{ height: `${bounds.width}px` }}
+            ref={ref}
+            className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`}
+            id="svg-container"
+        >
             {bounds.width > 0 && (
                 <ChartInner
-                    width={bounds.width}
                     height={bounds.height}
+                    w={bounds.width}
                     {...props}
                 />
             )}
@@ -33,100 +37,42 @@ function mapConsole(message) {
 
 function ChartInner(props) {
 
-    const { data, controls, width, height, playerJourney, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
+    const mapRef = useRef()
+    const { data, controls, playerJourney, height, w, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
+
+    const MAP_WIDTH = height * 3.5
+    const width = MAP_WIDTH
+    const BASE_COLOR = '#DADADA'
+    const ACTIVE_BASE_COLOR = '#6DDA36'
+    const LINE_COLOR = '#DADADA'
+    const MAIN_LINE_COLOR = '#ECB751'
 
     function mapClick(e) {
 
-        if (controls.isOpen == false) {
-            controls.open()
+        if (e.target.hasAttribute('qref')) {
+            const targetQuestion = e.target.getAttribute('qref')
+            const condition = playerJourney.find(el => el.to == targetQuestion || el.from == targetQuestion)
+            console.log(`mapClick`, playerJourney, condition, targetQuestion)
+            if (condition!=null) updateCurrent(targetQuestion)
+            animateScroll(e.target)
         }
-        else {
-            if (e.target.hasAttribute('qref')) {
-                const targetQuestion = e.target.getAttribute('qref')
-                if (playerJourney.find(el => el.to == targetQuestion || el.from == targetQuestion)) {
-                    updateCurrent(targetQuestion)
-                }
-            }
-        }
+    }
+
+    const animateScroll = (target) => {
+
+        const targetPosition = target.getBoundingClientRect()
+        console.log(mapRef, target.getAttribute('qref'), targetPosition.left)
+        
+        mapRef.current.style.transform = 'translateX(' + targetPosition.left +')'
     }
 
     let proportion = Math.trunc(width / height)
-    let absolute = { x: height / 40, b: 4.1 }
-    let h = {
-        390: 24,
-        365: 28,
-        345: 33,
-        330: 38,
-        305: 44,
-        280: 48,
-        260: 52,
-        245: 52
-    }
 
-    if (proportion == 5) {
-        h = {
-            390: height/5,
-            365: height/5,
-            345: height/5
-        }
-    }
-
-    if (proportion == 4) {
-        h = {
-            550: height / 8,
-            520: height / 7,
-            490: height / 7,
-            450: (width / proportion) / 8,
-            410: height / 10,
-            390: height / 10,
-            370: height / 8,
-            345: height / 8
-        }
-    }
-
-    if (proportion == 3) {
-        h = {
-            550: height/13,
-            520: (width / proportion) / 20,
-            490: 42,
-            410: (width / proportion) / 20,
-            390: (width / proportion) / 15,
-            365: width/55,
-            345: 33,
-            330: 38,
-            305: 16,
-            280: 16,
-            260: 52,
-            245: 52
-        }
-    }
-
-    let resolution = 0
-
-    for (const res in h) {
-        if (res - 10 < height || res == height) resolution = res
-    }
-
-    if( resolution == 0 ){
-        resolution = h[Object.keys(h).length]
-    }
-
-    let w = resolution
-
-    const xDivider = h[resolution] ? height / h[resolution] : absolute.x
-    //const xDivider = (width / height) * (width*0.0017) // 2488 x 365
-    const bDivider = absolute.b
-
-    let margin = isMobile ? {
-        top: 80,
+    let margin = {
+        top: 100,
         right: 50,
-        bottom: 100,
+        bottom: height * 0.24,
         left: 50,
-    } : {
-        top: height / 4,
-        right: width / xDivider,
-        bottom: height / bDivider,
-        left: width / xDivider,
     }
 
     let xScale = d3
@@ -143,35 +89,11 @@ function ChartInner(props) {
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
 
     const [wasPathAnimated, setWasPathAnimated] = useState([])
-    const [textRects, setTextRects] = useState(data)
-
-    useEffect(() => {
-
-        const newRects = []
-
-        data.map(item => {
-
-            if (!item.ref.includes('helper')) {
-
-                var text = d3.select(`text#text_${item.ref}`)
-                var bbox = text.node().getBBox()
-
-                newRects.push({ ref: item.ref, w: bbox.width, h: bbox.height })
-            }
-
-        })
-
-        setTextRects(newRects)
-
-    }, [])
 
     const fixIconPosition = (position) => {
-        return isMobile ? {
-            x: position.x - xScale(1.5),
-            y: position.y - yScale(2.7)
-        } : {
-            x: position.x - xScale(.5),
-            y: position.y - yScale(2.35)
+        return {
+            x: position.x - xScale(0.1),
+            y: position.y - yScale(0.1)
         }
     }
 
@@ -190,8 +112,8 @@ function ChartInner(props) {
             y={fixIconPosition(currentPosition).y}
         >
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 277.96 316"
-                width={isMobile ? xScale(7) : xScale(4)}
-                height={isMobile ? yScale(7) : yScale(4)}
+                width={xScale(2)}
+                height={yScale(2)}
             >
                 <defs>
                     <clipPath id="clippath">
@@ -275,16 +197,11 @@ function ChartInner(props) {
         return ref.includes('helper')
     }
 
-    const BASE_COLOR = '#DADADA'
-    const ACTIVE_BASE_COLOR = '#6DDA36'
-    const LINE_COLOR = '#DADADA'
-    const MAIN_LINE_COLOR = '#ECB751'
-
-    const isVisited = (itemRef)=>{
+    const isVisited = (itemRef) => {
         for (const journeyItem of playerJourney) {
-            if (journeyItem.to == itemRef || journeyItem.from == itemRef ) return true
+            if (journeyItem.to == itemRef || journeyItem.from == itemRef) return true
         }
-        if( itemRef == currentObj.ref ) return true
+        if (itemRef == currentObj.ref) return true
         return false
     }
 
@@ -315,81 +232,20 @@ function ChartInner(props) {
     }
 
     const createStartCircle = () => {
-        return <g className={styles.startCircle}>
-            {<line
-                x1={0}
-                x2={xScale(data[0].x)}
-                y1={0}
-                y2={yScale(data[0].y)}
-                stroke="#DADADA"
-                strokeWidth={10}
-                strokeOpacity={1}
-            />}
 
-            <a href="/start">
-                <circle
-                    fill="#EA1D2C"
-                    cx={0}
-                    cy={0}
-                    r={Math.trunc(height / 2.3)}
-                />
-
-                <text
-                    alignmentBaseline="middle"
-                    fill="white"
-                    x={width * 0.015}
-                    y={height * 0.15}>
-                    INÍCIO
-                </text>
-            </a>
-        </g>
-    }
-
-    const createText = (item) => {
-
-        if (isHelper(item.ref)) return null
-
-        const found = textRects.find(el => el.ref == item.ref)
-
-        if (found == null) return null
-
-        const w = found != null ? 'w' in found ? found.w + 10 : 30 : 30
-        const h = found != null ? 'h' in found ? found.h : 20 : 20
-
-        return <motion.g
-            initial={{ opacity: 0 }}
-            animate={{ opacity: item.ref == currentObj.ref ? controls.isOpen ? 1 : 0 : 0 }}>
-
-            <motion.rect
-                initial={{ opacity: 0 }}
-                animate={{ opacity: controls.isOpen ? 1 : 0 }}
-                transition={{ duration: .6, delay: .5 }}
-                x={xScale(item.x) - w/2}
-                y={yScale(item.y) + 30}
-                width={w}
-                height={h}
-                fill="black"
-                fillOpacity={.6}
-            />
-
-            <text
-                id={`text_${item.ref}`}
-                qref={item.ref}
-
-                alignmentBaseline="middle"
-                fill="white"
-                x={xScale(item.x) - w/2.2}
-                y={yScale(item.y) + 40}>
-                {item.stepName != '' ? item.stepName : item.ref}
-            </text>
-        </motion.g>
-
+        return null
     }
 
     return (
-        <div ref={svgContainerRef} className={styles.svgContainer} onClick={(e) => mapClick(e)}>
-            <div style={{ position: 'absolute', backgroundColor: '#000' }}>{width} x {Math.trunc(height)} - {w} / {Math.trunc(width / height)}</div>
-            <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
+        <div
+            ref={mapRef}
+            style={{ width: `${MAP_WIDTH}px` }}
+            className={styles.svgContainer}
+            onClick={(e) => mapClick(e)}
+        >
+
+            <div style={{ position: 'absolute', backgroundColor: '#000' }}>{MAP_WIDTH} x {Math.trunc(height)} / {proportion}</div>
+            <svg id="svgMap" viewBox={`0 0 ${MAP_WIDTH} ${height}`}>
 
                 {createStartCircle()}
 
@@ -529,7 +385,7 @@ function ChartInner(props) {
                                 {createCurvedLine({
                                     points: 'curve' in baseItem ? [[fromX, fromY], [xScale(baseItem.curve[0]), yScale(baseItem.curve[1])], [toX, toY]] : [[fromX, fromY], [toX, toY]],
                                     color: "red",
-                                    strokeWidth: lineWidth/2,
+                                    strokeWidth: lineWidth / 2,
                                     pathLength: [pathLengthStart, pathLength],
                                     transition: transition
                                 })}
@@ -559,15 +415,6 @@ function ChartInner(props) {
 
                 {/* Icon */}
                 {createIcon(currentPosition)}
-
-                {data.map((item, index) => {
-
-                    return <g key={`${index}_${item.ref}_texts`}>
-
-                        {createText(item)}
-
-                    </g>
-                })}
 
             </svg>
         </div>

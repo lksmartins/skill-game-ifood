@@ -99,8 +99,8 @@ $mainRed: #EA1D2C;
                     align-items: center;
                     gap: 1rem;
                     border-radius: 28px;
-                    font-weight: bold;
                     font-size: 1.2rem;
+                    color: #232323 !important;
                 }
 
                 .alternatives {
@@ -157,6 +157,7 @@ $mainRed: #EA1D2C;
 
                         &:disabled {
                             filter: grayscale(1) brightness(1.5);
+                            font-weight: bold;
                         }
 
                         &:disabled:hover {
