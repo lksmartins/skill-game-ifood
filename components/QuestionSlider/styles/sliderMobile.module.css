@@ -71,7 +71,7 @@
   z-index: 10;
   -webkit-transition: all 0.6s ease !important;
   transition: all 0.6s ease !important;
-  background-color: white;
+  background-color: #F9F2E8;
   color: black;
   border-radius: 1.5rem 1.5rem 0 0;
   -webkit-box-shadow: 0px 0px 12.82003px rgba(0, 0, 0, 0.25);
@@ -79,7 +79,6 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin-top: -1.75rem;
 }
 
 .slider.loading {
@@ -243,6 +242,7 @@
   -webkit-filter: grayscale(1) brightness(1.5);
           filter: grayscale(1) brightness(1.5);
   font-weight: bold;
+  background-color: transparent;
 }
 
 .slider .slide .wrapper .text .alternatives .confirm:disabled:hover {

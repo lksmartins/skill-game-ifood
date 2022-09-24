@@ -4,8 +4,8 @@ import { useLocalStorage } from '../../hooks/useLocalStorage'
 import getFilesFromDir from '@lib/getFilesFromDir'
 import { isMobile } from 'react-device-detect'
 import styles from './play.module.css'
+import Link from 'next/link'
 
-import Progress from '@components/Progress/Progress'
 import Map from '../../components/Map/D3'
 import MapMobile from '../../components/Map/D3mobile'
 import Slider from '../../components/QuestionSlider/Slider'
@@ -408,7 +408,17 @@ export default function Play({ questions, map, files }) {
             }
             {
                 isLoading ? <div>Loading...</div> : (
-                    isMobile ?
+                    isMobile ? <>
+                        <div style={{marginTop: '-2.25rem', marginBottom:'0.25rem', padding:'0 0.65rem', zIndex: 30}}>
+                            <Link href="/">
+                                <a
+                                className={`btn-ifood`}
+                                style={{padding: '0.35rem'}}
+                                >
+                                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao início
+                                </a>
+                            </Link>
+                        </div>
                         <SliderMobile
                             files={files}
                             slides={questions}
@@ -422,7 +432,7 @@ export default function Play({ questions, map, files }) {
                             addToJourney={updateCurrent}
                             toggleMapOpen={toggleMapOpen}
                             alternativeAnimation={alternativeAnimation}
-                        /> :
+                        /></> :
                         <Slider
                             files={files}
                             slides={questions}

@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from './styles/TopBar.module.css'
 import Progress from '@components/Progress/ProgressMobile'
 
