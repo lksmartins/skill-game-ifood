@@ -1,0 +1,17 @@
+$mainRed: #EA1D2C;
+$darkRed: #890019;
+$light: #F9F2E8;
+$lightShadow: #CDC8C2;
+$gold: #FFCE45;
+
+.topbar{    
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: $light;
+    background-color: $mainRed;
+    border: 0 solid $darkRed;
+    border-bottom: 0.25rem solid $darkRed;
+    position: relative;
+}

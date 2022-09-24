@@ -387,6 +387,8 @@ export default function Play({ questions, map, files }) {
                         resetLocalMap={resetLocalInfo}
                         currentQuestionMarker={currentQuestionMarker}
                         svgContainerRef={svgContainer}
+                        progress={progress}
+                        progressRef={progressRef}
                     />
                         :
                         <Map

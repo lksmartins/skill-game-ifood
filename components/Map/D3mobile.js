@@ -2,18 +2,22 @@ import React, { useState, useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import { motion } from 'framer-motion'
 import useMeasure from 'react-use-measure'
+import TopBar from './TopBar'
 import styles from './styles/D3mobile.module.css'
 
 export default function Chart(props) {
 
-    const { controls, resetLocalMap } = props
+    const { progress, progressRef } = props
     let [ref, bounds] = useMeasure()
 
     return <>
+
+        <TopBar progress={progress} progressRef={progressRef}/>
+
         <div
             style={{ height: `${bounds.width}px` }}
             ref={ref}
-            className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`}
+            className={`${styles.parent}`}
             id="svg-container"
         >
             {bounds.width > 0 && (
@@ -38,7 +42,7 @@ function mapConsole(message) {
 function ChartInner(props) {
 
     const mapRef = useRef()
-    const { data, controls, playerJourney, height, w, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
+    const { data, playerJourney, height, w, updateCurrent, nextQuestion, currentQuestionMarker } = props
 
     const MAP_WIDTH = height * 3.5
     const width = MAP_WIDTH
@@ -66,13 +70,11 @@ function ChartInner(props) {
         mapRef.current.style.transform = 'translateX(' + targetPosition.left +')'
     }
 
-    let proportion = Math.trunc(width / height)
-
     let margin = {
-        top: 100,
-        right: 50,
+        top: height * 0.3,
+        right: width * 0.05,
         bottom: height * 0.24,
-        left: 50,
+        left: width * 0.045,
     }
 
     let xScale = d3
@@ -92,8 +94,8 @@ function ChartInner(props) {
 
     const fixIconPosition = (position) => {
         return {
-            x: position.x - xScale(0.1),
-            y: position.y - yScale(0.1)
+            x: position.x - 50,
+            y: position.y - height * 0.26
         }
     }
 
@@ -112,8 +114,8 @@ function ChartInner(props) {
             y={fixIconPosition(currentPosition).y}
         >
             <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 277.96 316"
-                width={xScale(2)}
-                height={yScale(2)}
+                width={xScale(1)}
+                height={yScale(1)}
             >
                 <defs>
                     <clipPath id="clippath">
@@ -236,15 +238,13 @@ function ChartInner(props) {
         return null
     }
 
-    return (
+    return <>
         <div
             ref={mapRef}
             style={{ width: `${MAP_WIDTH}px` }}
             className={styles.svgContainer}
             onClick={(e) => mapClick(e)}
         >
-
-            <div style={{ position: 'absolute', backgroundColor: '#000' }}>{MAP_WIDTH} x {Math.trunc(height)} / {proportion}</div>
             <svg id="svgMap" viewBox={`0 0 ${MAP_WIDTH} ${height}`}>
 
                 {createStartCircle()}
@@ -418,5 +418,5 @@ function ChartInner(props) {
 
             </svg>
         </div>
-    )
+    </>
 }

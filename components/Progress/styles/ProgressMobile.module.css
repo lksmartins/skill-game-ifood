@@ -1,0 +1,77 @@
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper div {
+  position: relative;
+}
+
+.wrapper .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  color: #F9F2E8;
+  font-size: 0.8rem;
+  padding-left: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.wrapper .content {
+  width: auto;
+  min-width: 120px;
+}
+
+.wrapper .content .progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.wrapper .content .progress .line {
+  border: 1px solid #F9F2E8;
+  border-radius: 0.75rem;
+}
+
+.wrapper .content .progress .percent {
+  position: absolute;
+  padding-right: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.wrapper .content .progress .icon {
+  position: absolute !important;
+  left: -2.5rem;
+  bottom: -1.6rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 31;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+}
+
+.wrapper .content .progress .icon:global(.animate1) {
+  -webkit-transform: scale(0.8) rotate(25deg);
+          transform: scale(0.8) rotate(25deg);
+}
+
+.wrapper .content .progress .icon:global(.animate2) {
+  -webkit-transform: scale(0.8) rotate(-25deg);
+          transform: scale(0.8) rotate(-25deg);
+}
+/*# sourceMappingURL=ProgressMobile.module.css.map */
