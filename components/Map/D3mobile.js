@@ -12,7 +12,7 @@ export default function Chart(props) {
 
     return <>
 
-        <TopBar progress={progress} progressRef={progressRef}/>
+        <TopBar progress={progress} progressRef={progressRef} />
 
         <div
             style={{ height: `${bounds.width}px` }}
@@ -51,6 +51,21 @@ function ChartInner(props) {
     const LINE_COLOR = '#DADADA'
     const MAIN_LINE_COLOR = '#ECB751'
 
+    const [showWarning, setShowWarning] = useState(true)
+    const [wasPathAnimated, setWasPathAnimated] = useState([])
+
+    useEffect(() => {
+
+        //navigation popup
+        if (data.find(el => el.current == true).ref.includes(`Q001`) && playerJourney.length < 2) setShowWarning(true)
+
+        //scroll animation
+        const targetRef = data.find(el => el.current == true).ref
+        const target = Array.from(document.querySelectorAll('.bases')).find(el => el.dataset.ref == targetRef)
+        animateScroll(target)
+
+    }, [data])
+
     function mapClick(e) {
 
         if (e.target.hasAttribute('qref')) {
@@ -58,9 +73,9 @@ function ChartInner(props) {
         }
     }
 
-    const clickOnBase = (target, questionRef)=>{
+    const clickOnBase = (target, questionRef) => {
         const condition = playerJourney.find(el => el.to == questionRef || el.from == questionRef)
-        if (condition!=null) updateCurrent(questionRef)
+        if (condition != null) updateCurrent(questionRef)
         animateScroll(target)
     }
 
@@ -68,8 +83,8 @@ function ChartInner(props) {
 
         const parent = document.getElementById('svg-container')
         const targetPosition = target.getBoundingClientRect()
-        
-        const left = targetPosition.left - (width/20)
+
+        const left = targetPosition.left - (width / 20)
 
         console.log(targetPosition.left, left)
 
@@ -95,14 +110,6 @@ function ChartInner(props) {
 
     let currentObj = data.find(el => el.current == true)
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
-
-    const [wasPathAnimated, setWasPathAnimated] = useState([])
-
-    useEffect(() => {
-        const targetRef = data.find(el => el.current == true).ref
-        const target = Array.from(document.querySelectorAll('.bases')).find(el=>el.dataset.ref==targetRef)
-        animateScroll(target)
-    },[data])
 
     const fixIconPosition = (position) => {
         return {
@@ -253,6 +260,12 @@ function ChartInner(props) {
     }
 
     return <>
+        {showWarning &&
+            <div className="warning-popup p-2 px-3">
+                <div onClick={() => setShowWarning(false)} className="btn-ifood-light p-0 px-2 w-auto"><i className="fa-solid me-1 fa-circle-xmark"></i> Fechar</div>
+                Você pode clicar nas etapas que já visitou, para seguir novos caminhos, ou revisar o conteúdo.
+            </div>
+        }
         <div
             ref={mapRef}
             style={{ width: `${MAP_WIDTH}px` }}
