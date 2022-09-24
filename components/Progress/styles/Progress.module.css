@@ -1,9 +1,38 @@
 .wrapper {
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  z-index: 30;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  gap: 1rem;
+}
+
+.wrapper div {
+  position: relative;
+}
+
+.wrapper .text {
+  background-color: white;
+  color: #EA1D2C;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.wrapper .content {
+  height: auto;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,44 +44,45 @@
           align-items: center;
 }
 
-.wrapper .progress {
-  background: #EA1D2C;
-  width: 24vw;
-  height: 24vw;
-  border-radius: 12vw;
-  margin-top: -12vw;
-  margin-right: -12vw;
-  padding-top: 13.5vw;
-  padding-right: 13vw;
-  padding-left: 4vw;
-}
-
-.wrapper .image {
-  position: absolute;
-  top: 2vw;
-  right: 2.5vw;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.wrapper .image:global(.animate1) {
-  -webkit-transform: scale(1.5) rotate(25deg);
-          transform: scale(1.5) rotate(25deg);
-}
-
-.wrapper .image:global(.animate2) {
-  -webkit-transform: scale(1.5) rotate(-25deg);
-          transform: scale(1.5) rotate(-25deg);
-}
-
-.wrapper .text {
-  position: absolute;
+.wrapper .content .percent {
   background-color: white;
   color: #EA1D2C;
   border-radius: 1rem;
   padding: 0 0.5rem;
   font-size: 1rem;
-  margin-top: 4.3vw;
-  margin-right: -3vw;
+  z-index: 30;
+  position: absolute;
+  margin-top: 7.75rem;
+}
+
+.wrapper .content .progress {
+  width: 80%;
+}
+
+.wrapper .content .icon {
+  position: absolute;
+  margin-top: -0.25rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  z-index: 31;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.wrapper .content .icon:global(.animate1) {
+  -webkit-transform: scale(1.5) rotate(25deg);
+          transform: scale(1.5) rotate(25deg);
+}
+
+.wrapper .content .icon:global(.animate2) {
+  -webkit-transform: scale(1.5) rotate(-25deg);
+          transform: scale(1.5) rotate(-25deg);
+}
+
+@media (max-width: 1024px) {
+  .wrapper .content .icon {
+    -webkit-transform: scale(0.8) !important;
+            transform: scale(0.8) !important;
+  }
 }
 /*# sourceMappingURL=Progress.module.css.map */

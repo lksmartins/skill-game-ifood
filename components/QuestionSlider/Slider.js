@@ -155,7 +155,7 @@ export default function Slider({
                             </div>
                             <div className={styles.alternatives}>
                                 {buildAlternatives(slide)}
-                                <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
+                                <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}><span>Confirmar</span> <i className="fa-solid fa-square-caret-right"></i></button>
                             </div>
                         </div>
                     </div>

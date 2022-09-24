@@ -1,4 +1,7 @@
 $mainRed: #EA1D2C;
+$darkRed: #890019;
+$light: #F9F2E8;
+$gold: #FFCE45;
 
 @keyframes pulse {
     from {
@@ -33,13 +36,14 @@ $mainRed: #EA1D2C;
 .slider {
     width: 100%;
     height: auto;
-    min-height: 50vh;
     position: relative;
+    display: flex;
+    flex: 1;
     z-index: 10;
     transition: all 0.6s ease !important;
-    background-color: white;
+    background-color: $light;
     color: black;
-    border-radius: 1.5rem 0 0 0;
+    border-radius: 1.5rem 1.5rem 0 0;
     box-shadow: 0px 0px 12.82003px rgba(0, 0, 0, 0.25);
 
     &.loading {
@@ -51,8 +55,7 @@ $mainRed: #EA1D2C;
 
     .slide {
         width: 100% !important;
-        height: auto !important;
-        min-height: 100%;
+        height: min-content !important;
         display: flex;
         gap: 2rem;
         flex-direction: column;
@@ -61,10 +64,11 @@ $mainRed: #EA1D2C;
         z-index: 11;
         transition: all 1s ease !important;
 
-        &.showSlide{
+        &.showSlide {
             display: flex;
         }
-        &.hideSlide{
+
+        &.hideSlide {
             display: none;
         }
 
@@ -81,6 +85,7 @@ $mainRed: #EA1D2C;
                 justify-content: flex-end;
                 align-items: center;
                 position: relative;
+                padding-top: 1rem;
             }
 
             .text {
@@ -89,6 +94,7 @@ $mainRed: #EA1D2C;
                 justify-content: center;
                 align-items: center;
                 gap: 1rem;
+                max-width: 960px;
 
                 .title {
                     height: auto;
@@ -118,59 +124,59 @@ $mainRed: #EA1D2C;
 
                     button {
                         width: 100%;
-                        font-size: 1.2rem;
-                        background: #EA1D2C;
-                        box-shadow: 3.52504px 4.23005px 2.82003px rgba(0, 0, 0, 0.25);
-                        border: 0.25rem solid $mainRed;
-                        border-radius: 28.2003px;
-                        color: #FFFFFF;
-                        padding: 0.25rem 2rem;
-                        transition: all 0.3s ease;
-                        cursor: pointer;
+                        border-radius: 0.5rem;
+                        border: 2px solid $darkRed;
+                        border-bottom: 6px solid $darkRed;
+                        transition: all 0.2s;
+                        display: inline-flex;
+                        padding: 12px 16px;
+                        color: $light;
+                    }
 
-                        &:hover {
-                            background-color: white !important;
-                            color: $mainRed;
-                            border-color: $mainRed;
-                        }
+                    button:hover {
+                        background-color: white;
+                        color: $mainRed;
+                        border-color: $mainRed;
+                    }
 
-                        &.selected {
-                            background-color: white !important;
-                            color: $mainRed;
-                            box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
+                    button.selected {
+                        background-color: white !important;
+                        color: $mainRed;
+                        border-color: $mainRed;
 
-                            animation-duration: 0.6s;
-                            animation-name: pulse;
-                            animation-iteration-count: infinite;
-                            animation-direction: alternate;
-                        }
+                        animation-duration: 0.6s;
+                        animation-name: pulse;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
                     }
 
                     .confirm {
                         width: auto;
                         align-self: flex-end;
                         margin-top: 1.5rem;
-                        background-color: white;
-                        color: $mainRed;
+                        background-color: $gold;
+                        color: $darkRed;
                         position: relative;
-                        padding-right: 3rem;
+                        font-weight: bold;
+                        font-size: 1.2rem;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 0.75rem;
 
                         &:disabled {
                             filter: grayscale(1) brightness(1.5);
-                            font-weight: bold;
+                            background-color: transparent;
                         }
 
                         &:disabled:hover {
                             transform: scale(1);
                             cursor: not-allowed;
-                            i{animation-name: unset}
+
+                            i {animation-name: unset}
                         }
 
                         i {
-                            position: absolute;
-                            top: .4rem;
                             font-size: 1.5rem;
-                            right: 0.7rem;
                         }
 
                         &:hover {
@@ -203,10 +209,11 @@ $mainRed: #EA1D2C;
                     .title {
                         padding: 0.5rem 1rem;
                     }
-                    .alternatives{
+
+                    .alternatives {
                         gap: 0.25rem;
 
-                        .confirm{
+                        .confirm {
                             margin-top: 0.5rem;
                         }
                     }
@@ -224,256 +231,4 @@ $mainRed: #EA1D2C;
             }
         }
     }
-}
-
-.slider .slide:global(.moveLeft_0vw) {
-    left: 0vw !important;
-}
-
-.slider .slide:global(.moveLeft_100vw) {
-    left: 100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-100vw) {
-    left: -100vw !important;
-}
-
-.slider .slide:global(.moveLeft_200vw) {
-    left: 200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-200vw) {
-    left: -200vw !important;
-}
-
-.slider .slide:global(.moveLeft_300vw) {
-    left: 300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-300vw) {
-    left: -300vw !important;
-}
-
-.slider .slide:global(.moveLeft_400vw) {
-    left: 400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-400vw) {
-    left: -400vw !important;
-}
-
-.slider .slide:global(.moveLeft_500vw) {
-    left: 500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-500vw) {
-    left: -500vw !important;
-}
-
-.slider .slide:global(.moveLeft_600vw) {
-    left: 600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-600vw) {
-    left: -600vw !important;
-}
-
-.slider .slide:global(.moveLeft_700vw) {
-    left: 700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-700vw) {
-    left: -700vw !important;
-}
-
-.slider .slide:global(.moveLeft_800vw) {
-    left: 800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-800vw) {
-    left: -800vw !important;
-}
-
-.slider .slide:global(.moveLeft_900vw) {
-    left: 900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-900vw) {
-    left: -900vw !important;
-}
-
-.slider .slide:global(.moveLeft_1000vw) {
-    left: 1000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1000vw) {
-    left: -1000vw !important;
-}
-
-.slider .slide:global(.moveLeft_1100vw) {
-    left: 1100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1100vw) {
-    left: -1100vw !important;
-}
-
-.slider .slide:global(.moveLeft_1200vw) {
-    left: 1200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1200vw) {
-    left: -1200vw !important;
-}
-
-.slider .slide:global(.moveLeft_1300vw) {
-    left: 1300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1300vw) {
-    left: -1300vw !important;
-}
-
-.slider .slide:global(.moveLeft_1400vw) {
-    left: 1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1400vw) {
-    left: -1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_1400vw) {
-    left: 1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1400vw) {
-    left: -1400vw !important;
-}
-
-.slider .slide:global(.moveLeft_1500vw) {
-    left: 1500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1500vw) {
-    left: -1500vw !important;
-}
-
-.slider .slide:global(.moveLeft_1600vw) {
-    left: 1600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1600vw) {
-    left: -1600vw !important;
-}
-
-.slider .slide:global(.moveLeft_1700vw) {
-    left: 1700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1700vw) {
-    left: -1700vw !important;
-}
-
-.slider .slide:global(.moveLeft_1800vw) {
-    left: 1800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1800vw) {
-    left: -1800vw !important;
-}
-
-.slider .slide:global(.moveLeft_1900vw) {
-    left: 1900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-1900vw) {
-    left: -1900vw !important;
-}
-
-.slider .slide:global(.moveLeft_2000vw) {
-    left: 2000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2000vw) {
-    left: -2000vw !important;
-}
-
-.slider .slide:global(.moveLeft_2100vw) {
-    left: 2100vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2100vw) {
-    left: -2100vw !important;
-}
-
-.slider .slide:global(.moveLeft_2200vw) {
-    left: 2200vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2200vw) {
-    left: -2200vw !important;
-}
-
-.slider .slide:global(.moveLeft_2300vw) {
-    left: 2300vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2300vw) {
-    left: -2300vw !important;
-}
-
-.slider .slide:global(.moveLeft_2400vw) {
-    left: 2400vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2400vw) {
-    left: -2400vw !important;
-}
-
-.slider .slide:global(.moveLeft_2500vw) {
-    left: 2500vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2500vw) {
-    left: -2500vw !important;
-}
-
-.slider .slide:global(.moveLeft_2600vw) {
-    left: 2600vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2600vw) {
-    left: -2600vw !important;
-}
-
-.slider .slide:global(.moveLeft_2700vw) {
-    left: 2700vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2700vw) {
-    left: -2700vw !important;
-}
-
-.slider .slide:global(.moveLeft_2800vw) {
-    left: 2800vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2800vw) {
-    left: -2800vw !important;
-}
-
-.slider .slide:global(.moveLeft_2900vw) {
-    left: 2900vw !important;
-}
-
-.slider .slide:global(.moveLeft_-2900vw) {
-    left: -2900vw !important;
-}
-
-.slider .slide:global(.moveLeft_3000vw) {
-    left: 3000vw !important;
-}
-
-.slider .slide:global(.moveLeft_-3000vw) {
-    left: -3000vw !important;
 }

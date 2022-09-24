@@ -50,6 +50,8 @@ export async function getStaticProps(context) {
 
 export default function Play({ questions, map, files }) {
 
+    const [isLoading, setIsLoading] = useState(true)
+
     // Progress
     const [progress, setProgress] = useState(50)
     const progressRef = useRef()
@@ -299,16 +301,19 @@ export default function Play({ questions, map, files }) {
 
     useEffect(() => {
 
-        progressRef.current.classList.add('animate1')
+        if (progressRef.current != null) {
 
-        setTimeout(() => {
-            progressRef.current.classList.remove('animate1')
-            progressRef.current.classList.add('animate2')
+            progressRef.current.classList.add('animate1')
 
             setTimeout(() => {
-                progressRef.current.classList.remove('animate2')
+                progressRef.current.classList.remove('animate1')
+                progressRef.current.classList.add('animate2')
+
+                setTimeout(() => {
+                    progressRef.current.classList.remove('animate2')
+                }, [300])
             }, [300])
-        }, [300])
+        }
 
     }, [progress])
 
@@ -359,8 +364,7 @@ export default function Play({ questions, map, files }) {
         }, 600)
     }
 
-    const [isLoading, setIsLoading] = useState(true)
-
+    //isMobile
     useEffect(() => {
 
         setIsLoading(false)
@@ -369,8 +373,6 @@ export default function Play({ questions, map, files }) {
 
     return (
         <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
-
-            <Progress animationRef={progressRef} progress={progress} />
 
             {
                 isLoading ? <div>Loading...</div> : (
@@ -397,13 +399,15 @@ export default function Play({ questions, map, files }) {
                             resetLocalMap={resetLocalInfo}
                             currentQuestionMarker={currentQuestionMarker}
                             svgContainerRef={svgContainer}
+                            progress={progress}
+                            progressRef={progressRef}
                         />
                 )
             }
             {
                 isLoading ? <div>Loading...</div> : (
                     isMobile ?
-                        <Slider
+                        <SliderMobile
                             files={files}
                             slides={questions}
                             moveTo={moveTo}
