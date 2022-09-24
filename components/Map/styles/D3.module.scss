@@ -1,4 +1,18 @@
 $mainRed: #EA1D2C;
+$darkRed: #890019;
+$light: #F9F2E8;
+$lightShadow: #CDC8C2;
+$gold: #FFCE45;
+
+@keyframes pulse {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.05)
+    }
+}
 
 .parent {
     width: 100% !important;
@@ -13,12 +27,34 @@ $mainRed: #EA1D2C;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
 
         &:first-of-type{
             padding-left: 0.5rem;
         }
         &:last-of-type{
             padding-right: 0.5rem;
+        }
+
+        :global(.warning-popup){
+            background-color: $darkRed;
+            position: absolute;
+            width: 12vw;
+            right: -20vw;
+            bottom: 0;
+            border-radius: 0.75rem;
+
+            animation-duration: 0.6s;
+            animation-name: pulse;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+            :global(.btn-ifood-light){
+                position: absolute;
+                right: 0;
+                top: -2rem;
+                cursor: pointer;
+            }
         }
     }
 

@@ -1,3 +1,25 @@
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+}
+
 .parent {
   width: 100% !important;
   -webkit-transition: all 0.6s ease;
@@ -26,6 +48,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .parent .col:first-of-type {
@@ -34,6 +57,30 @@
 
 .parent .col:last-of-type {
   padding-right: 0.5rem;
+}
+
+.parent .col :global(.warning-popup) {
+  background-color: #890019;
+  position: absolute;
+  width: 12vw;
+  right: -20vw;
+  bottom: 0;
+  border-radius: 0.75rem;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-name: pulse;
+          animation-name: pulse;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.parent .col :global(.warning-popup) :global(.btn-ifood-light) {
+  position: absolute;
+  right: 0;
+  top: -2rem;
+  cursor: pointer;
 }
 
 .parent .buttonGroup {

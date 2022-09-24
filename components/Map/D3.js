@@ -53,6 +53,14 @@ function ChartInner(props) {
     const ACTIVE_BASE_COLOR = '#6DDA36'
     const LINE_COLOR = '#DADADA'
     const MAIN_LINE_COLOR = '#ECB751'
+    const [showWarning, setShowWarning] = useState(false)
+    const [wasPathAnimated, setWasPathAnimated] = useState([])
+
+    useEffect(() => {
+
+        if( data.find(el=>el.current==true).ref.includes(`Q001`) && playerJourney.length < 2  ) setShowWarning(true)
+
+    },[data])
 
     let margin = {
         top: height * .24,
@@ -74,9 +82,6 @@ function ChartInner(props) {
     let currentObj = data.find(el => el.current == true)
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
 
-    const [wasPathAnimated, setWasPathAnimated] = useState([])
-    const [textRects, setTextRects] = useState(data)
-    const [hideText, setHideText] = useState(false)
 
     function mapClick(e) {
 
@@ -284,6 +289,13 @@ function ChartInner(props) {
                 </a>
             </Link>
 
+            {showWarning && 
+                <div className="warning-popup p-2 px-3">
+                    <div onClick={()=>setShowWarning(false)} className="btn-ifood-light p-0 px-2 w-auto"><i className="fa-solid me-1 fa-circle-xmark"></i> Fechar</div>
+                    Você pode clicar nas etapas que já visitou, para seguir novos caminhos, ou revisar o conteúdo.
+                </div>
+            }
+
         </div>
 
         <div ref={svgContainerRef}
@@ -291,6 +303,7 @@ function ChartInner(props) {
             className={styles.svgContainer}
             onClick={(e) => mapClick(e)}
         >
+            
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
                 {/* Lines */}
