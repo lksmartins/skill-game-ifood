@@ -75,7 +75,7 @@ export default function Slider({
                     alternatives.map(alternative => {
                         return <button title={alternative.nextQuestion}
                             key={alternative.id}
-                            className={`${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
+                            className={`btn-ifood ${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
                             onClick={() => chooseAlternative(alternative)}
                         >
                             {alternative.text}
@@ -128,7 +128,7 @@ export default function Slider({
                             </div>
                             <div className={styles.alternatives}>
                                 {buildAlternatives(slide)}
-                                <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-circle-chevron-right"></i></button>
+                                <button qref={slide.ref} className={`btn-ifood ${styles.confirm}`} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-square-caret-right"></i></button>
                             </div>
                         </div>
                     </div>

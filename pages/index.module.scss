@@ -15,24 +15,8 @@ $mainRed: #EA1D2C;
         }
     }
 
-    a {
-        background: #FFFFFF;
-        box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 40px;
-        padding: .5rem 5rem;
-        transition: all 0.3s ease;
-        font-weight: 400;
-        text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
-        color: $mainRed;
-
-        &:hover {
-            transform: translateY(-1rem);
-            //font-style: italic;
-            font-weight: bold;
-            box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
-        }
+    a{
+        font-size: 1.5rem;
     }
 }
 

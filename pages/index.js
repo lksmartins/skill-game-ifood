@@ -49,7 +49,7 @@ export default function Index() {
                                 <div className="mb-2">Guia Interativo para Restaurantes</div>
                                 Política de Cancelamento de Pedidos
                             </h1>
-                            <Link href="/start"><a className="fs-2">Iniciar minha jornada</a></Link>
+                            <Link href="/start"><a className="btn-ifood-light">Iniciar minha jornada</a></Link>
                         </div>
 
                         <div className={`${styles.image} ${styles.increase}`}>

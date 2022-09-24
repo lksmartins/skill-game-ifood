@@ -24,6 +24,51 @@ body{
     color: #E8EAED;
     min-height: 100vh;
 }
+
+$mainRed: #EA1D2C;
+$darkRed: #890019;
+$light: #F9F2E8;
+$lightShadow: #CDC8C2;
+$gold: #FFCE45;
+
+.btn-ifood, .btn-ifood-light {
+    font-family: 'ifood-title' !important;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 2px solid $darkRed;
+    border-bottom: 6px solid $darkRed;
+    transition: all 0.2s;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    color: $light;
+    background-color: $mainRed;
+}
+
+.btn-ifood-light{
+    background-color: $light;
+    color: $mainRed;
+    border-color: $lightShadow;
+}
+
+.btn-ifood-light.mainRed:hover{
+    background-color: white;
+    color: $mainRed;
+    border-color: $mainRed;
+}
+
+.btn-ifood:hover {
+    background-color: white !important;
+    color: $mainRed !important;
+    border-color: $mainRed !important;
+}
+.btn-ifood-light:hover{
+    background-color: $gold;
+    color: $darkRed;
+    border-color: $darkRed;
+}
   
 .main{
 padding-top: 100px;

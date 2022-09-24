@@ -17,7 +17,7 @@ export default function Progress({animationRef, progress=50}) {
                 </div>
 
                 <div className={styles.progress}>
-                    <Circle percent={progress} trailWidth={2} strokeWidth={6} strokeColor="#ffffff"/>
+                    <Circle percent={progress} trailColor="#F9F2E8" trailWidth={2} strokeWidth={6} strokeColor="#FFCE45"/>
                 </div>
 
                 <div className={styles.percent}>{progress}%</div>

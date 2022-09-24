@@ -1,5 +1,7 @@
 $mainRed: #EA1D2C;
 $darkRed: #890019;
+$light: #F9F2E8;
+$gold: #FFCE45;
 
 @keyframes pulse {
     from {
@@ -86,10 +88,11 @@ $darkRed: #890019;
                 justify-content: center;
                 align-items: center;
                 gap: 1rem;
+                padding: 0 1rem;
 
                 .title {
                     height: auto;
-                    padding: .5rem 1.5rem;
+                    padding: .5rem 0;
                     z-index: 20;
                     display: flex;
                     justify-content: center;
@@ -114,29 +117,6 @@ $darkRed: #890019;
                     }
 
                     button {
-                        width: 100%;
-                        font-size: 1.2rem;
-                        background: #EA1D2C;
-                        border: 0.25rem solid $mainRed;
-                        border-radius: 0.5rem;
-                        color: #FFFFFF;
-                        padding: 0.25rem 2rem;
-                        transition: all 0.3s ease;
-                        cursor: pointer;
-                        border-bottom: 0.25rem solid $darkRed;
-
-                        &:after{
-                            content: " ";
-                            width: 90%;
-                            height: 30px;
-                            background: $darkRed;
-                        }
-
-                        &:hover {
-                            background-color: white !important;
-                            color: $mainRed;
-                            border-color: $mainRed;
-                        }
 
                         &.selected {
                             background-color: white !important;
@@ -154,10 +134,15 @@ $darkRed: #890019;
                         width: auto;
                         align-self: flex-end;
                         margin-top: 1.5rem;
-                        background-color: white;
-                        color: $mainRed;
+                        background-color: $gold;
+                        color: $darkRed;
                         position: relative;
-                        padding-right: 3rem;
+                        font-weight: bold;
+                        font-size: 1.2rem;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 0.75rem;
+                        border-color: $darkRed;
 
                         &:disabled {
                             filter: grayscale(1) brightness(1.5);
@@ -171,10 +156,7 @@ $darkRed: #890019;
                         }
 
                         i {
-                            position: absolute;
-                            top: .4rem;
                             font-size: 1.5rem;
-                            right: 0.7rem;
                         }
 
                         &:hover {

@@ -23,10 +23,7 @@
 }
 
 .wrapper .text {
-  background-color: white;
-  color: #EA1D2C;
-  border-radius: 0.25rem;
-  padding: 0 0.5rem;
+  color: #F9F2E8;
   font-size: 1rem;
 }
 
@@ -45,14 +42,14 @@
 }
 
 .wrapper .content .percent {
-  background-color: white;
+  background-color: #F9F2E8;
   color: #EA1D2C;
   border-radius: 1rem;
   padding: 0 0.5rem;
   font-size: 1rem;
   z-index: 30;
   position: absolute;
-  margin-top: 7.75rem;
+  bottom: -0.3rem;
 }
 
 .wrapper .content .progress {

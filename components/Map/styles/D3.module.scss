@@ -20,17 +20,6 @@ $mainRed: #EA1D2C;
         &:last-of-type{
             padding-right: 0.5rem;
         }
-
-        .button{
-            background-color: white;
-            color: $mainRed;
-            border: none;
-            outline: none;
-            border-radius: 0.25rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 1rem;
-            text-decoration: none;
-        }
     }
 
     .buttonGroup {

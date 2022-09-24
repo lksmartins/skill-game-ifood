@@ -1,4 +1,8 @@
 $mainRed: #EA1D2C;
+$darkRed: #890019;
+$light: #F9F2E8;
+$lightShadow: #CDC8C2;
+$gold: #FFCE45;
 
 .wrapper {
     width: 100%;
@@ -13,10 +17,7 @@ $mainRed: #EA1D2C;
     div{position: relative;}
 
     .text{
-        background-color: white;
-        color: $mainRed;
-        border-radius: 0.25rem;
-        padding: 0 0.5rem;
+        color: $light;
         font-size: 1rem;
     }
 
@@ -28,14 +29,14 @@ $mainRed: #EA1D2C;
         align-items: center;
 
         .percent{
-            background-color: white;
+            background-color: $light;
             color: $mainRed;
             border-radius: 1rem;
             padding: 0 0.5rem;
             font-size: 1rem;
             z-index: 30;
             position: absolute;
-            margin-top: 7.75rem;
+            bottom: -0.3rem;
         }
     
         .progress {

@@ -36,17 +36,6 @@
   padding-right: 0.5rem;
 }
 
-.parent .col .button {
-  background-color: white;
-  color: #EA1D2C;
-  border: none;
-  outline: none;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  text-decoration: none;
-}
-
 .parent .buttonGroup {
   position: absolute;
   bottom: 4rem;

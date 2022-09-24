@@ -66,6 +66,53 @@ body {
   min-height: 100vh;
 }
 
+.btn-ifood, .btn-ifood-light {
+  font-family: 'ifood-title' !important;
+  text-decoration: none;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 2px solid #890019;
+  border-bottom: 6px solid #890019;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px 16px;
+  color: #F9F2E8;
+  background-color: #EA1D2C;
+}
+
+.btn-ifood-light {
+  background-color: #F9F2E8;
+  color: #EA1D2C;
+  border-color: #CDC8C2;
+}
+
+.btn-ifood-light.mainRed:hover {
+  background-color: white;
+  color: #EA1D2C;
+  border-color: #EA1D2C;
+}
+
+.btn-ifood:hover {
+  background-color: white !important;
+  color: #EA1D2C !important;
+  border-color: #EA1D2C !important;
+}
+
+.btn-ifood-light:hover {
+  background-color: #FFCE45;
+  color: #890019;
+  border-color: #890019;
+}
+
 .main {
   padding-top: 100px;
 }

@@ -220,26 +220,6 @@
   background: #EA1D2C;
 }
 
-.slider .slide .wrapper .text .alternatives button {
-  width: 100%;
-  border-radius: 0.5rem;
-  border: 2px solid #890019;
-  border-bottom: 6px solid #890019;
-  -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  padding: 12px 16px;
-  color: #F9F2E8;
-}
-
-.slider .slide .wrapper .text .alternatives button:hover {
-  background-color: white;
-  color: #EA1D2C;
-  border-color: #EA1D2C;
-}
-
 .slider .slide .wrapper .text .alternatives button.selected {
   background-color: white !important;
   color: #EA1D2C;
@@ -271,6 +251,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 0.75rem;
+  border-color: #890019;
 }
 
 .slider .slide .wrapper .text .alternatives .confirm:disabled {

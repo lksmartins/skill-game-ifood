@@ -76,7 +76,7 @@ export default function Slider({
                     alternatives.map(alternative => {
                         return <button title={alternative.nextQuestion}
                             key={alternative.id}
-                            className={`${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
+                            className={`btn-ifood ${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
                             onClick={() => chooseAlternative(alternative)}
                         >
                             {alternative.text}
@@ -101,23 +101,6 @@ export default function Slider({
             mapControls.close()
         }
     }
-
-    /* useEffect(() => {
-        //add question 0
-        console.log("🚀 ~ file: Slider.js ~ line 118 ~ slides", slides)
-
-        const flowRef = slides[0].flowRef
-
-        slides.unshift({
-            alternatives: [{id: `${flowRef}_Q000-A_A`, ref: `${flowRef}_Q000-A_A`, questionRef: `${flowRef}_Q000`, text: 'SEGUIR', nextQuestion: `${flowRef}_Q001`}],
-            flowRef: flowRef,
-            id: `${flowRef}_000`,
-            isEnd: false,
-            isHidden: false,
-            ref: `${flowRef}_Q000`,
-            text: 'fase 0'
-        })
-    },[]) */
 
     useEffect(() => {
         const elements = document.getElementsByClassName(styles.confirm)
@@ -155,7 +138,7 @@ export default function Slider({
                             </div>
                             <div className={styles.alternatives}>
                                 {buildAlternatives(slide)}
-                                <button qref={slide.ref} className={styles.confirm} onClick={() => confirmAlternative()}><span>Confirmar</span> <i className="fa-solid fa-square-caret-right"></i></button>
+                                <button qref={slide.ref} className={`btn-ifood-light ${styles.confirm}`} onClick={() => confirmAlternative()}><span>Confirmar</span> <i className="fa-solid fa-square-caret-right"></i></button>
                             </div>
                         </div>
                     </div>

@@ -13,26 +13,7 @@
 }
 
 .text a {
-  background: #FFFFFF;
-  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  padding: .5rem 5rem;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #EA1D2C;
-}
-
-.text a:hover {
-  -webkit-transform: translateY(-1rem);
-          transform: translateY(-1rem);
-  font-weight: bold;
-  -webkit-box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
 }
 
 .image {
