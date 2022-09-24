@@ -277,8 +277,8 @@ function ChartInner(props) {
     return <>
         <div className={styles.col}>
 
-            <Image src="/ifood-logo.svg" width="200" height="120" objectFit="contain" />
-            <Link href="/">
+            <Link href="/"><a><Image src="/ifood-logo.svg" width="200" height="120" objectFit="contain" /></a></Link>
+            <Link href="/start">
                 <a className={`btn-ifood-light mainRed`}>
                     <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao inicio
                 </a>
