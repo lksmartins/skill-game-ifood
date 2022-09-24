@@ -9,7 +9,7 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Ifood</title>
-        <link rel="icon" href="https://branching-stories.s3.amazonaws.com/fav.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Script src="https://kit.fontawesome.com/b73a956a41.js"/>
       <Component {...pageProps} />
