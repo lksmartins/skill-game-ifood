@@ -64,6 +64,7 @@ body {
   background: #141414;
   color: #E8EAED;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 .btn-ifood, .btn-ifood-light {

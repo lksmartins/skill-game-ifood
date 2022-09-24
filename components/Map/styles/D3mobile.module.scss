@@ -6,6 +6,7 @@ $mainRed: #EA1D2C;
     background: #890019;
     position: relative;
     overflow-x: scroll !important;
+    scroll-behavior: smooth;
 
     .svgContainer {
         position: absolute;

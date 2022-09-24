@@ -5,6 +5,7 @@
   background: #890019;
   position: relative;
   overflow-x: scroll !important;
+  scroll-behavior: smooth;
 }
 
 .parent .svgContainer {

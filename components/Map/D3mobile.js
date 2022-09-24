@@ -54,20 +54,26 @@ function ChartInner(props) {
     function mapClick(e) {
 
         if (e.target.hasAttribute('qref')) {
-            const targetQuestion = e.target.getAttribute('qref')
-            const condition = playerJourney.find(el => el.to == targetQuestion || el.from == targetQuestion)
-            console.log(`mapClick`, playerJourney, condition, targetQuestion)
-            if (condition!=null) updateCurrent(targetQuestion)
-            animateScroll(e.target)
+            clickOnBase(e.target, e.target.getAttribute('qref'))
         }
+    }
+
+    const clickOnBase = (target, questionRef)=>{
+        const condition = playerJourney.find(el => el.to == questionRef || el.from == questionRef)
+        if (condition!=null) updateCurrent(questionRef)
+        animateScroll(target)
     }
 
     const animateScroll = (target) => {
 
+        const parent = document.getElementById('svg-container')
         const targetPosition = target.getBoundingClientRect()
-        console.log(mapRef, target.getAttribute('qref'), targetPosition.left)
         
-        mapRef.current.style.transform = 'translateX(' + targetPosition.left +')'
+        const left = targetPosition.left - (width/20)
+
+        console.log(targetPosition.left, left)
+
+        parent.scrollLeft += left
     }
 
     let margin = {
@@ -91,6 +97,12 @@ function ChartInner(props) {
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
 
     const [wasPathAnimated, setWasPathAnimated] = useState([])
+
+    useEffect(() => {
+        const targetRef = data.find(el => el.current == true).ref
+        const target = Array.from(document.querySelectorAll('.bases')).find(el=>el.dataset.ref==targetRef)
+        animateScroll(target)
+    },[data])
 
     const fixIconPosition = (position) => {
         return {
@@ -213,6 +225,7 @@ function ChartInner(props) {
 
         return <g style={{ cursor: 'pointer' }}>
             <circle
+                data-ref={questionRef}
                 className={_isHelper ? styles.hidden : styles.shadow}
                 fill="none"
                 stroke="white"
@@ -223,8 +236,9 @@ function ChartInner(props) {
                 r={Math.trunc(height / 20)} />
 
             <circle
-                className={_isHelper ? styles.hidden : ''}
+                className={`bases ${_isHelper ? styles.hidden : ''}`}
                 qref={questionRef}
+                data-ref={questionRef}
                 fill={isVisited(questionRef) == true ? ACTIVE_BASE_COLOR : BASE_COLOR}
                 opacity={_isHelper ? 0 : 1}
                 cx={xScale(x)}
