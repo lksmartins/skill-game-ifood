@@ -1,1 +1,6 @@
+User-agent: *
+Allow: /*
+
+Disallow: /api/*
+
 X-Robots-Tag: googlebot:noindex,indexifembedded
