@@ -295,13 +295,15 @@ export default function Play({ questions, map, files, ends }) {
 
         const percent = count == 0 ? 0 : Math.trunc((count * 100) / totalEnds.length)
 
-        if( percent != progress ) setProgress(percent)
+        if (percent != progress) setProgress(percent)
 
-        if( lastPlayerJourney.to == 'F001_Q001' || lastPlayerJourney.to == 'F002_Q001' ){
-            window.gtag('event', 'user_started_game', {
-                'event_label': 'user_started_game',
-                'value': {flow: map, time: Date.now()}
-            })
+        if (lastPlayerJourney != null) {
+            if (lastPlayerJourney.to == 'F001_Q001' || lastPlayerJourney.to == 'F002_Q001') {
+                window.gtag('event', 'user_started_game', {
+                    'event_label': 'user_started_game',
+                    'value': { flow: map, time: Date.now() }
+                })
+            }
         }
 
     }, [playerJourney])
@@ -322,14 +324,14 @@ export default function Play({ questions, map, files, ends }) {
             }, [300])
 
             //GA event
-            if( progress == 100 ){
+            if (progress == 100) {
                 window.gtag('event', 'user_completed_flow', {
                     'event_label': 'user_completed_flow',
                     'value': map
                 })
                 window.gtag('event', 'user_completed_game', {
                     'event_label': 'user_completed_game',
-                    'value': {flow: map, time: Date.now()}
+                    'value': { flow: map, time: Date.now() }
                 })
             }
         }
@@ -394,7 +396,7 @@ export default function Play({ questions, map, files, ends }) {
         <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
 
             {
-                isLoading ? <div>Loading...</div> : (
+                isLoading ? <div className="w-100 p-5 fs-1 text-center"><i class="fa-solid fa-spin fa-spinner"></i></div> : (
 
                     isMobile ? <MapMobile
                         data={mapData}
@@ -426,7 +428,7 @@ export default function Play({ questions, map, files, ends }) {
                 )
             }
             {
-                isLoading ? <div>Loading...</div> : (
+                isLoading ? null : (
                     isMobile ? <>
                         <div style={{marginTop: '-2.25rem', marginBottom:'0.25rem', padding:'0 0.65rem', zIndex: 30}}>
                             <Link href="/">
