@@ -9,7 +9,7 @@ export default function Progress({ animationRef, progress = 50 }) {
     const [color, setColor] = useState('#EA1D2C')
 
     useEffect(() => {
-        if (progress >= 50) setColor('#EA1D2C')
+        if (progress >= 70) setColor('#EA1D2C')
     }, [progress])
 
     return (
@@ -34,7 +34,7 @@ export default function Progress({ animationRef, progress = 50 }) {
                         strokeWidth={20}
                         strokeColor="#F9F2E8"
                     />
-                    <div className={styles.percent}>{progress}%</div>
+                    <div className={styles.percent} style={{color: color}}>{progress}%</div>
                 </div>
 
             </div>
