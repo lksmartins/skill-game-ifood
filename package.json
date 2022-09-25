@@ -30,5 +30,8 @@
     "slick-carousel": "^1.8.1",
     "use-sound": "^4.0.0",
     "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.18.9"
   }
 }

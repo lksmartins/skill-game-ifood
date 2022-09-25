@@ -10,7 +10,11 @@ const nextConfig = {
     JWT_SECRET: process.env.JWT_SECRET,
     ENV: process.env.ENV,
     RECAPTCHA_KEY: process.env.RECAPTCHA_KEY,
-  }
+  },
+
+  plugins: [
+    ["@babel/plugin-proposal-object-rest-spread"]
+  ],
 }
 
 module.exports = nextConfig
