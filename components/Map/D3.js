@@ -7,6 +7,7 @@ import { isMobile } from 'react-device-detect'
 import Image from 'next/image'
 import Link from 'next/link'
 import Progress from '@components/Progress/Progress'
+import Icon from './Icons'
 
 export default function Chart(props) {
 
@@ -55,12 +56,13 @@ function ChartInner(props) {
     const MAIN_LINE_COLOR = '#ECB751'
     const [showWarning, setShowWarning] = useState(false)
     const [wasPathAnimated, setWasPathAnimated] = useState([])
+    const iconsAdded = []
 
     useEffect(() => {
 
-        if( data.find(el=>el.current==true).ref.includes(`Q001`) && playerJourney.length < 2  ) setShowWarning(true)
+        if (data.find(el => el.current == true).ref.includes(`Q001`) && playerJourney.length < 2) setShowWarning(true)
 
-    },[data])
+    }, [data])
 
     let margin = {
         top: height * .24,
@@ -82,6 +84,19 @@ function ChartInner(props) {
     let currentObj = data.find(el => el.current == true)
     let currentPosition = { x: xScale(currentObj.x), y: yScale(currentObj.y) }
 
+    const createEndIcon = (questionRef) => {
+
+        if (playerJourney.find(el => el.from == questionRef || el.to == questionRef) == null) return null
+
+        try {
+            const pos = { x: data.find(el => el.ref == questionRef).x, y: data.find(el => el.ref == questionRef).y }
+            return <Icon questionRef={questionRef} pos={pos} xScale={xScale} yScale={yScale}/>
+        }
+        catch (error) {
+            console.log('🔴 err', error.message)
+        }
+
+    }
 
     function mapClick(e) {
 
@@ -265,21 +280,22 @@ function ChartInner(props) {
                     </feMerge>
                 </filter>
             </defs>
-            <text 
+            <text
                 id={`text_${item.ref}`}
                 qref={item.ref}
-                filter="url(#solid)" 
-                alignmentBaseline="middle" 
-                fill="white" 
+                filter="url(#solid)"
+                alignmentBaseline="middle"
+                fill="white"
                 x={rectX + (rectW / 12)}
                 y={rectY + 10}
-                >{item.stepName != '' ? item.stepName : item.ref}
+            >{item.stepName != '' ? item.stepName : item.ref}
             </text>
         </motion.g>
 
     }
 
     return <>
+
         <div className={styles.col}>
 
             <Link href="/"><a><Image src="/ifood-logo.svg" width="200" height="120" objectFit="contain" /></a></Link>
@@ -289,9 +305,9 @@ function ChartInner(props) {
                 </a>
             </Link>
 
-            {showWarning && 
+            {showWarning &&
                 <div className="warning-popup p-2 px-3">
-                    <div onClick={()=>setShowWarning(false)} className="btn-ifood-light p-0 px-2 w-auto"><i className="fa-solid me-1 fa-circle-xmark"></i> Fechar</div>
+                    <div onClick={() => setShowWarning(false)} className="btn-ifood-light p-0 px-2 w-auto"><i className="fa-solid me-1 fa-circle-xmark"></i> Fechar</div>
                     Você pode clicar nas etapas que já visitou, para seguir novos caminhos, ou revisar o conteúdo.
                 </div>
             }
@@ -303,7 +319,7 @@ function ChartInner(props) {
             className={styles.svgContainer}
             onClick={(e) => mapClick(e)}
         >
-            
+
             <svg id="svgMap" viewBox={`0 0 ${width} ${height}`}>
 
                 {/* Lines */}
@@ -465,6 +481,10 @@ function ChartInner(props) {
                         {createNextQuestionCircle({ isVisible: isThisNextVisible, x: item.x, y: item.y })}
 
                     </g>
+                })}
+
+                {data.map((item) => {
+                    return createEndIcon(item.ref)
                 })}
 
                 {/* Current circle */}

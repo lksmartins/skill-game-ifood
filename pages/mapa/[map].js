@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
 
 }
 
-export default function Play({ questions, map, files }) {
+export default function Play({ questions, map, files, ends }) {
 
     const [isLoading, setIsLoading] = useState(true)
 
