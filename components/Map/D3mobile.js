@@ -3,6 +3,7 @@ import * as d3 from 'd3'
 import { motion } from 'framer-motion'
 import useMeasure from 'react-use-measure'
 import TopBar from './TopBar'
+import Icon from './Icons'
 import styles from './styles/D3mobile.module.css'
 
 export default function Chart(props) {
@@ -65,6 +66,38 @@ function ChartInner(props) {
         animateScroll(target)
 
     }, [data])
+
+    const createEndIcon = (questionRef) => {
+
+        if (playerJourney.find(el => el.from == questionRef || el.to == questionRef) == null) return null
+
+        try {
+            const x = data.find(el => el.ref == questionRef).x
+            const y = data.find(el => el.ref == questionRef).y
+            let itemPos = { x: x, y: y }
+
+            switch (questionRef) {
+                case 'F002_Q004':
+                    itemPos.x = x + 0.1
+                    itemPos.y = y + 4
+                    break;
+                case 'F002_Q009':
+                    itemPos.x = x + 0.1
+                    itemPos.y = y + 4
+                    break;
+            }
+
+            const pos = {
+                x: itemPos.x,
+                y: itemPos.y
+            }
+            return <Icon questionRef={questionRef} pos={pos} xScale={xScale} yScale={yScale} />
+        }
+        catch (error) {
+            console.log('🔴 err', error.message)
+        }
+
+    }
 
     function mapClick(e) {
 
@@ -435,6 +468,10 @@ function ChartInner(props) {
                         {createNextQuestionCircle({ isVisible: isThisNextVisible, x: item.x, y: item.y })}
 
                     </g>
+                })}
+
+                {data.map((item) => {
+                    return createEndIcon(item.ref)
                 })}
 
                 {/* Current circle */}
