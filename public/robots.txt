@@ -3,4 +3,6 @@ Allow: /*
 
 Disallow: /api/*
 
+Sitemap: https://skill-game-ifood.vercel.app/api/sitemap
+
 X-Robots-Tag: googlebot:noindex,indexifembedded

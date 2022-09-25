@@ -26,6 +26,7 @@
     "react-lottie": "^1.2.3",
     "react-responsive-carousel": "^3.2.21",
     "react-slick": "^0.29.0",
+    "sitemap": "^7.1.1",
     "slick-carousel": "^1.8.1",
     "use-sound": "^4.0.0",
     "webpack": "^5.74.0"
