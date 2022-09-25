@@ -297,6 +297,13 @@ export default function Play({ questions, map, files, ends }) {
 
         if( percent != progress ) setProgress(percent)
 
+        if( lastPlayerJourney.to == 'F001_Q001' || lastPlayerJourney.to == 'F002_Q001' ){
+            window.gtag('event', 'user_started_game', {
+                'event_label': 'user_started_game',
+                'value': {flow: map, time: Date.now()}
+            })
+        }
+
     }, [playerJourney])
 
     useEffect(() => {
@@ -315,10 +322,16 @@ export default function Play({ questions, map, files, ends }) {
             }, [300])
 
             //GA event
-            window.gtag('event', 'user_completed_flow', {
-                'event_label': 'user_completed_flow',
-                'value': map
-            })
+            if( progress == 100 ){
+                window.gtag('event', 'user_completed_flow', {
+                    'event_label': 'user_completed_flow',
+                    'value': map
+                })
+                window.gtag('event', 'user_completed_game', {
+                    'event_label': 'user_completed_game',
+                    'value': {flow: map, time: Date.now()}
+                })
+            }
         }
 
     }, [progress])
