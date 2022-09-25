@@ -74,7 +74,7 @@ export default function Slider({
             <div className={styles.alternatives}>
                 {
                     alternatives.map(alternative => {
-                        return <button title={alternative.nextQuestion}
+                        return <button
                             key={alternative.id}
                             className={`btn-ifood ${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
                             onClick={() => chooseAlternative(alternative)}
