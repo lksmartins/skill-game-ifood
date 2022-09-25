@@ -295,7 +295,7 @@ export default function Play({ questions, map, files, ends }) {
 
         const percent = count == 0 ? 0 : Math.trunc((count * 100) / totalEnds.length)
 
-        setProgress(percent)
+        if( percent != progress ) setProgress(percent)
 
     }, [playerJourney])
 
@@ -313,6 +313,12 @@ export default function Play({ questions, map, files, ends }) {
                     progressRef.current.classList.remove('animate2')
                 }, [300])
             }, [300])
+
+            //GA event
+            window.gtag('event', 'user_completed_flow', {
+                'event_label': 'user_completed_flow',
+                'value': map
+            })
         }
 
     }, [progress])
