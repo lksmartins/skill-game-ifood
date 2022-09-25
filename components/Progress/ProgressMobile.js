@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles/ProgressMobile.module.css'
-import { Line, Circle } from 'rc-progress'
+import { Line } from 'rc-progress'
 import sacola from '../../public/Progress/sacola.svg'
 import Image from 'next/image'
 
 export default function Progress({ animationRef, progress = 50 }) {
 
-    const [color, setColor] = useState('#EA1D2C')
+    const [color, setColor] = useState('#F9F2E8')
 
     useEffect(() => {
         if (progress >= 70) setColor('#EA1D2C')
