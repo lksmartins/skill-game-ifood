@@ -20,7 +20,6 @@ specifiers:
   react-lottie: ^1.2.3
   react-responsive-carousel: ^3.2.21
   react-slick: ^0.29.0
-  react-use-measure: ^2.1.1
   slick-carousel: ^1.8.1
   use-sound: ^4.0.0
   webpack: ^5.74.0
@@ -44,7 +43,6 @@ dependencies:
   react-lottie: 1.2.3_react@18.0.0
   react-responsive-carousel: 3.2.23
   react-slick: 0.29.0_zpnidt7m3osuk7shl3s4oenomq
-  react-use-measure: 2.1.1_zpnidt7m3osuk7shl3s4oenomq
   slick-carousel: 1.8.1
   use-sound: 4.0.1_react@18.0.0
   webpack: 5.74.0
@@ -878,10 +876,6 @@ packages:
       d3-zoom: 3.0.0
     dev: false
 
-  /debounce/1.2.1:
-    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
-    dev: false
-
   /delaunator/5.0.0:
     resolution: {integrity: sha512-AyLvtyJdbv/U1GkiS6gUUzclRoAY4Gs75qkMygJJhU75LW4DNuSF2RMzpxs9jw9Oz1BobHjTdkG3zdP55VxAqw==}
     dependencies:
@@ -1559,17 +1553,6 @@ packages:
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 18.0.0
-      react-dom: 18.0.0_react@18.0.0
-    dev: false
-
-  /react-use-measure/2.1.1_zpnidt7m3osuk7shl3s4oenomq:
-    resolution: {integrity: sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==}
-    peerDependencies:
-      react: '>=16.13'
-      react-dom: '>=16.13'
-    dependencies:
-      debounce: 1.2.1
       react: 18.0.0
       react-dom: 18.0.0_react@18.0.0
     dev: false

@@ -1,30 +1,55 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as d3 from 'd3'
 import { motion } from 'framer-motion'
-import useMeasure from 'react-use-measure'
 import TopBar from './TopBar'
 import Icon from './Icons'
 import styles from './styles/D3mobile.module.css'
 
+function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+        w: 0,
+        h: 0,
+    });
+    useEffect(() => {
+        // Handler to call on window resize
+        function handleResize() {
+            // Set window width/height to state
+            setWindowSize({
+                w: window.innerWidth,
+                h: window.innerHeight,
+            });
+        }
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, [])
+
+    return windowSize;
+}
+
 export default function Chart(props) {
 
     const { progress, progressRef } = props
-    let [ref, bounds] = useMeasure()
+    const size = useWindowSize()
 
     return <>
 
         <TopBar progress={progress} progressRef={progressRef} />
 
         <div
-            style={{ height: `${bounds.width}px` }}
-            ref={ref}
+            style={{ height: `${size.w}px` }}
             className={`${styles.parent}`}
             id="svg-container"
         >
-            {bounds.width > 0 && (
+            {size.w > 0 && (
                 <ChartInner
-                    height={bounds.height}
-                    w={bounds.width}
+                    height={size.w}
+                    w={size.w}
                     {...props}
                 />
             )}

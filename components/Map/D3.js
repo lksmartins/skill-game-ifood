@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import * as d3 from "d3"
-import useMeasure from "react-use-measure"
 import { motion } from "framer-motion"
 import styles from './styles/D3.module.css'
 import { isMobile } from 'react-device-detect'
@@ -9,25 +8,50 @@ import Link from 'next/link'
 import Progress from '@components/Progress/Progress'
 import Icon from './Icons'
 
+function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState({
+        w: 0,
+        h: 0,
+    });
+    useEffect(() => {
+        // Handler to call on window resize
+        function handleResize() {
+            // Set window width/height to state
+            setWindowSize({
+                w: window.innerWidth,
+                h: window.innerHeight,
+            });
+        }
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, [])
+
+    return windowSize;
+}
+
 export default function Chart(props) {
 
     const { controls, resetLocalMap } = props
-    let [ref, bounds] = useMeasure()
-    const { height, width } = bounds
-
-    const parentHeight = width / 4.5
-    const containerSize = { height: parentHeight, width: width - parentHeight }
+    
+    const size = useWindowSize()
+    const parentHeight = size.w / 4.5
+    const containerSize = { height: parentHeight, width: size.w - parentHeight }
 
     //console.log(`numbers`, parentHeight, containerSize)
 
     return <>
         <div
-            ref={ref}
             id="svg-container"
-            style={{ height: width / 4.5 }}
+            style={{ height: size.w / 4.5 }}
             className={`${styles.parent} ${controls.isOpen ? styles.open : styles.closed}`}
         >
-            {bounds.width > 0 && (
+            {size.w > 0 && (
                 <ChartInner
                     width={containerSize.width}
                     height={containerSize.height}
@@ -56,7 +80,6 @@ function ChartInner(props) {
     const MAIN_LINE_COLOR = '#ECB751'
     const [showWarning, setShowWarning] = useState(false)
     const [wasPathAnimated, setWasPathAnimated] = useState([])
-    const iconsAdded = []
 
     useEffect(() => {
 
@@ -90,7 +113,7 @@ function ChartInner(props) {
 
         try {
             const pos = { x: data.find(el => el.ref == questionRef).x, y: data.find(el => el.ref == questionRef).y }
-            return <Icon questionRef={questionRef} pos={pos} xScale={xScale} yScale={yScale}/>
+            return <Icon questionRef={questionRef} pos={pos} xScale={xScale} yScale={yScale} />
         }
         catch (error) {
             console.log('🔴 err', error.message)
