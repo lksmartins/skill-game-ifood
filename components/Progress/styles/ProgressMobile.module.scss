@@ -31,17 +31,6 @@ $gold: #FFCE45;
             align-items: center;
             position: relative;
 
-            .line{
-                border: 1px solid $light;
-                border-radius: 0.75rem;
-            }
-
-            .percent{
-                position: absolute;
-                padding-right: 0.35rem;
-                font-size: 0.85rem;
-            }
-
             .icon{
                 position: absolute !important;
                 left: -2.5rem;

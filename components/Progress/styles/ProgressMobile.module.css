@@ -43,17 +43,6 @@
   position: relative;
 }
 
-.wrapper .content .progress .line {
-  border: 1px solid #F9F2E8;
-  border-radius: 0.75rem;
-}
-
-.wrapper .content .progress .percent {
-  position: absolute;
-  padding-right: 0.35rem;
-  font-size: 0.85rem;
-}
-
 .wrapper .content .progress .icon {
   position: absolute !important;
   left: -2.5rem;

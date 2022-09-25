@@ -25,16 +25,17 @@ export default function Progress({ animationRef, progress = 50 }) {
                         <Image src={sacola} width="70%" height="80%" />
                     </div>
 
-                    <Line
-                        className={styles.line}
-                        strokeLinecap="square"
-                        percent={progress}
-                        trailColor="#EA1D2C"
-                        trailWidth={20}
-                        strokeWidth={20}
-                        strokeColor="#F9F2E8"
-                    />
-                    <div className={styles.percent} style={{color: color}}>{progress}%</div>
+                    <div className="w-100" style={{border:'1px solid #F9F2E8', borderRadius:'0.75rem', overflow:'hidden'}}>
+                        <div className={`text-center ${progress>0?'px-2 ms-2':'ms-3'}`}
+                        style={{
+                            backgroundColor:'#F9F2E8', 
+                            width:`${progress}%`, 
+                            color:'#890019',
+                            textShadow: '1px 0 #F9F2E8, -1px 0 #F9F2E8, 0 1px #F9F2E8, 0 -1px #F9F2E8, 1px 1px #F9F2E8, -1px -1px #F9F2E8, 1px -1px #F9F2E8, -1px 1px #F9F2E8'}}
+                            >
+                                {progress}%
+                            </div>
+                    </div>
                 </div>
 
             </div>
