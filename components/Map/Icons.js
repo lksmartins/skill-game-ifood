@@ -105,8 +105,8 @@ export default function Icon({ questionRef, pos, xScale, yScale }) {
                 scale = 0.05
                 break;
             case 'F002_Q012':
-                calc = { x: xScale(pos.x * 21.9), y: yScale(120) }
-                scale = 0.05
+                calc = { x: xScale(pos.x * 37.7), y: yScale(420) }
+                scale = 0.03
                 break;
             case 'F002_Q014':
                 calc = { x: xScale(pos.x * 21.9), y: yScale(280) }
