@@ -127,7 +127,7 @@ export default function Play({ questions, map, files, ends }) {
     ]
 
     const feedMapData = (food, map) => {
-
+        
         for (const item of food) {
             for (const mapItem of map) {
                 if (mapItem.ref == item.ref) mapItem.stepName = item.stepName
