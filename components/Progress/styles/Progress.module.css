@@ -64,6 +64,7 @@
   z-index: 31;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
+  max-width: 40%;
 }
 
 .wrapper .content .icon:global(.animate1) {

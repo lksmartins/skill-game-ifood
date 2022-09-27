@@ -49,6 +49,7 @@ $gold: #FFCE45;
             transition: all 0.3s ease;
             z-index: 31;
             transform: scale(1.2);
+            max-width: 40%;
     
             &:global(.animate1){
                 transform: scale(1.5) rotate(25deg);
