@@ -25,21 +25,14 @@ export default function Slider({
 }) {
 
     const [currentAlternative, setCurrentAlternative] = useState(null)
+    const [confirmDisabled, setConfirmDisabled] = useState(true)
 
     const chooseAlternative = (alternative) => {
 
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
-        //mapControls.open()
-
-        const elements = document.getElementsByClassName(styles.confirm)
-        let confirm
-        for (const item of elements) {
-            if (item.getAttribute('qref') == alternative.questionRef) confirm = item
-            item.disabled = false
-        }
-
+        setConfirmDisabled(false)
     }
 
     const confirmAlternative = () => {
@@ -102,11 +95,8 @@ export default function Slider({
     }
 
     useEffect(() => {
-        const elements = document.getElementsByClassName(styles.confirm)
-        for (const item of elements) {
-            item.setAttribute('disabled', false)
-        }
-    }, [slidesPositions])
+        setConfirmDisabled(true)
+    }, [currentSlide])
 
     if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
         <i style={{ marginRight: '1rem' }} className="fa-solid fa-circle-notch fa-spin"></i> Carregando...
@@ -128,7 +118,13 @@ export default function Slider({
                             </div>
                             <div className={styles.alternatives}>
                                 {buildAlternatives(slide)}
-                                <button qref={slide.ref} className={`btn-ifood ${styles.confirm}`} onClick={() => confirmAlternative()}>Confirmar <i className="fa-solid fa-square-caret-right"></i></button>
+                                <button 
+                                    disabled={confirmDisabled}
+                                    qref={slide.ref} 
+                                    className={`btn-ifood ${styles.confirm}`} 
+                                    onClick={() => confirmAlternative()}>
+                                        Confirmar <i className="fa-solid fa-square-caret-right"></i>
+                                    </button>
                             </div>
                         </div>
                     </div>
