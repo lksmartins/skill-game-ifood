@@ -53,6 +53,9 @@
 
 .parent .col:first-of-type {
   padding-left: 0.5rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .parent .col:last-of-type {
@@ -162,6 +165,24 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@media (max-width: 1500px) {
+  .parent :global(.btn-ifood-light.mainRed) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+@media (max-width: 1350px) {
+  .parent :global(.btn-ifood-light.mainRed) {
+    text-align: center;
+  }
 }
 
 /* 

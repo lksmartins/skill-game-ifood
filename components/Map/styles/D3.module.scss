@@ -31,6 +31,7 @@ $gold: #FFCE45;
 
         &:first-of-type{
             padding-left: 0.5rem;
+            justify-content: flex-start;
         }
         &:last-of-type{
             padding-right: 0.5rem;
@@ -128,6 +129,25 @@ $gold: #FFCE45;
     top: 0;
     left: 0;
 }
+
+
+
+@media (max-width: 1500px){
+    .parent{
+        :global(.btn-ifood-light.mainRed){
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+@media (max-width: 1350px){
+    .parent{
+        :global(.btn-ifood-light.mainRed){
+            text-align: center;
+        }
+    }
+}
+
 /* 
 @media (max-width: 1024px) {
     .parent{

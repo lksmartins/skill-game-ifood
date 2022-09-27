@@ -322,11 +322,13 @@ function ChartInner(props) {
         <div className={styles.col}>
 
             <Link href="/"><a><Image src="/ifood-logo.svg" width="200" height="120" objectFit="contain" /></a></Link>
-            <Link href="/start">
-                <a className={`btn-ifood-light mainRed`}>
-                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao inicio
-                </a>
-            </Link>
+            <div className="flex-fill d-flex justify-content-center align-items-center">
+                <Link href="/start">
+                    <a className={`btn-ifood-light mainRed`}>
+                        <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao inicio
+                    </a>
+                </Link>
+            </div>
 
             {showWarning &&
                 <div className="warning-popup p-2 px-3">
