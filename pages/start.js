@@ -32,7 +32,7 @@ export default function start() {
 
             <div className="row align-items-center justify-content-center w-100">
                 <div className={`${styles.mainText} col fs-5 ${classes['text'][deviceType]}`}>
-                    Olá, loja parceira! Bem-vinda ao [definir o nome que vamos dar p/ gamificação]. Nesta apresentação, você vai conseguir simular algumas situações reais envolvendo cancelamento de pedidos na plataforma iFood.<br />
+                    Olá, loja parceira! Bem-vinda ao Guia Interativo para Restaurantes - Política de Cancelamento de Pedidos. Aqui, você vai simular situações reais envolvendo cancelamentos que ocorrem na jornada de pedidos na plataforma iFood.<br/>
                     O nosso objetivo é que você entenda o processo de cancelamento e como ele impacta no seu negócio. Para iniciar, selecione que tipo de plano o do seu estabelecimento:
                 </div>
             </div>
