@@ -2,7 +2,7 @@ import {useEffect} from 'react'
 import {useRouter} from 'next/router'
 
 //const trackerId = process.env.GOOGLE_GLOBAL_TAG
-const trackerId = 'UA-49860358-2'
+const trackerId = 'G-HSK3TGXYZ6'
 
 export default function GTMEvents() {
 
