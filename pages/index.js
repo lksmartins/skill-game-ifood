@@ -28,7 +28,7 @@ export default function Index() {
                                     <div className="mb-3">Guia Interativo para Restaurantes</div>
                                     Política de Cancelamento de Pedidos
                                 </h1>
-                                <Link href="/start"><a className="btn-ifood-light">Iniciar minha jornada</a></Link>
+                                <Link href="/start"><a className="btn-ifood-light fs-2 text-center">Iniciar minha jornada</a></Link>
                             </div>
                             
                         </div>
