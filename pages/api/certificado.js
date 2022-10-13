@@ -29,10 +29,10 @@ export default async (req, res) => {
             //attachment = fs.readFileSync(pathToAttachment).toString("base64");
 
             const msg = {
-                to: 'martins@chavemestra.net',
-                from: 'contato@chavemestra.net',
+                to: email,
+                from: 'certificado@cancelamentoifood.com.br',
                 subject: 'Certificado Ifood',
-                text: 'and easy to do anywhere, even with Node.js',
+                text: 'Parabéns por ter concluído um fluxo do pedido de cancelamento ifood. E para provar isso segue o seu certificado em anexo.',
                 attachments: [
                     {
                         content: attachments.image,

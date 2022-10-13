@@ -72,7 +72,7 @@ export default function Certificate({ map }) {
                 <Link href="/"><a><img src="/ifood-logo.svg" /></a></Link>
             </div>
 
-            <div className="container bg-light text-dark rounded py-4">
+            <div className="container bg-light text-dark rounded py-4 mb-5">
 
                 <div class="alert alert-danger mx-2 mb-4" role="alert">
                     Verifique se seus dados estao corretos antes de gerar o certificado!
