@@ -79,6 +79,7 @@
 .start .startButton:hover {
   -webkit-transform: translateY(-1rem);
           transform: translateY(-1rem);
+  z-index: 30;
   font-weight: bold;
   -webkit-box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 15px 16px 4px rgba(0, 0, 0, 0.25);

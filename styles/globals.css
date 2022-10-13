@@ -33,6 +33,10 @@ body {
   display: none !important;
 }
 
+.rounded {
+  border-radius: 0.75rem !important;
+}
+
 .form-check-input:checked {
   background-color: #FFCE45;
   border-color: #FFCE45;
