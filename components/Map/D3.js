@@ -325,7 +325,7 @@ function ChartInner(props) {
             <div className="flex-fill d-flex justify-content-center align-items-center">
                 <Link href="/start">
                     <a className={`btn-ifood-light mainRed`}>
-                        <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao inicio
+                        <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar a tela inicial
                     </a>
                 </Link>
             </div>

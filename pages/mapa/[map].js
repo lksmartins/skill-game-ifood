@@ -436,7 +436,7 @@ export default function Play({ questions, map, files, ends }) {
                                 className={`btn-ifood`}
                                 style={{padding: '0.35rem'}}
                                 >
-                                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar ao início
+                                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar a tela inicial
                                 </a>
                             </Link>
                         </div>
