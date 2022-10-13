@@ -131,7 +131,7 @@ export default function Form(props) {
                     <div className={`bg-light w-100 p-1 text-center rounded ${!error ? 'text-success' : 'text-danger'}`}>{sentMessage}</div>
                 </div>
 
-                <div className="mb-4">
+                <div className="mt-3 mb-5">
                     <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.RECAPTCHA_KEY}
@@ -142,7 +142,7 @@ export default function Form(props) {
                 <div className="row w-100">
                     <div className="col-sm-4 col-12 p-0 pe-sm-1 order-1 order-sm-0">{footerLeftEl}</div>
                     <div className="col-sm-8 col-12 p-0 ps-sm-1 mb-3 mb-sm-0">
-                        <button className="btn-ifood-light" disabled={buttonDisabled} type="submit">
+                        <button className="btn-ifood gold" disabled={buttonDisabled} type="submit">
                             {buttonText} <i className={`ms-1 ${sendIcon}`}></i>
                         </button>
                     </div>

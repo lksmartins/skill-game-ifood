@@ -3,6 +3,7 @@ import Form from '@components/Forms/Form'
 import { findValueById } from '@lib/helper'
 import CertificateComponent from '@components/Certificate'
 import { getToken } from '@lib/helper'
+import Link from 'next/link'
 
 export async function getStaticPaths() {
     return {
@@ -56,46 +57,57 @@ export default function Certificate({ map }) {
     }
 
     if (showCertificate) {
-        return <CertificateComponent 
-                    name={name} 
-                    email={email} 
-                    plan={map == 'F001' ? 'Básico' : 'Entrega'}
-                    setShowCertificate={setShowCertificate}
-                />
+        return <CertificateComponent
+            name={name}
+            email={email}
+            plan={map == 'F001' ? 'Básico' : 'Entrega'}
+            setShowCertificate={setShowCertificate}
+        />
     }
 
     return (
-        <div style={{ minHeight: '100vh' }} className="container d-flex flex-fill flex-column justify-content-center align-items-center">
+        <div style={{ minHeight: '100vh', maxWidth:'720px' }} className="container d-flex flex-fill flex-column justify-content-center align-items-center">
+            
             <div>
-                <img src="/ifood-logo.svg" />
+                <Link href="/"><a><img src="/ifood-logo.svg" /></a></Link>
             </div>
-            <div>
-                <Form
-                    fields={fields}
-                    apiBody={(state) => {
-                        return {
-                            mapId: map,
-                            name: findValueById(state, 'name'),
-                            email: findValueById(state, 'email'),
+
+            <div className="container bg-light text-dark rounded py-4">
+
+                <div class="alert alert-danger mx-2 mb-4" role="alert">
+                    Verifique se seus dados estao corretos antes de gerar o certificado!
+                </div>
+
+                <div>
+                    <Form
+                        fields={fields}
+                        apiBody={(state) => {
+                            return {
+                                mapId: map,
+                                name: findValueById(state, 'name'),
+                                email: findValueById(state, 'email'),
+                            }
                         }
-                    }
-                    }
-                    errorMessage="Houve um erro na tentativa de gerar seu certificado. Recarregue a página e tente novamente."
-                    successMessage="Certificado gerado com sucesso. O certidicado foi enviado para o seu email."
-                    onSuccess={(response) => {
-                        console.log(response)
-                        setName(response[0].value)
-                        setEmail(response[1].value)
+                        }
+                        errorMessage="Houve um erro na tentativa de gerar seu certificado. Recarregue a página e tente novamente."
+                        successMessage="Certificado gerado com sucesso. O certidicado foi enviado para o seu email."
+                        onSuccess={(response) => {
+                            console.log(response)
+                            setName(response[0].value)
+                            setEmail(response[1].value)
 
-                        if (checkRef.current.checked) saveEmail(response[1].value)
+                            if (checkRef.current.checked) saveEmail(response[1].value)
 
-                        setShowCertificate(true)
-                    }}
+                            setShowCertificate(true)
+                        }}
 
-                    footerLeftEl={<button onClick={()=>history.back()} class="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</button>}
-                    buttonText="Gerar Certificado"
-                />
+                        footerLeftEl={<button onClick={() => history.back()} class="btn-ifood-light"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</button>}
+                        buttonText="Gerar Certificado"
+                    />
+                </div>
+
             </div>
+
 
         </div>
     )

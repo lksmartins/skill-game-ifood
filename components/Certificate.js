@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import Link from 'next/link'
 
 export default function PDF({ name, email, plan, setShowCertificate }) {
 
@@ -87,7 +88,7 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
     return (
         <div className="container px-4 py-5" style={{maxWidth:'720px'}}>
 
-            <div className="row">
+            <div className="row mb-3">
                 <div className="col-6">
                     <div className="w-100 h-100 d-flex justify-content-start align-items-center">
                         <button onClick={()=>setShowCertificate(false)} class="btn-ifood-dark w-auto">
@@ -97,29 +98,34 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
                 </div>
                 <div className="col-6">
                     <div className="d-flex justify-content-end align-items-center">
-                        <img className="img-fluid w-25" src="/ifood-logo.svg"/>
+                        <Link href="/">
+                            <img style={{cursor:'pointer'}} className="img-fluid w-25" src="/ifood-logo.svg"/>
+                        </Link>
                     </div>
                 </div>
             </div>
 
             {/* CERTIFICADO */}
-            <div style={{backgroundColor: '#F1F4FD', fontSize:'clamp(1rem, 2vw, 1.5rem)', position: 'relative'}} className="invoicePages bg-light text-dark rounded text-center p-4">
+            <div className="invoicePages text-dark rounded text-center p-4"
+            style={{backgroundColor: '#890019', fontSize:'clamp(1rem, 2vw, 1.5rem)', position: 'relative'}} >
 
-                <div className="d-flex" style={{position: 'absolute', top:'1rem', left: '1rem'}}>
-                    <img width="50vw" src="/ifood-logo-red.svg"/>
-                </div>
+                <div className="container-fluid bg-light position-relative rounded py-4">
+                    <div className="d-flex" style={{position: 'absolute', top:'1rem', left: '1rem'}}>
+                        <img width="50vw" src="/ifood-logo-red.svg"/>
+                    </div>
 
-                <div className="mt-4 px-4 d-flex flex-column justify-content-center align-items-center">
-                    <div className="mb-3 fw-bold text-uppercase" style={{color: '#890019'}}>
-                        CERTIFICADO
+                    <div className="px-4 d-flex flex-column justify-content-center align-items-center">
+                        <div className="mb-3 fw-bold text-uppercase" style={{color: '#890019'}}>
+                            CERTIFICADO
+                        </div>
+                        <div className="mb-3 fw-bold" style={{color: '#890019'}}>
+                            {name}
+                        </div>
+                        <div className="px-3">
+                            Agradecemos por ter completado a <b>Jornada da Politica de Cancelamento</b> do <b>plano {plan}</b>.
+                        </div>
+                        <img width="60%" src="/certificado.svg"/>
                     </div>
-                    <div className="mb-3 fw-bold" style={{color: '#890019'}}>
-                        {name}
-                    </div>
-                    <div className="px-3">
-                        Agradecemos por ter completado a <b>Jornada da Politica de Cancelamento</b> do plano <b>{plan}</b>.
-                    </div>
-                    <img width="60%" src="/certificado.svg"/>
                 </div>
 
             </div>
