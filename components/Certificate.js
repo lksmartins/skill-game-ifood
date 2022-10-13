@@ -141,17 +141,17 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
                         <img style={{width: 'clamp(10px, 12vw, 60px)', height: 'auto'}} src="/ifood-logo-red.svg"/>
                     </div>
 
-                    <div className="px-1 px-lg-4 d-flex flex-column justify-content-center align-items-center">
-                        <div className="mb-3 fw-bold text-uppercase" style={{color: '#890019'}}>
+                    <div className="px-1 px-lg-4 pb-2 d-flex flex-column justify-content-center align-items-center">
+                        <div className="mb-3 mt-5 fw-bold text-uppercase" style={{color: '#890019'}}>
                             CERTIFICADO
                         </div>
                         <div className="mb-1 mb-lg-3 fw-bold" style={{color: '#890019'}}>
                             {name}
                         </div>
                         <div className="px-3">
-                            Agradecemos por ter completado a <b>Jornada da Politica de Cancelamento</b> do <b>plano {plan}</b>.
+                            Parabéns por ter completado a <br/><b>Jornada da Politica de Cancelamento</b><br/> do <b>plano {plan}</b>.
                         </div>
-                        <img width="60%" src="/certificado.svg"/>
+                        <img width="60%" style={{maxWidth:'250px'}} src="/certificado.svg"/>
                     </div>
                 </div>
 

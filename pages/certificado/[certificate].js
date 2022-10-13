@@ -60,7 +60,7 @@ export default function Certificate({ map }) {
         return <CertificateComponent
             name={name}
             email={email}
-            plan={map == 'F001' ? 'Básico' : 'Entrega'}
+            plan={map == 'F001' ? 'básico' : 'entrega'}
             setShowCertificate={setShowCertificate}
         />
     }
@@ -75,7 +75,7 @@ export default function Certificate({ map }) {
             <div className="container bg-light text-dark rounded py-4 mb-5">
 
                 <div class="alert alert-danger mx-2 mb-4" role="alert">
-                    Verifique se seus dados estao corretos antes de gerar o certificado!
+                    Verifique se seus dados estão corretos antes de gerar o certificado!
                 </div>
 
                 <div>

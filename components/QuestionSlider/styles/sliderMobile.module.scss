@@ -1,7 +1,4 @@
-$mainRed: #EA1D2C;
-$darkRed: #890019;
-$light: #F9F2E8;
-$gold: #FFCE45;
+@import '../../../styles/_variables';
 
 @keyframes pulse {
     from {
@@ -113,7 +110,7 @@ $gold: #FFCE45;
                     width: 100%;
 
                     .alternative {
-                        background: #EA1D2C;
+                        background: $mainRed;
                     }
 
                     button {

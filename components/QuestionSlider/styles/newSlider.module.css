@@ -217,13 +217,13 @@
 }
 
 .slider .slide .wrapper .text .alternatives .alternative {
-  background: #EA1D2C;
+  background: #EB0033;
 }
 
 .slider .slide .wrapper .text .alternatives button.selected {
   background-color: white !important;
-  color: #EA1D2C;
-  border-color: #EA1D2C;
+  color: #EB0033;
+  border-color: #EB0033;
   -webkit-animation-duration: 0.6s;
           animation-duration: 0.6s;
   -webkit-animation-name: pulse;

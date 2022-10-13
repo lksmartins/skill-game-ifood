@@ -200,12 +200,12 @@
 }
 
 .slider .slide .wrapper .text .alternatives .alternative {
-  background: #EA1D2C;
+  background: #EB0033;
 }
 
 .slider .slide .wrapper .text .alternatives button.selected {
   background-color: white !important;
-  color: #EA1D2C;
+  color: #EB0033;
   -webkit-box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
           box-shadow: 1.52504px 2.23005px 10.82003px rgba(0, 0, 0, 0.25);
   -webkit-animation-duration: 0.6s;

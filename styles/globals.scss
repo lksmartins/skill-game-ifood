@@ -16,20 +16,17 @@
     font-style: normal;
 }
 
+
 body{
     font-family: 'ifood', 'ifood-title', 'sans-serif' !important;
     font-weight: 400;
-    background: #EA1D2C;
+    background: $mainRed;
     color: #E8EAED;
     min-height: 100vh;
     scroll-behavior: smooth;
 }
 
-$mainRed: #EA1D2C;
-$darkRed: #890019;
-$light: #F9F2E8;
-$lightShadow: #CDC8C2;
-$gold: #FFCE45;
+
 
 .show{
     display: flex !important;

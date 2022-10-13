@@ -1,5 +1,5 @@
 .start {
-  background-color: #EA1D2C;
+  background-color: #EB0033;
   min-height: 100vh;
 }
 
@@ -23,7 +23,7 @@
   transition: all 0.3s ease;
   text-decoration: none;
   line-height: 1.5rem;
-  color: #EA1D2C;
+  color: #EB0033;
   width: -webkit-fill-available;
   width: -moz-available;
   width: stretch;
@@ -62,7 +62,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  color: #EA1D2C;
+  color: #EB0033;
   line-height: 2rem;
   font-weight: 400;
   font-size: 2rem;
