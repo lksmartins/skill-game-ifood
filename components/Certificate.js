@@ -12,6 +12,7 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
     const [showSuccess, setShowSuccess] = useState(false)
     const [showError, setShowError] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [isLocalhost, setIsLocalhost] = useState(false)
 
     // planning to expand pdf when saving with a loading overlay
     const [canvasOptions, setCanvasOptions] = useState({
@@ -77,6 +78,16 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
         updateImage()
 
     }, [])
+
+    useEffect(() => {
+
+        if( window != undefined ){
+            if( window.location.hostname == 'localhost' ){
+                if( isLocalhost == false ) setIsLocalhost(true)
+            }
+        }
+
+    })
 
     const showResult = (success=false)=>{
         console.log('showResult', success)
@@ -176,25 +187,28 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
                     </button>
                 </div>
 
-                <div className="col-lg-12 pb-1 mt-3">
-                    Enviar por email
-                </div>
+                {isLocalhost && (<>
 
-                <div className="col-lg-12">
-                    <button onClick={sendEmail} className="btn-ifood gold">{isLoading ? <i className="fa-solid fa-circle-notch fa-spin"></i> : <><i className="fa-solid me-1 fa-file-zipper"></i> Imagem e PDF</>}</button>
-                </div>
+                    <div className="col-lg-12 pb-1 mt-3">
+                        Enviar por email
+                    </div>
 
-                {/* AVISO */}
-                <div className="col mt-2">
-                    { showSuccess && <div className="alert alert-success" role="alert">
-                            Certificado enviado com sucesso!
-                        </div>
-                    }
-                    { showError && <div className="alert alert-danger" role="alert">
-                            Houve algum erro na tentativa de enviar o seu certificado, recarregue a página e tente novamente.
-                        </div>
-                    }
-                </div>
+                    <div className="col-lg-12">
+                        <button onClick={sendEmail} className="btn-ifood gold">{isLoading ? <i className="fa-solid fa-circle-notch fa-spin"></i> : <><i className="fa-solid me-1 fa-file-zipper"></i> Imagem e PDF</>}</button>
+                    </div>
+
+                    <div className="col mt-2">
+                        { showSuccess && <div className="alert alert-success" role="alert">
+                                Certificado enviado com sucesso!
+                            </div>
+                        }
+                        { showError && <div className="alert alert-danger" role="alert">
+                                Houve algum erro na tentativa de enviar o seu certificado, recarregue a página e tente novamente.
+                            </div>
+                        }
+                    </div>
+
+                </>)}
             </div>
             
         </div>
