@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles/ProgressMobile.module.css'
-import { Line } from 'rc-progress'
 import sacola from '../../public/Progress/sacola.svg'
 import Image from 'next/image'
+import Modal from './Modal'
 
-export default function Progress({ animationRef, progress = 50 }) {
+export default function Progress({ map, animationRef, progress = 50 }) {
 
-    const [color, setColor] = useState('#F9F2E8')
+    const [showModal, setShowModal] = useState(false)
+    const [userClosedModal, setUserClosedModal] = useState(false)
 
     useEffect(() => {
-        if (progress >= 70) setColor('#EA1D2C')
+        
+        if( progress >= 100 ){
+            if (userClosedModal == false) setShowModal(true)
+        }
+
     }, [progress])
 
     return (
         <div className={styles.wrapper}>
 
+            <Modal
+                show={showModal}
+                onHide={() => {
+                    setShowModal(false)
+                    setUserClosedModal(true)
+                }}
+                map={map}
+            />
+
             <div className={styles.text}>Seu progresso</div>
 
-            <div className={styles.content}>
+            <div className={styles.content} style={{ cursor: progress >= 100 ? 'pointer' : '' }} onClick={() => { if (progress >= 100) setShowModal(true) }}>
 
                 <div className={styles.progress}>
 

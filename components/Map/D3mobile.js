@@ -34,12 +34,12 @@ function useWindowSize() {
 
 export default function Chart(props) {
 
-    const { progress, progressRef } = props
+    const { progress, progressRef, progressMap } = props
     const size = useWindowSize()
 
     return <>
 
-        <TopBar progress={progress} progressRef={progressRef} />
+        <TopBar map={progressMap} progress={progress} progressRef={progressRef} />
 
         <div
             style={{ height: `${size.w}px` }}
