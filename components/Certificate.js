@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
-import Link from 'next/link'
 
 export default function PDF({ name, email, plan, setShowCertificate }) {
 

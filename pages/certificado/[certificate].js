@@ -3,7 +3,6 @@ import Form from '@components/Forms/Form'
 import { findValueById } from '@lib/helper'
 import CertificateComponent from '@components/Certificate'
 import { getToken } from '@lib/helper'
-import Link from 'next/link'
 
 export async function getStaticPaths() {
     return {
@@ -93,7 +92,7 @@ export default function Certificate({ map }) {
                         setShowCertificate(true)
                     }}
 
-                    footerLeftEl={<Link href="/"><a class="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</a></Link>}
+                    footerLeftEl={<button onClick={()=>history.back()} class="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</button>}
                     buttonText="Gerar Certificado"
                 />
             </div>

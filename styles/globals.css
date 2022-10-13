@@ -92,6 +92,12 @@ body {
   border-color: #EA1D2C;
 }
 
+.btn-ifood.gold:hover {
+  background-color: #FFCE45 !important;
+  color: #890019 !important;
+  border-color: #890019 !important;
+}
+
 .btn-ifood:hover {
   background-color: white !important;
   color: #EA1D2C !important;
@@ -102,6 +108,11 @@ body {
   background-color: #FFCE45;
   color: #890019;
   border-color: #890019;
+}
+
+.progressModal .modal-content {
+  background-color: #F9F2E8 !important;
+  color: #1c1c1c;
 }
 
 .main {

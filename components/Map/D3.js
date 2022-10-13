@@ -72,7 +72,7 @@ function mapConsole(message) {
 
 function ChartInner(props) {
 
-    const { data, progressRef, progress, controls, width, height, playerJourney, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
+    const { data, progressRef, progressMap, progress, controls, width, height, playerJourney, updateCurrent, nextQuestion, currentQuestionMarker, svgContainerRef } = props
 
     const BASE_COLOR = '#DADADA'
     const ACTIVE_BASE_COLOR = '#6DDA36'
@@ -531,7 +531,7 @@ function ChartInner(props) {
         </div>
 
         <div className={styles.col}>
-            <Progress animationRef={progressRef} progress={progress} />
+            <Progress map={progressMap} animationRef={progressRef} progress={progress} />
         </div>
     </>
 }

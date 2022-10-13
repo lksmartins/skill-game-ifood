@@ -89,6 +89,11 @@ $gold: #FFCE45;
     color: $mainRed;
     border-color: $mainRed;
 }
+.btn-ifood.gold:hover{
+    background-color: $gold !important;
+    color: $darkRed !important;
+    border-color: $darkRed !important;
+}
 
 .btn-ifood:hover {
     background-color: white !important;
@@ -100,13 +105,20 @@ $gold: #FFCE45;
     color: $darkRed;
     border-color: $darkRed;
 }
-  
+
+.progressModal{
+    .modal-content{
+        background-color: $light !important;
+        color: #1c1c1c;
+    }
+}
+
 .main{
-padding-top: 100px;
+    padding-top: 100px;
 }
   
 .store .modal-dialog{
-min-width: 70vw !important;
+    min-width: 70vw !important;
 }
 
 .btn{

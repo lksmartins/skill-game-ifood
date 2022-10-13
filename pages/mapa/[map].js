@@ -410,6 +410,7 @@ export default function Play({ questions, map, files, ends }) {
                         svgContainerRef={svgContainer}
                         progress={progress}
                         progressRef={progressRef}
+                        progressMap={map}
                     />
                         :
                         <Map
@@ -424,6 +425,7 @@ export default function Play({ questions, map, files, ends }) {
                             svgContainerRef={svgContainer}
                             progress={progress}
                             progressRef={progressRef}
+                            progressMap={map}
                         />
                 )
             }
