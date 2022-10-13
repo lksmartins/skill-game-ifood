@@ -45,7 +45,7 @@ body {
   -webkit-box-shadow: none !important;
 }
 
-.btn-ifood, .btn-ifood-light {
+.btn-ifood, .btn-ifood-light, .btn-ifood-dark {
   font-family: 'ifood-title' !important;
   text-decoration: none;
   width: 100%;
@@ -72,6 +72,18 @@ body {
   background-color: #F9F2E8;
   color: #EA1D2C;
   border-color: #CDC8C2;
+}
+
+.btn-ifood-dark {
+  background-color: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.btn-ifood-dark:hover {
+  background-color: #FFCE45;
+  color: #890019;
+  border-color: #890019;
 }
 
 .btn-ifood-light.mainRed:hover {

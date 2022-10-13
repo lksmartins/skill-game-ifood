@@ -139,11 +139,13 @@ export default function Form(props) {
                     <span className={recaptchaHelp ? 'show' : 'hidden'}>Não esqueça de fazer o reCAPTCHA</span>
                 </div>
 
-                <div className="w-100">
-                    <div>{footerLeftEl}</div>
-                    <button className="btn-ifood-light" disabled={buttonDisabled} type="submit">
-                        {buttonText} <i className={`ms-1 ${sendIcon}`}></i>
-                    </button>
+                <div className="row w-100">
+                    <div className="col-sm-4 col-12 p-0 pe-sm-1 order-1 order-sm-0">{footerLeftEl}</div>
+                    <div className="col-sm-8 col-12 p-0 ps-sm-1 mb-3 mb-sm-0">
+                        <button className="btn-ifood-light" disabled={buttonDisabled} type="submit">
+                            {buttonText} <i className={`ms-1 ${sendIcon}`}></i>
+                        </button>
+                    </div>
                 </div>
 
             </div>

@@ -3,6 +3,7 @@ import Form from '@components/Forms/Form'
 import { findValueById } from '@lib/helper'
 import CertificateComponent from '@components/Certificate'
 import { getToken } from '@lib/helper'
+import Link from 'next/link'
 
 export async function getStaticPaths() {
     return {
@@ -41,10 +42,6 @@ export default function Certificate({ map }) {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
-    if (showCertificate) {
-        return <CertificateComponent name={name} email={email} plan={map == 'F001' ? 'Básico' : 'Entrega'} />
-    }
-
     const saveEmail = async (email) => {
 
         const token = await getToken()
@@ -57,6 +54,15 @@ export default function Certificate({ map }) {
             },
             body: JSON.stringify({ email })
         })
+    }
+
+    if (showCertificate) {
+        return <CertificateComponent 
+                    name={name} 
+                    email={email} 
+                    plan={map == 'F001' ? 'Básico' : 'Entrega'}
+                    setShowCertificate={setShowCertificate}
+                />
     }
 
     return (
@@ -87,6 +93,7 @@ export default function Certificate({ map }) {
                         setShowCertificate(true)
                     }}
 
+                    footerLeftEl={<Link href="/"><a class="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</a></Link>}
                     buttonText="Gerar Certificado"
                 />
             </div>

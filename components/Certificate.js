@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+import Link from 'next/link'
 
-export default function PDF({ name, email, plan }) {
+export default function PDF({ name, email, plan, setShowCertificate }) {
 
     const [image, setImage] = useState('')
     const [pdf, setPdf] = useState('')
@@ -87,6 +88,21 @@ export default function PDF({ name, email, plan }) {
     return (
         <div className="container px-4 py-5" style={{maxWidth:'720px'}}>
 
+            <div className="row">
+                <div className="col-6">
+                    <div className="w-100 h-100 d-flex justify-content-start align-items-center">
+                        <button onClick={()=>setShowCertificate(false)} class="btn-ifood-dark w-auto">
+                            <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar
+                        </button>
+                    </div>
+                </div>
+                <div className="col-6">
+                    <div className="d-flex justify-content-end align-items-center">
+                        <img className="img-fluid w-25" src="/ifood-logo.svg"/>
+                    </div>
+                </div>
+            </div>
+
             {/* CERTIFICADO */}
             <div style={{backgroundColor: '#F1F4FD', fontSize:'clamp(1rem, 2vw, 1.5rem)', position: 'relative'}} className="invoicePages bg-light text-dark rounded text-center p-4">
 
@@ -116,13 +132,13 @@ export default function PDF({ name, email, plan }) {
                     Salvar nesse dispositivo
                 </div>
 
-                <div className="col-lg-6 col-sm-12 pb-2 pb-lg-0">
+                <div className="col-sm-6 col-xs-12 pe-sm-1 pb-2 pb-sm-0">
                     <a className="btn-ifood-light" download="certificado_ifood.jpeg" href={image}>
                         <i className="fa-solid me-1 fa-image"></i> Como Imagem
                     </a>
                 </div>
 
-                <div className="col-lg-6 col-sm-12">
+                <div className="col-sm-6 col-xs-12 ps-sm-1">
                     <button onClick={()=>updateImage(true)} className="btn-ifood-light">
                         {isLoading ? <i className="fa-solid fa-circle-notch fa-spin"></i> : <><i className="fa-solid me-1 fa-file-pdf"></i> Como PDF</>}
                     </button>
