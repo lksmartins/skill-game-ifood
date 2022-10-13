@@ -92,7 +92,7 @@ export default function Certificate({ map }) {
                         setShowCertificate(true)
                     }}
 
-                    footerLeftEl={<button onClick={()=>history.back()} class="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</button>}
+                    footerLeftEl={<button onClick={()=>history.back()} className="btn-ifood-dark"><i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar</button>}
                     buttonText="Gerar Certificado"
                 />
             </div>

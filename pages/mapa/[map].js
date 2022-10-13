@@ -396,7 +396,7 @@ export default function Play({ questions, map, files, ends }) {
         <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
 
             {
-                isLoading ? <div className="w-100 p-5 fs-1 text-center"><i class="fa-solid fa-spin fa-spinner"></i></div> : (
+                isLoading ? <div className="w-100 p-5 fs-1 text-center"><i className="fa-solid fa-spin fa-spinner"></i></div> : (
 
                     isMobile ? <MapMobile
                         data={mapData}

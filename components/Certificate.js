@@ -61,26 +61,33 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
         console.log('showResult', success)
         setShowSuccess(success)
         setShowError(!success)
+        {success==true ? localStorage.setItem("ifoodCertificate", Date.parse(new Date()) ) : ""}
     }
 
     const sendEmail = async () => {
+        if(!localStorage.getItem("ifoodCertificate") || Date.parse(new Date()) -  localStorage.getItem("ifoodCertificate") > 600000) {
+            console.log('sendEmail')
+            setIsLoading(true)
 
-        console.log('sendEmail')
-        setIsLoading(true)
-
-        const result = await fetch('/api/certificado', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name, email,
-                attachments: {image, pdf}
+            const result = await fetch('/api/certificado', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name, email,
+                    attachments: {image, pdf}
+                })
             })
-        })
 
-        console.log(result)
-        setIsLoading(false)
+            console.log(result)
+            setIsLoading(false)
 
-        showResult(result.ok)
+            showResult(result.ok)
+        } else {
+            setIsLoading(false)
+
+            showResult(false)
+        }
+        
 
     }
 
@@ -90,7 +97,7 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
             <div className="row">
                 <div className="col-6">
                     <div className="w-100 h-100 d-flex justify-content-start align-items-center">
-                        <button onClick={()=>setShowCertificate(false)} class="btn-ifood-dark w-auto">
+                        <button onClick={()=>setShowCertificate(false)} className="btn-ifood-dark w-auto">
                             <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar
                         </button>
                     </div>
@@ -155,7 +162,14 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
             {/* AVISO */}
             { showSuccess || showError ? 
                 <div className="">
-                    {showSuccess ? 'Certificado enviado com sucesso!' : 'Houve algum erro na tentativa de enviar o seu certificado, recarregue a página e tente novamente.'}
+                    {showSuccess ? 
+                        'Certificado enviado com sucesso!' 
+                        : 
+                        Date.parse(new Date()) -  localStorage.getItem("ifoodCertificate") < 600000 ? 
+                        `Você só poderá gerar um novo certificado daqui ${((600000 - (Date.parse(new Date()) -  localStorage.getItem("ifoodCertificate"))) / 600).toFixed(0)} segundos.` 
+                        : 
+                        'Houve algum erro na tentativa de enviar o seu certificado, recarregue a página e tente novamente.'
+                    }
                 </div>
                 : null
             }
