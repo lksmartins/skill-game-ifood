@@ -10,6 +10,7 @@ const nextConfig = {
     JWT_SECRET: process.env.JWT_SECRET,
     ENV: process.env.ENV,
     RECAPTCHA_KEY: process.env.RECAPTCHA_KEY,
+    SENDGRID_API_KEY: process.env.SENDGRID_API_KEY,
   },
 
   plugins: [

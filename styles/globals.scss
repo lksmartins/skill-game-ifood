@@ -1,5 +1,4 @@
 @import './_variables.scss';
-@import './_Carousel.scss';
 
 @font-face {
     font-family: 'ifood';
@@ -31,6 +30,27 @@ $darkRed: #890019;
 $light: #F9F2E8;
 $lightShadow: #CDC8C2;
 $gold: #FFCE45;
+
+.show{
+    display: flex !important;
+}
+.hidden{
+    display: none !important;
+}
+
+
+.form-check-input:checked{
+    background-color: $gold;
+    border-color: $gold;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23890019' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+}
+
+//recaptcha
+.rc-anchor{
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
 
 .btn-ifood, .btn-ifood-light {
     font-family: 'ifood-title' !important;

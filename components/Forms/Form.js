@@ -1,18 +1,7 @@
 import React, { useState, useRef } from 'react'
 import ReCAPTCHA from 'react-google-recaptcha'
 import PropTypes from 'prop-types'
-import styles from '@components/Forms/styles/form.module.css'
 import ForgotPassword from '@components/Forms/ForgotPassword'
-
-/*
-    Where its being used:
-    -Footer
-    -ihunter-sobre
-    -LoginForm
-    -SignupForm
-    -ForgotPassword
-*/
-
 export default function Form(props) {
 
     const { fields, apiBody, errorMessage='Houve um erro inesperado. Recarregue a página e tente novamente.', successMessage, onSuccess, footerLeftEl, buttonText } = props
@@ -55,11 +44,20 @@ export default function Form(props) {
         setSentMessage('')
         setError(false)
 
-        const recaptchaValue = recaptchaRef.current.getValue()
+        let skipRecaptcha = false
 
-        if( recaptchaValue=='' ){
-          setRecaptchaHelp(true)
-          return false
+        if( window !== undefined ){
+            if( window.location.hostname == 'localhost' || window.location.hostname == '192.168.100.113' ) skipRecaptcha = true
+        }
+
+        if( skipRecaptcha == false ){
+
+            const recaptchaValue = recaptchaRef.current.getValue()
+
+            if( recaptchaValue=='' ){
+            setRecaptchaHelp(true)
+            return false
+            }
         }
 
         let filledFields = 0
@@ -99,84 +97,53 @@ export default function Form(props) {
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
-        fetch(process.env.API_URL, {
-            method: 'POST',
-            body: JSON.stringify({...apiBody(state), token: process.env.API_TOKEN})
-        })
-        .then(res=>{
-            res.json().then(response=>{
-                setButtonDisabled(false)
-                setSendIcon(defaultSendIcon)
-    
-                if( !response.status || response.status != 'ok' ){
-                    setError(true)
-                    setSentMessage(response.msg || errorMessage)
-                }
-                else{
-                    setError(false)
-                    setSentMessage(successMessage)
-    
-                    onSuccess(response)
-                }
-            })
-            .catch(error=>{
-                console.error('error on .json()')
-                console.error(error)
-                console.log(apiBody)
-                
-                setButtonDisabled(false)
-                setSendIcon(defaultSendIcon)
-                setError(true)
-                setSentMessage(errorMessage)
-            })
-        })
-        .catch(error=>{
-            console.error('error on fetch()')
-            console.error(error)
-            console.log(apiBody)
+        setError(false)
+        setSentMessage(successMessage)
 
-            setButtonDisabled(false)
-            setSendIcon(defaultSendIcon)
-            setError(true)
-            setSentMessage(errorMessage)
-        })
+        onSuccess(state)
         
     }
 
     return(
-        <form ref={formRef} className={styles.form} onSubmit={handleSubmit}>
+        <form ref={formRef} onSubmit={handleSubmit}>
 
-            <div className={styles.container}>
+            <div className="container d-flex flex-column justify-content-center align-items-center">
 
                 {state.map(item=>{
-                    return (
-                        <div key={item.id} className={`${styles.inputGroup} ${item.type == 'checkbox' ? styles.inline : null}`}>
-                            <label>{item.name}</label>
-                            <input name={item.id} disabled={item.disabled && item.disabled} type={item.type} onChange={handleInputChange} value={item.value && item.value}/>
+
+                    return item.type == 'checkbox' ? 
+                        <div key={item.id} className="form-check d-flex justify-content-center align-items-center gap-2 mb-4 mt-2">
+                            <input ref={'ref' in item ? item.ref : null} className="form-check-input" style={{width: '3.5rem', maxWidth:'40px', height: '2rem'}} name={item.id} disabled={item.disabled && item.disabled} type={item.type} onChange={handleInputChange} value={item.value && item.value}/>
+                            <label className="form-check-label" htmlFor="flexCheckDefault">
+                                {item.name}
+                            </label>
+                        </div>  
+                    : (
+                        <div key={item.id} className={`mb-2 w-100`}>
+                            <label className="mb-1">{item.name}</label>
+                            <input className={`form-control`} name={item.id} disabled={item.disabled && item.disabled} type={item.type} onChange={handleInputChange} value={item.value && item.value}/>
                             {item.forgotPassword && <ForgotPassword/>}
                         </div>
                     )
                 })}
 
-                <div className={`${styles.inputGroup} ${styles.recaptcha}`}>
+                <div className={`${sentMessage==''?'hidden':'show'} w-100 mb-3`}>
+                    <div className={`bg-light w-100 p-1 text-center rounded ${!error ? 'text-success' : 'text-danger'}`}>{sentMessage}</div>
+                </div>
+
+                <div className="mb-4">
                     <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey={process.env.RECAPTCHA_KEY}
-                        theme="dark"
                     />
-                    <span className={recaptchaHelp ? styles.show : styles.hidden}>Não esqueça de fazer o reCAPTCHA</span>
+                    <span className={recaptchaHelp ? 'show' : 'hidden'}>Não esqueça de fazer o reCAPTCHA</span>
                 </div>
 
-                <div className={`${styles.messageGroup} ${sentMessage==''?styles.hidden:styles.show}`}>
-                    <div className={!error?styles.success:styles.error}>{sentMessage}</div>
-                </div>
-
-                <div className={styles.buttonGroup}>
+                <div className="w-100">
                     <div>{footerLeftEl}</div>
-                    <div className={styles.forHover}>
-                        <button disabled={buttonDisabled} type="submit">{buttonText}</button>
-                        <button disabled={buttonDisabled} type="submit"><i className={sendIcon}></i></button>
-                    </div>
+                    <button className="btn-ifood-light" disabled={buttonDisabled} type="submit">
+                        {buttonText} <i className={`ms-1 ${sendIcon}`}></i>
+                    </button>
                 </div>
 
             </div>
