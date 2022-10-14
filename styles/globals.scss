@@ -66,6 +66,11 @@ body{
     padding: 12px 16px;
     color: $light;
     background-color: $mainRed;
+
+    &:disabled{
+        background-color: rgba(0, 0, 0, 0.25);
+        border-color: rgba(0, 0, 0, 0.25);
+    }
 }
 
 .btn-ifood-light{
@@ -77,30 +82,30 @@ body{
     background-color: rgba(0, 0, 0, 0.25);
     color: rgba(255,255,255, 0.9);
     border-color: rgba(0, 0, 0, 0.25);
-    &:hover{
+    &:hover:not([disabled]){
         background-color: $gold;
         color: $darkRed;
         border-color: $darkRed;
     }
 }
 
-.btn-ifood-light.mainRed:hover{
+.btn-ifood-light.mainRed:hover:not([disabled]){
     background-color: white;
     color: $mainRed;
     border-color: $mainRed;
 }
-.btn-ifood.gold:hover{
+.btn-ifood.gold:hover:not([disabled]){
     background-color: $gold !important;
     color: $darkRed !important;
     border-color: $darkRed !important;
 }
 
-.btn-ifood:hover {
+.btn-ifood:hover:not([disabled]) {
     background-color: white !important;
     color: $mainRed !important;
     border-color: $mainRed !important;
 }
-.btn-ifood-light:hover{
+.btn-ifood-light:hover:not([disabled]){
     background-color: $gold;
     color: $darkRed;
     border-color: $darkRed;
@@ -108,7 +113,7 @@ body{
 
 .progressModal{
     .modal-content{
-        background-color: $light !important;
+        background-color: white !important;
         color: #1c1c1c;
     }
 }

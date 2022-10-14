@@ -72,6 +72,11 @@ body {
   background-color: #EB0033;
 }
 
+.btn-ifood:disabled, .btn-ifood-light:disabled, .btn-ifood-dark:disabled {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
 .btn-ifood-light {
   background-color: #F9F2E8;
   color: #EB0033;
@@ -84,38 +89,38 @@ body {
   border-color: rgba(0, 0, 0, 0.25);
 }
 
-.btn-ifood-dark:hover {
+.btn-ifood-dark:hover:not([disabled]) {
   background-color: #FFCE45;
   color: #890019;
   border-color: #890019;
 }
 
-.btn-ifood-light.mainRed:hover {
+.btn-ifood-light.mainRed:hover:not([disabled]) {
   background-color: white;
   color: #EB0033;
   border-color: #EB0033;
 }
 
-.btn-ifood.gold:hover {
+.btn-ifood.gold:hover:not([disabled]) {
   background-color: #FFCE45 !important;
   color: #890019 !important;
   border-color: #890019 !important;
 }
 
-.btn-ifood:hover {
+.btn-ifood:hover:not([disabled]) {
   background-color: white !important;
   color: #EB0033 !important;
   border-color: #EB0033 !important;
 }
 
-.btn-ifood-light:hover {
+.btn-ifood-light:hover:not([disabled]) {
   background-color: #FFCE45;
   color: #890019;
   border-color: #890019;
 }
 
 .progressModal .modal-content {
-  background-color: #F9F2E8 !important;
+  background-color: white !important;
   color: #1c1c1c;
 }
 

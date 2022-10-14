@@ -129,9 +129,9 @@ export default function PDF({ name, email, plan, setShowCertificate }) {
             <div className="row mb-3">
                 <div className="col-6">
                     <div className="w-100 h-100 d-flex justify-content-start align-items-center">
-                        <button onClick={()=>setShowCertificate(false)} className="btn-ifood-dark w-auto">
+                        <Link href="/"><a className="btn-ifood-dark w-auto">
                             <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar
-                        </button>
+                        </a></Link>
                     </div>
                 </div>
                 <div className="col-6">

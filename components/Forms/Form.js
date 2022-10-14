@@ -92,8 +92,8 @@ export default function Form(props) {
         }
 
         // load button
-        setSendIcon('fas fa-spin fa-spinner')
-        setButtonDisabled(true)
+        //setSendIcon('fas fa-spin fa-spinner')
+        //setButtonDisabled(true)
         
         //console.log({...apiBody, token: process.env.API_TOKEN})
         
