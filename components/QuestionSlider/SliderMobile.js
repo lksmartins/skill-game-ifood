@@ -27,12 +27,21 @@ export default function Slider({
     const [currentAlternative, setCurrentAlternative] = useState(null)
     const [confirmDisabled, setConfirmDisabled] = useState(true)
 
+    const scrollToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        })
+    }
+
     const chooseAlternative = (alternative) => {
 
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
         setConfirmDisabled(false)
+
+        scrollToBottom()
     }
 
     const confirmAlternative = () => {
