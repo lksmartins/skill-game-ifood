@@ -25,8 +25,8 @@ export default function Index() {
 
                             <div className="d-flex flex-column gap-5 justify-content-space-evnely px-4 pb-5">
                                 <h1 className="text-uppercase text-center text-lg-start">
-                                    <div className="mb-3">Guia Interativo para Restaurantes</div>
-                                    Política de Cancelamento de Pedidos
+                                    <div className="mb-3">Guia Interativo</div>
+                                    Política de Cancelamento para Restaurantes
                                 </h1>
                                 <Link href="/start"><a className="btn-ifood-light fs-2 text-center">Iniciar minha jornada</a></Link>
                             </div>
