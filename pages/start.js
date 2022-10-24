@@ -19,7 +19,7 @@ export default function start() {
 
                 <div className="row">
                     <div className="col fs-5 rounded p-5 mb-4" style={{backgroundColor:'#F9F2E8', color:'#5C5C5C'}}>
-                        Olá, loja parceira! Bem-vinda ao Guia Interativo para Restaurantes - Política de Cancelamento de Pedidos. Aqui, você vai simular situações reais envolvendo cancelamentos que ocorrem na jornada de pedidos na plataforma iFood.<br/>
+                        Olá, loja parceira! Bem-vinda ao Guia Interativo - Política de Cancelamento para Restaurantes. Aqui, você vai simular situações reais envolvendo cancelamentos que ocorrem na jornada de pedidos na plataforma iFood.<br/>
                         O nosso objetivo é que você entenda o processo de cancelamento e como ele impacta no seu negócio. Para iniciar, selecione que tipo de plano o do seu estabelecimento:
                     </div>
                 </div>
