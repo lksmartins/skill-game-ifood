@@ -15,8 +15,8 @@ export default function ProgressModal(props){
                 </div>
             </Modal.Title>
             <Modal.Body>
-                Voce atingiu 100% em progresso nessa jornada.<br/>
-                Agora você pode gerar um certificado para mostrar para todo mundo quem é o mestre da jornada de cancelamento de pedidos do ifood.
+                Oba! Você terminou a jornada!<br/>
+                Agora você pode gerar um certificado para mostrar para todo mundo que sabe tudo sobre a política de cancelamento para restaurantes do iFood! 
             </Modal.Body>
             <Modal.Footer>
                 <div className="w-100 d-flex justify-content-between">

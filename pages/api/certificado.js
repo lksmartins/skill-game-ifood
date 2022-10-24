@@ -32,7 +32,7 @@ export default async (req, res) => {
                 to: email,
                 from: 'certificado@cancelamentoifood.com.br',
                 subject: 'Certificado Ifood',
-                text: 'Parabéns por ter concluído um fluxo do pedido de cancelamento ifood. E para provar isso segue o seu certificado em anexo.',
+                text: 'Parabéns por ter concluído a Jornada da Política de Cancelamento! Abaixo, você encontra seu certificado.',
                 attachments: [
                     {
                         content: attachments.image,

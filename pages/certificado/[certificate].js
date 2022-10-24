@@ -43,7 +43,7 @@ export default function Certificate({ map }) {
     const fields = [
         { id: 'name', name: 'Seu nome completo', type: 'text', value: '' },
         { id: 'email', name: 'Seu e-mail', type: 'email', value: '' },
-        { id: 'newsletter', ref: checkRef, name: 'Permito que o Ifood use meu email para enviar ofertas e novidades', type: 'checkbox', value: '' },
+        { id: 'newsletter', ref: checkRef, name: 'Permito que o Ifood use meu email para enviar comunicações sobre o tema cancelamento', type: 'checkbox', value: '' },
     ]
 
     const [name, setName] = useState('')
@@ -102,8 +102,8 @@ export default function Certificate({ map }) {
                 <div className="container-fluid">
                     <div className="col">
                         <div className="alert alert-danger mb-3" role="alert">
-                            Verifique se seus dados estão corretos!<br/>
-                            Ao avançar o progresso dessa jornada será apagado. Caso queira gerar o certificado novamente será necessário jogar toda a jornada.
+                            Por favor, verifique se seus dados estão corretos.<br/>
+                            Para gerar o certificado novamente será necessário refazer a jornada.
                         </div>
                     </div>
 
@@ -141,7 +141,7 @@ export default function Certificate({ map }) {
                         }
                         }
                         errorMessage="Houve um erro na tentativa de gerar seu certificado. Recarregue a página e tente novamente."
-                        successMessage="Certificado gerado com sucesso. O certidicado foi enviado para o seu email."
+                        successMessage="Certificado gerado com sucesso. O certificado foi enviado para o seu email."
                         onSuccess={(response) => {
                             console.log(response)
                             setName(response[0].value)
