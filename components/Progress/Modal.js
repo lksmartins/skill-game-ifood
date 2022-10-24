@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import Link from 'next/link'
+import Animation from './Animation'
 
 export default function ProgressModal(props){
 
@@ -10,11 +11,14 @@ export default function ProgressModal(props){
     return (
         <Modal {...props} centered className="progressModal">
             <Modal.Title>
-                <div className="p-3">
+                <div className="p-3 pb-0">
                     Parabéns!
                 </div>
             </Modal.Title>
             <Modal.Body>
+                <div style={{marginLeft:'-1rem', marginTop:'-1rem'}}>
+                    <Animation height="auto" width="100%" file={`/animaCertificado.json`}/>
+                </div>
                 Oba! Você terminou a jornada!<br/>
                 Agora você pode gerar um certificado para mostrar para todo mundo que sabe tudo sobre a política de cancelamento para restaurantes do iFood! 
             </Modal.Body>
