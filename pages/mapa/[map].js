@@ -325,10 +325,6 @@ export default function Play({ questions, map, files, ends }) {
 
             //GA event
             if (progress == 100) {
-                window.gtag('event', 'user_completed_flow', {
-                    'event_label': 'user_completed_flow',
-                    'value': map
-                })
                 window.gtag('event', 'user_completed_game', {
                     'event_label': 'user_completed_game',
                     'value': { flow: map, time: Date.now() }

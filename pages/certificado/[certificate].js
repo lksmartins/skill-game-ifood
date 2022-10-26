@@ -72,6 +72,20 @@ export default function Certificate({ map }) {
 
     },[])
 
+    let i = 0
+
+    useEffect(() => {
+
+        if( i == 0 ){
+            window.gtag('event', 'user_certificate', {
+                'event_label': 'user_certificate',
+                'value': { flow: map, time: Date.now() }
+            })
+            i++
+        }
+
+    }, [showCertificate])
+
     if (showCertificate) {
         return <CertificateComponent
             name={name}
