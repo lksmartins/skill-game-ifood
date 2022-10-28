@@ -25,7 +25,7 @@ export default function start() {
 
                 <div className="row">
                     <div className={`col fs-5 rounded p-4 mb-4 ${styles.mainText}`}>
-                        Olá parceiro! Escolha abaixo seu plano e veja situações que podem acontecer durante a jornada do pedido:
+                        Olá parceiro! Escolha abaixo seu plano e veja situações de cancelamento que podem acontecer durante a jornada do pedido:
                     </div>
                 </div>
 
