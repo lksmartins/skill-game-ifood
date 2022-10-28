@@ -5,6 +5,7 @@ import getFilesFromDir from '@lib/getFilesFromDir'
 import { isMobile } from 'react-device-detect'
 import styles from './play.module.css'
 import Link from 'next/link'
+import Head from 'next/head'
 
 import Map from '../../components/Map/D3'
 import MapMobile from '../../components/Map/D3mobile'
@@ -388,7 +389,12 @@ export default function Play({ questions, map, files, ends }) {
 
     }, [isMobile])
 
-    return (
+    return (<>
+
+        <Head>
+            <title>{ map == 'F001' ? 'Plano Básico' : 'Plano Entrega' }</title>
+        </Head>
+
         <main className={`${styles.mapPage} container-fluid d-flex flex-column p-0 m-0`}>
 
             {
@@ -471,5 +477,5 @@ export default function Play({ questions, map, files, ends }) {
 
 
         </main>
-    )
+    </>)
 }
