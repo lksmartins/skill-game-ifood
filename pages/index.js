@@ -12,9 +12,9 @@ export default function start() {
             <title>Escolha seu plano</title>
         </Head>
 
-        <main className={`${styles.start} container-fluid d-flex flex-column align-items-center justify-content-center`}>
+        <main className={`${styles.start} container-fluid`}>
 
-            <div className="container m-0 p-2">
+            <div className="container mx-auto p-2" style={{maxWidth:'960px'}}>
                 <div className="row">
                     <div className="col text-center">
                         <Link href="/">

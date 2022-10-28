@@ -3,10 +3,6 @@
   min-height: 100vh;
 }
 
-.start :global(.col), .start :global(.row) {
-  max-width: 1200px;
-}
-
 .start .mainText {
   background-color: rgba(0, 0, 0, 0.2);
   color: #fff;
