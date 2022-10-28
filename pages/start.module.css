@@ -8,22 +8,17 @@
 }
 
 .start .mainText {
-  background-color: #F9F2E8;
-  color: #5C5C5C;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
   border-radius: 0.75rem;
 }
 
 .start .startButton {
-  background: #F9F2E8;
-  -webkit-box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0.75rem;
   padding: 1.25rem 1rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   text-decoration: none;
   line-height: 1.5rem;
-  color: #EB0033;
   width: -webkit-fill-available;
   width: -moz-available;
   width: stretch;
@@ -62,7 +57,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  color: #EB0033;
   line-height: 2rem;
   font-weight: 400;
   font-size: 2rem;

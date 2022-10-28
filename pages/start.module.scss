@@ -9,20 +9,16 @@
     }
 
     .mainText{
-        background-color: #F9F2E8;
-        color: #5C5C5C;
+        background-color: rgba(0,0,0,0.2);
+        color: #fff;
         border-radius: 0.75rem;
     }
 
     .startButton {
-        background: #F9F2E8;
-        box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 0.75rem;
         padding: 1.25rem 1rem;
         transition: all 0.3s ease;
         text-decoration: none;
         line-height: 1.5rem;
-        color: $mainRed;
         width: stretch;
         display: flex;
         justify-content: space-evenly;
@@ -39,7 +35,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            color: $mainRed;
             line-height: 2rem;
             font-weight: 400;
             font-size: 2rem;
