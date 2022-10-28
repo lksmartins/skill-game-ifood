@@ -4,6 +4,7 @@ import { Circle } from 'rc-progress'
 import sacola from '../../public/Progress/sacola.svg'
 import Image from 'next/image'
 import Modal from './Modal'
+import GaEvents from './GaEvents'
 
 export default function Progress({ map, animationRef, progress = 50 }) {
 
@@ -20,6 +21,8 @@ export default function Progress({ map, animationRef, progress = 50 }) {
 
     return (
         <div className={styles.wrapper}>
+
+            <GaEvents progress={progress}/>
 
             <Modal
                 show={showModal}
