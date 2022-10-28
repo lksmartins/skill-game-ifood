@@ -323,7 +323,7 @@ function ChartInner(props) {
 
             <Link href="/"><a><Image src="/ifood-logo.svg" width="200" height="120" objectFit="contain" /></a></Link>
             <div className="flex-fill d-flex justify-content-center align-items-center">
-                <Link href="/start">
+                <Link href="/">
                     <a className={`btn-ifood-light mainRed`}>
                         <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar a tela inicial
                     </a>

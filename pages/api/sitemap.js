@@ -9,7 +9,6 @@ export default async (req, res) => {
 
         const links = [
             { url: '/', changefreq: 'monthly', priority: 0.5 },
-            { url: '/start', changefreq: 'monthly', priority: 0.5 },
             { url: '/mapa/faco-minhas-entregas', changefreq: 'weekly', priority: 1 },
             { url: '/mapa/uso-entregas-ifood', changefreq: 'weekly', priority: 1 },
         ]
