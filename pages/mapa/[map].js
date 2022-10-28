@@ -447,6 +447,7 @@ export default function Play({ questions, map, files, ends }) {
                             slidesPositions={slidesPositions}
                             updateSlidesPositions={updateSlidesPositions}
                             mapControls={mapControlsObj}
+                            nextQuestion={nextQuestion}
                             setNextQuestion={setNextQuestion}
                             addToJourney={updateCurrent}
                             toggleMapOpen={toggleMapOpen}

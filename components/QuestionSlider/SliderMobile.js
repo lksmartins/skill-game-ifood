@@ -20,6 +20,7 @@ export default function Slider({
     slidesPositions,
     updateSlidesPositions,
     mapControls,
+    nextQuestion,
     setNextQuestion,
     alternativeAnimation
 }) {
@@ -32,7 +33,7 @@ export default function Slider({
         setCurrentAlternative(alternative)
         setNextQuestion(alternative.nextQuestion)
 
-        setConfirmDisabled(false)
+        //setConfirmDisabled(false)
     }
 
     const confirmAlternative = () => {
@@ -66,7 +67,7 @@ export default function Slider({
             <div className={styles.alternatives}>
                 {
                     alternatives.map(alternative => {
-                        return <button 
+                        return <button
                             key={alternative.id}
                             className={`btn-ifood ${styles.alternative} ${currentAlternative?.ref == alternative.ref && styles.selected}`}
                             onClick={() => chooseAlternative(alternative)}
@@ -98,6 +99,16 @@ export default function Slider({
         setConfirmDisabled(true)
     }, [currentSlide])
 
+    useEffect(() => {
+
+        if (currentAlternative != null) {
+            if ('nextQuestion' in currentAlternative) {
+                confirmAlternative()
+            }
+        }
+
+    }, [currentAlternative])
+
     if (mapControls.isMapAnimating) return <div className={`${styles.slider} ${styles.loading} ${mapControls.isOpen ? styles.mapOpen : styles.mapClosed}`}>
         <i style={{ marginRight: '1rem' }} className="fa-solid fa-circle-notch fa-spin"></i> Carregando...
     </div>
@@ -118,13 +129,13 @@ export default function Slider({
                             </div>
                             <div className={styles.alternatives}>
                                 {buildAlternatives(slide)}
-                                <button 
+                                {/* <button 
                                     disabled={confirmDisabled}
                                     qref={slide.ref} 
                                     className={`btn-ifood ${styles.confirm}`} 
                                     onClick={() => confirmAlternative()}>
                                         Confirmar <i className="fa-solid fa-square-caret-right"></i>
-                                    </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>
