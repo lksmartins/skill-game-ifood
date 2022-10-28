@@ -132,7 +132,7 @@ export default function Icon({ questionRef, pos, xScale, yScale }) {
             </g>
     }
     catch (error) {
-        console.log(`does not exist`)
+        //console.log(`does not exist`)
     }
 
 }
