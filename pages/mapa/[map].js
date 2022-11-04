@@ -400,20 +400,21 @@ export default function Play({ questions, map, files, ends }) {
             {
                 isLoading ? <div className="w-100 p-5 fs-1 text-center"><i class="fa-solid fa-spin fa-spinner"></i></div> : (
 
-                    isMobile ? <MapMobile
-                        data={mapData}
-                        controls={mapControlsObj}
-                        playerJourney={playerJourney}
-                        updatePlayerJourney={updatePlayerJourney}
-                        updateCurrent={updateCurrent}
-                        nextQuestion={nextQuestion}
-                        resetLocalMap={resetLocalInfo}
-                        currentQuestionMarker={currentQuestionMarker}
-                        svgContainerRef={svgContainer}
-                        progress={progress}
-                        progressRef={progressRef}
-                        progressMap={map}
-                    />
+                    isMobile ? 
+                        <MapMobile
+                            data={mapData}
+                            controls={mapControlsObj}
+                            playerJourney={playerJourney}
+                            updatePlayerJourney={updatePlayerJourney}
+                            updateCurrent={updateCurrent}
+                            nextQuestion={nextQuestion}
+                            resetLocalMap={resetLocalInfo}
+                            currentQuestionMarker={currentQuestionMarker}
+                            svgContainerRef={svgContainer}
+                            progress={progress}
+                            progressRef={progressRef}
+                            progressMap={map}
+                        />
                         :
                         <Map
                             data={mapData}
@@ -433,17 +434,7 @@ export default function Play({ questions, map, files, ends }) {
             }
             {
                 isLoading ? null : (
-                    isMobile ? <>
-                        <div style={{marginTop: '-2.25rem', marginBottom:'0.25rem', padding:'0 0.65rem', zIndex: 30}}>
-                            <Link href="/">
-                                <a
-                                className={`btn-ifood`}
-                                style={{padding: '0.35rem'}}
-                                >
-                                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar a tela inicial
-                                </a>
-                            </Link>
-                        </div>
+                    isMobile ? 
                         <SliderMobile
                             files={files}
                             slides={questions}
@@ -458,7 +449,7 @@ export default function Play({ questions, map, files, ends }) {
                             addToJourney={updateCurrent}
                             toggleMapOpen={toggleMapOpen}
                             alternativeAnimation={alternativeAnimation}
-                        /></> :
+                        /> :
                         <Slider
                             files={files}
                             slides={questions}

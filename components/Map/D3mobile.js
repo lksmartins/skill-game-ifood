@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import TopBar from './TopBar'
 import Icon from './Icons'
 import styles from './styles/D3mobile.module.css'
+import Link from 'next/link'
 
 function useWindowSize() {
     // Initialize state with undefined width/height so server and client renders match
@@ -40,6 +41,17 @@ export default function Chart(props) {
     return <>
 
         <TopBar map={progressMap} progress={progress} progressRef={progressRef} />
+
+        <div style={{marginTop: '.25rem', marginBottom:'-0.5rem', padding:'0 0.65rem', zIndex: 30}}>
+            <Link href="/">
+                <a
+                className={`btn-ifood`}
+                style={{padding: '0.35rem'}}
+                >
+                    <i className="fa-solid fa-arrow-rotate-left me-1"></i> Voltar a tela inicial
+                </a>
+            </Link>
+        </div>
 
         <div
             style={{ height: `${size.w}px` }}

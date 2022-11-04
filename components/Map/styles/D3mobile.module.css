@@ -28,6 +28,17 @@
   position: relative;
   overflow-x: scroll !important;
   scroll-behavior: smooth;
+  margin-bottom: -1.5rem;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.parent::-webkit-scrollbar {
+  display: none;
 }
 
 .parent :global(.warning-popup) {
