@@ -9,6 +9,7 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      <Trackers/>
       <Head>
         <title>Ifood</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,7 +17,6 @@ export default function MyApp({ Component, pageProps }) {
       <Script src="https://kit.fontawesome.com/b73a956a41.js"/>
       <Component {...pageProps} />
 
-      <Trackers/>
       <GMTEvents/>
     </>
   )
